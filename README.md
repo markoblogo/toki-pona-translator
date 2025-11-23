@@ -1,58 +1,179 @@
+
+
+````
 # Toki Pona Translator
 
-A simple web app that translates text into Toki Pona using Gemini 3.
+A minimalist web app that translates text from any language into **Toki Pona** using **Gemini 3**.
+
+🔗 **Live demo:** https://toki.abvx.xyz
+
+---
 
 ## Features
-- **Translate**: Converts text from any language to Toki Pona.
-- **Display Modes**:
-    - **Latin**: Standard Toki Pona text.
-    - **sitelen pona**: Visual script using a custom font mapping.
-    - **sitelen emoji**: Emoji representation of Toki Pona words.
-- **Learn**: Resources for learning Toki Pona.
 
-## Project Structure
-- `/frontend`: React + Vite + TypeScript application.
-- `/backend`: Node.js + Express API.
+- **Auto language detection**  
+  Enter text in almost any language – the app detects it and translates the meaning into Toki Pona.
 
-## Setup & Running
+- **Three display modes**
+  - **Latin** – standard Toki Pona text.
+  - **sitelen pona** – logographic script rendered via a custom sitelen pona font.
+  - **sitelen emoji** – emoji representation of Toki Pona words via a dictionary-based mapping.
 
-### Prerequisites
-- Node.js installed.
-- A Google Gemini API Key.
+- **Learn page**
+  - Curated resources for learning Toki Pona.
+  - Links about sitelen pona and sitelen emoji / sitelen pilin.
+  - Toki Pona book translations by the author.
 
-### Backend
-1. Navigate to `backend`:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file:
-   ```env
-   GEMINI_API_KEY=your_api_key_here
-   PORT=3000
-   ```
-4. Start the server:
-   ```bash
-   node server.js
-   ```
+---
 
-### Frontend
-1. Navigate to `frontend`:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## Project structure
 
-## Mappings
-- **sitelen pona**: Uses a font mapping where specific Latin characters or combinations render as logograms.
-- **sitelen emoji**: Uses a JSON dictionary to map Toki Pona words to emojis.
+```text
+toki-pona-translator/
+  backend/   # Node.js + Express API (Gemini 3)
+  frontend/  # React + Vite + TypeScript app
+````
+
+- **backend/** – Express server with a /api/translate endpoint that calls Gemini 3.
+    
+- **frontend/** – SPA with the translator UI, display modes and Learn page.
+    
+
+---
+
+## **Local setup**
+
+  
+
+### **Prerequisites**
+
+- Node.js
+    
+- A Google Gemini API key (from Google AI Studio)
+    
+
+  
+
+### **Backend**
+
+```
+cd backend
+npm install
+```
+
+Create .env:
+
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+PORT=3000
+```
+
+Run:
+
+```
+node server.js
+```
+
+By default the API runs on http://localhost:3000.
+
+  
+
+### **Frontend**
+
+```
+cd frontend
+npm install
+```
+
+Optionally create frontend/.env:
+
+```
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+If VITE_API_BASE_URL is not set, the app falls back to http://localhost:3000.
+
+  
+
+Run dev server:
+
+```
+npm run dev
+```
+
+The UI will be available at http://localhost:5173.
+
+---
+
+## **Deployment**
+
+- **Backend**
+    
+    Deployed as a Node/Express service (e.g. Render) with:
+    
+    - GEMINI_API_KEY – your Gemini API key
+        
+    - PORT – provided by the platform or default 3000
+        
+    
+- **Frontend**
+    
+    Deployed from /frontend (e.g. Vercel) with:
+    
+
+```
+VITE_API_BASE_URL=https://your-backend-url.example.com
+```
+
+  
+
+  
+
+In production this project is available at:
+
+- App: https://toki.abvx.xyz
+    
+
+---
+
+## **Tech stack**
+
+- **Frontend:** React, Vite, TypeScript
+    
+- **Backend:** Node.js, Express
+    
+- **AI:** Google Gemini 3 (via @google/generative-ai)
+    
+- **Styling:** minimal custom CSS
+    
+
+---
+
+## **Author**
+
+  
+
+Created by **Anton Biletskyi-Volokh**
+
+- Website: https://abvx.xyz
+    
+- GitHub: https://github.com/markoblogo
+    
+- Toki Pona books:
+    
+    - [Meditations of Marcus Aurelius — in Toki Pona](https://www.amazon.com/dp/B0FV3F1RC5)![Attachment.tiff](file:///Attachment.tiff)
+        
+    - [A Christmas Carol — in Toki Pona](https://www.amazon.com/dp/B0G1N2YHD8)![Attachment.tiff](file:///Attachment.tiff)
+        
+    
+
+````
+Дальше:
+
+```bash
+git pull   # если нужно
+# правишь README.md
+git add README.md
+git commit -m "Update README with live demo and deployment info"
+git push
+````
