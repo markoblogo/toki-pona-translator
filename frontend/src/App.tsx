@@ -1,32 +1,35 @@
 import { useState } from 'react';
 import Translator from './components/Translator';
 import Learn from './components/Learn';
-
 import Footer from './components/Footer';
 
 function App() {
     const [activeTab, setActiveTab] = useState<'translate' | 'learn'>('translate');
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans flex flex-col">
-            <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-10">
-                <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">Toki Pona Translator</h1>
-                    <nav className="flex gap-4">
+        <div className="min-h-screen bg-[#F9FAFB] flex flex-col">
+            {/* Minimal Header */}
+            <header className="bg-white border-b border-[#E5E7EB]">
+                <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <span className="text-[#22C55E] text-xl font-bold">&gt;</span>
+                        <h1 className="text-lg font-semibold text-[#111827]">Toki Pona Translator</h1>
+                    </div>
+                    <nav className="flex gap-6">
                         <button
                             onClick={() => setActiveTab('translate')}
-                            className={`px-4 py-2 rounded-lg transition-colors font-medium ${activeTab === 'translate'
-                                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
-                                : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300'
+                            className={`text-sm font-medium transition-colors ${activeTab === 'translate'
+                                    ? 'text-[#111827]'
+                                    : 'text-[#6B7280] hover:text-[#111827]'
                                 }`}
                         >
                             Translate
                         </button>
                         <button
                             onClick={() => setActiveTab('learn')}
-                            className={`px-4 py-2 rounded-lg transition-colors font-medium ${activeTab === 'learn'
-                                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
-                                : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300'
+                            className={`text-sm font-medium transition-colors ${activeTab === 'learn'
+                                    ? 'text-[#111827]'
+                                    : 'text-[#6B7280] hover:text-[#111827] hover:underline'
                                 }`}
                         >
                             Learn
@@ -35,7 +38,8 @@ function App() {
                 </div>
             </header>
 
-            <main className="flex-grow py-8">
+            {/* Main Content */}
+            <main className="flex-grow">
                 {activeTab === 'translate' ? <Translator /> : <Learn />}
             </main>
 

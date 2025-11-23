@@ -25,6 +25,7 @@ A minimalist web app that translates text from any language into **Toki Pona** u
 
 ## Project structure
 
+
 ```text
 toki-pona-translator/
   backend/   # Node.js + Express API (Gemini 3)
