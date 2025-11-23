@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'nasin-sitelen-pu';
+  src: url('/fonts/nasin-sitelen-pu.woff2') format('woff2');
+  font-display: swap;
+}
+
+.sitelen-pona-text {
+  font-family: 'nasin-sitelen-pu', sans-serif;
+}
