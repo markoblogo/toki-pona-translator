@@ -1,6 +1,3 @@
-
-
-````
 # Toki Pona Translator
 
 A minimalist web app that translates text from any language into **Toki Pona** using **Gemini 3**.
@@ -165,15 +162,3 @@ Created by **Anton Biletskyi-Volokh**
         
     - [A Christmas Carol — in Toki Pona](https://www.amazon.com/dp/B0G1N2YHD8)![Attachment.tiff](file:///Attachment.tiff)
         
-    
-
-````
-Дальше:
-
-```bash
-git pull   # если нужно
-# правишь README.md
-git add README.md
-git commit -m "Update README with live demo and deployment info"
-git push
-````
