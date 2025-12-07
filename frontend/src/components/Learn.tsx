@@ -24,12 +24,7 @@ const Learn: React.FC = () => {
                             </a>
                             <span className="text-[#9CA3AF]"> — The official website</span>
                         </li>
-                        <li>
-                            <a href="https://devurandom.xyz/tokipona/" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium">
-                                Toki Pona: The Language of Good
-                            </a>
-                            <span className="text-[#9CA3AF]"> — The official book (pu) info</span>
-                        </li>
+
                     </ul>
                 </section>
 
@@ -89,12 +84,7 @@ const Learn: React.FC = () => {
                             </a>
                             <span className="text-[#9CA3AF]"> — Reddit community</span>
                         </li>
-                        <li>
-                            <a href="https://play.google.com/store/apps/details?id=com.gboard.sitelenemoji" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium">
-                                Sitelen Emoji Keyboard
-                            </a>
-                            <span className="text-[#9CA3AF]"> — Example Android App</span>
-                        </li>
+
                         <li>
                             <a href="https://sona.pona.la/wiki/Sitelen_Emoji" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium">
                                 Sitelen Emoji Wiki
@@ -110,21 +100,41 @@ const Learn: React.FC = () => {
                     <p className="text-[#6B7280] mb-4">
                         Additional resources created by the author of this app.
                     </p>
-                    <div className="space-y-5">
+                    <div className="space-y-6">
+                        {/* Book 1 */}
                         <div>
                             <a href="https://www.amazon.com/dp/B0FV3F1RC5" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-semibold text-base">
                                 Meditations of Marcus Aurelius — in Toki Pona
                             </a>
                             <p className="text-sm text-[#6B7280] mt-1.5 leading-relaxed">
-                                A Toki Pona translation of Marcus Aurelius' <em>Meditations</em>, featuring sitelen pona script, an introduction to the language, and a glossary. Designed for beginners and philosophy enthusiasts alike.
+                                A Toki Pona translation of Marcus Aurelius' <em>Meditations</em>, with sitelen pona script, an intro to the language, and a glossary. Designed for beginners in both Stoicism and Toki Pona.
                             </p>
                         </div>
+                        {/* Book 2 */}
                         <div>
                             <a href="https://www.amazon.com/dp/B0G1N2YHD8" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-semibold text-base">
                                 A Christmas Carol — in Toki Pona
                             </a>
                             <p className="text-sm text-[#6B7280] mt-1.5 leading-relaxed">
-                                Charles Dickens' classic <em>A Christmas Carol</em> presented as a bilingual edition. Includes sitelen pona script and illustrations, making it a great resource for learners and literature fans.
+                                Charles Dickens' classic <em>A Christmas Carol</em> retold in Toki Pona with parallel sitelen pona script and atmospheric illustrations. A bilingual edition for learners and literature fans.
+                            </p>
+                        </div>
+                        {/* Book 3 */}
+                        <div>
+                            <a href="https://www.amazon.com/dp/B0G4XNRS4W" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-semibold text-base">
+                                Dao De Jing (Tao Te Ching): Chinese text with Toki Pona in sitelen pona
+                            </a>
+                            <p className="text-sm text-[#6B7280] mt-1.5 leading-relaxed">
+                                A visual bilingual edition of the Dao De Jing: original Chinese text paired with Toki Pona in sitelen pona. Includes a brief guide and chapter-by-chapter plates for readers interested in Daoism, Toki Pona, and experimental script design.
+                            </p>
+                        </div>
+                        {/* Book 4 */}
+                        <div>
+                            <a href="https://www.amazon.com/dp/B0G44JSMR2" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-semibold text-base">
+                                Toki Pona and the Machine Mind
+                            </a>
+                            <p className="text-sm text-[#6B7280] mt-1.5 leading-relaxed">
+                                A practical field guide to using Toki Pona as a design tool for AI: cleaner prompts, constrained prompt languages, and small language models. Written for engineers, builders, and Toki Pona enthusiasts who want more predictable, minimal systems.
                             </p>
                         </div>
                     </div>
