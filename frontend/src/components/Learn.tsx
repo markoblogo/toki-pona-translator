@@ -94,6 +94,37 @@ const Learn: React.FC = () => {
                     </ul>
                 </section>
 
+                {/* Articles & essays */}
+                <section className="card">
+                    <h3 className="text-lg font-bold text-[#111827] mb-4">Articles & essays</h3>
+                    <ul className="space-y-6">
+                        <li>
+                            <a href="https://abvcreative.medium.com/i-built-a-google-translate-for-toki-pona-and-it-broke-my-brain-in-the-best-possible-way-354dc934c99c" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium block">
+                                I Built a “Google Translate” for Toki Pona — and It Broke My Brain in the Best Possible Way
+                            </a>
+                            <p className="text-sm text-[#6B7280] mt-1">
+                                A behind-the-scenes story of building this translator, what broke, and what I learned about Toki Pona and AI along the way.
+                            </p>
+                        </li>
+                        <li>
+                            <a href="https://abvcreative.medium.com/the-tiny-language-that-teaches-ai-to-think-and-humans-to-calm-down-410e9e376b0f" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium block">
+                                The Tiny Language That Teaches AI To Think (And Humans To Calm Down)
+                            </a>
+                            <p className="text-sm text-[#6B7280] mt-1">
+                                How Toki Pona works as a mental tool for clarity, focus, and working with large language models.
+                            </p>
+                        </li>
+                        <li>
+                            <a href="https://abvcreative.medium.com/the-smallest-language-that-punches-above-its-weight-and-why-i-translated-meditations-into-toki-8c4998ba2e94" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium block">
+                                The Smallest Language That Punches Above Its Weight (and Why I Translated Meditations into Toki Pona)
+                            </a>
+                            <p className="text-sm text-[#6B7280] mt-1">
+                                Why a minimalist language is surprisingly powerful for philosophy, translation, and creative work.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+
                 {/* From the Creator */}
                 <section className="card">
                     <h3 className="text-lg font-bold text-[#111827] mb-4">From the Creator</h3>
@@ -138,6 +169,12 @@ const Learn: React.FC = () => {
                             </p>
                         </div>
                     </div>
+                </section>
+
+                <section className="text-center pb-8">
+                    <p className="text-[#6B7280]">
+                        Feedback or ideas? Reach me via my site <a href="https://abvx.xyz" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline">abvx.xyz</a> or <a href="https://github.com/markoblogo/toki-pona-translator" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline">open an issue on GitHub</a>.
+                    </p>
                 </section>
             </div>
         </div>

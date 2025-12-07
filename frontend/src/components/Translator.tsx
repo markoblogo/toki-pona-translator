@@ -88,9 +88,18 @@ const Translator: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4">
                     Translate into Toki Pona
                 </h2>
-                <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
+                <p className="text-lg text-[#6B7280] max-w-2xl mx-auto mb-4">
                     Type in any language. Get Toki Pona in Latin, sitelen pona, or emoji.
                 </p>
+
+                <div className="max-w-2xl mx-auto text-left sm:text-center mt-4 mb-4">
+                    <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+                        What is this?
+                    </h3>
+                    <p className="text-[#6B7280] leading-relaxed text-sm">
+                        Toki Pona Translator is a free, browser-based tool for turning natural language into Toki Pona. You can type in (almost) any language, the app detects it automatically, and returns a compact Toki Pona version. Then you can view the same text in three modes: Latin, sitelen pona, and an experimental emoji script.
+                    </p>
+                </div>
             </div>
 
             {/* Cards Container */}
@@ -214,7 +223,35 @@ const Translator: React.FC = () => {
                     </div>
                 )}
             </div>
-        </div>
+
+            {/* FAQ Section */}
+            <div className="max-w-2xl mx-auto mt-20 mb-12">
+                <h3 className="text-2xl font-bold text-[#111827] mb-8 text-center">FAQ</h3>
+
+                <div className="space-y-8">
+                    <div>
+                        <h4 className="text-lg font-bold text-[#111827] mb-2">How accurate is this translator?</h4>
+                        <p className="text-[#6B7280] leading-relaxed">
+                            It uses Google Gemini to generate Toki Pona translations. That means it’s great for experimentation and learning, but not an official or guaranteed-perfect translation. Always feel free to tweak the output if you know the language.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 className="text-lg font-bold text-[#111827] mb-2">Which languages can I type in?</h4>
+                        <p className="text-[#6B7280] leading-relaxed">
+                            You can type in most major languages — English, Russian, Ukrainian, and many others. The app auto-detects the input language and then translates the meaning into Toki Pona.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 className="text-lg font-bold text-[#111827] mb-2">Is this really free to use?</h4>
+                        <p className="text-[#6B7280] leading-relaxed">
+                            Yes. The translator is a personal side project and is free to use in the browser. There are no accounts, logins, or ads — just the translator and the learning links.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div >
     );
 };
 
