@@ -42,47 +42,43 @@ frontend/  React + Vite + TypeScript app
 cd backend
 npm install
 
-Create backend/.env:
+**Create backend/.env:**
 
 GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3000
 
-Run the API:
-
+**Run the API:**
 node server.js
 
-By default the API runs at:
-	•	http://localhost:3000
+**By default the API runs at:**
+http://localhost:3000
 
-Frontend
-
+**Frontend**
 cd frontend
 npm install
 npm run dev
 
-The UI will be available at:
-	•	http://localhost:5173
+**The UI will be available at:**
+http://localhost:5173
 
-Optional frontend/.env (only needed if your backend is not http://localhost:3000):
-
+**Optional frontend/.env (only needed if your backend is not http://localhost:3000):**
 VITE_API_BASE_URL=http://localhost:3000
 
-Deployment
+**Deployment**
 	•	Backend: deploy as a Node/Express service (Render / Railway / Fly.io, etc.)
 	•	Required env vars: GEMINI_API_KEY, PORT
 	•	Frontend: deploy from /frontend (Vercel recommended)
 	•	Set VITE_API_BASE_URL to your backend URL (production)
 
-Privacy and cost notes
+**Privacy and cost notes**
 	•	Your Gemini API key must be stored in environment variables (backend/.env) and must not be committed.
 	•	Gemini usage may incur costs depending on your plan and traffic.
 
-License
-
+**License**
 MIT. See LICENSE.
 
-Author
-
+**Author**
 Anton Biletskiy-Volokh
+
 Website: https://abvx.xyz
 GitHub: https://github.com/markoblogo
