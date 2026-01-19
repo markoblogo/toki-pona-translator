@@ -6,69 +6,73 @@
 
 A minimalist web app that translates text from many languages into **Toki Pona** using **Gemini**.
 
-Live demo: https://toki.abvx.xyz
+**Live demo:** https://toki.abvx.xyz
 
 ## Demo
-[![Toki Pona Translator demo](https://img.youtube.com/vi/lCAFiDnP2NQ/maxresdefault.jpg)](https://youtu.be/lCAFiDnP2NQ)
+
+[![Toki Pona Translator demo](https://img.youtube.com/vi/lCAFiDnP2NQ/hqdefault.jpg)](https://youtu.be/lCAFiDnP2NQ)
 
 ## Features
 
 - Automatic language detection (input in most languages)
-- Multiple display modes:
+- Multiple output modes:
   - **Latin** (standard Toki Pona)
-  - **sitelen pona** (logographic script via custom font)
+  - **sitelen pona** (logographic script via a custom font)
   - **sitelen emoji** (emoji-based representation)
 - Learn page with curated resources (sitelen pona / sitelen emosi / sitelen pilin)
 
-## Screenshots
-
-(Add 1–3 images here. Recommended: main translator UI + sitelen pona mode + learn page.)
-
 ## Project structure
+
+```text
 toki-pona-translator/
-backend/   Node.js + Express API (Gemini)
-frontend/  React + Vite + TypeScript app
+  backend/   Node.js + Express API (Gemini)
+  frontend/  React + Vite + TypeScript app
 
-## Local setup
+Local setup
 
-### Prerequisites
+Prerequisites
+	•	Node.js (LTS recommended)
+	•	A Gemini API key (Google AI Studio)
 
-- Node.js (LTS recommended)
-- A Gemini API key (Google AI Studio)
+Backend
 
-### Backend
-
-```bash
 cd backend
 npm install
 
 Create backend/.env:
-GEMINI_API_KEY=your_key_here
+
+GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3000
 
 Run the API:
+
 node server.js
-By default the API runs at http://localhost:3000.
+
+By default the API runs at:
+	•	http://localhost:3000
 
 Frontend
+
 cd frontend
 npm install
 npm run dev
 
-The UI will be available at http://localhost:5173.
-Optional frontend/.env (only needed if your backend is not localhost:3000):
+The UI will be available at:
+	•	http://localhost:5173
+
+Optional frontend/.env (only needed if your backend is not http://localhost:3000):
+
 VITE_API_BASE_URL=http://localhost:3000
 
-Deployment notes
-	•	Backend: deploy as a Node/Express service (Render / Railway / Fly.io / etc.)
+Deployment
+	•	Backend: deploy as a Node/Express service (Render / Railway / Fly.io, etc.)
 	•	Required env vars: GEMINI_API_KEY, PORT
 	•	Frontend: deploy from /frontend (Vercel recommended)
-	•	Set VITE_API_BASE_URL to your backend URL
+	•	Set VITE_API_BASE_URL to your backend URL (production)
 
-Privacy and costs
-	•	Your Gemini API key is required for local development and must be stored in environment variables (.env).
-	•	API usage may incur costs depending on your Gemini plan and traffic.
-	•	Do not commit keys to the repository.
+Privacy and cost notes
+	•	Your Gemini API key must be stored in environment variables (backend/.env) and must not be committed.
+	•	Gemini usage may incur costs depending on your plan and traffic.
 
 License
 
