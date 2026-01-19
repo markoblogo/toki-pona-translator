@@ -1,4 +1,7 @@
 # Toki Pona Translator
+	•	License: https://img.shields.io/github/license/markoblogo/toki-pona-translator
+	•	Last commit: https://img.shields.io/github/last-commit/markoblogo/toki-pona-translator
+	•	Stars: https://img.shields.io/github/stars/markoblogo/toki-pona-translator?style=social
 
 A minimalist web app that translates text from any language into **Toki Pona** using **Gemini 3**.
 
