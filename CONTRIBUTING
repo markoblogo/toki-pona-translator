@@ -1,0 +1,23 @@
+# Contributing
+
+Thanks for your interest in contributing.
+
+## Ways to help
+- Report bugs (include steps to reproduce, browser + macOS version, and console logs if relevant).
+- Suggest improvements to the translation quality or UI.
+- Add tests and improve documentation.
+
+## Development setup
+1. Clone the repo
+2. Install dependencies:
+   - `cd backend && npm install`
+   - `cd frontend && npm install`
+3. Create `backend/.env` with your `GEMINI_API_KEY`
+4. Run locally:
+   - Backend: `cd backend && node server.js`
+   - Frontend: `cd frontend && npm run dev`
+
+## Pull requests
+- Keep PRs focused and small.
+- Describe the motivation and the change.
+- If you touch the API contract, update the README accordingly.
