@@ -1,6 +1,6 @@
 # Toki Pona Translator
 
-[![License](https://img.shields.io/github/license/markoblogo/toki-pona-translator)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/markoblogo/toki-pona-translator)](https://github.com/markoblogo/toki-pona-translator/commits/main)
 [![Stars](https://img.shields.io/github/stars/markoblogo/toki-pona-translator?style=social)](https://github.com/markoblogo/toki-pona-translator)
 
@@ -10,7 +10,9 @@ A minimalist web app that translates text from many languages into **Toki Pona**
 
 ## Demo
 
-[![Toki Pona Translator demo](https://img.youtube.com/vi/lCAFiDnP2NQ/hqdefault.jpg)](https://youtu.be/lCAFiDnP2NQ)
+<a href="https://youtu.be/lCAFiDnP2NQ">
+  <img src="https://img.youtube.com/vi/lCAFiDnP2NQ/hqdefault.jpg" alt="Toki Pona Translator demo" width="860">
+</a>
 
 ## Features
 
@@ -23,19 +25,20 @@ A minimalist web app that translates text from many languages into **Toki Pona**
 
 ## Project structure
 
-```text
 toki-pona-translator/
-  backend/   Node.js + Express API (Gemini)
-  frontend/  React + Vite + TypeScript app
+backend/   Node.js + Express API (Gemini)
+frontend/  React + Vite + TypeScript app
 
-Local setup
+## Local setup
 
-Prerequisites
-	•	Node.js (LTS recommended)
-	•	A Gemini API key (Google AI Studio)
+### Prerequisites
 
-Backend
+- Node.js (LTS recommended)
+- A Gemini API key (Google AI Studio)
 
+### Backend
+
+```bash
 cd backend
 npm install
 
