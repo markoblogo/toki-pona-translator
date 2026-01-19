@@ -8,6 +8,9 @@ A minimalist web app that translates text from many languages into **Toki Pona**
 
 Live demo: https://toki.abvx.xyz
 
+## Demo
+[![Toki Pona Translator demo](https://img.youtube.com/vi/lCAFiDnP2NQ/maxresdefault.jpg)](https://youtu.be/lCAFiDnP2NQ)
+
 ## Features
 
 - Automatic language detection (input in most languages)
