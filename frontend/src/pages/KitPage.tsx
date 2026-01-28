@@ -18,10 +18,12 @@ function BannerLink({ href, title, subtitle }: BannerLinkProps) {
 
 function FreeBadge() {
   return (
-    <div className="absolute -top-4 -right-4 z-10">
-      <div className="h-16 w-16 rounded-full border-2 border-black bg-white shadow-sm">
-        <div className="flex h-full w-full items-center justify-center rounded-full border border-black/20">
-          <span className="text-xs font-bold tracking-widest text-black">FREE</span>
+    <div className="absolute -top-4 -right-4 z-10 select-none">
+      <div className="h-16 w-16 rotate-[-10deg] rounded-full bg-[#E53935] shadow-[0_12px_30px_rgba(0,0,0,0.20)]">
+        <div className="flex h-full w-full items-center justify-center rounded-full border-[3px] border-white">
+          <div className="flex h-[86%] w-[86%] items-center justify-center rounded-full border-2 border-white/70 border-dashed">
+            <span className="text-sm font-black tracking-widest text-white">FREE</span>
+          </div>
         </div>
       </div>
     </div>
@@ -29,8 +31,8 @@ function FreeBadge() {
 }
 
 const LINKS = {
-  medium: 'https://medium.com/@abvx',
-  substack: 'https://abvx.substack.com',
+  medium: 'https://abvcreative.medium.com/',
+  substack: 'https://abvx.substack.com/',
   github: 'https://github.com/markoblogo',
 } as const;
 
@@ -62,6 +64,7 @@ export default function KitPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="/kit.pdf"
+                download
                 className="inline-flex items-center justify-center rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-black/90"
               >
                 Download PDF
@@ -81,11 +84,11 @@ export default function KitPage() {
           <div className="mx-auto w-full max-w-sm">
             <div className="relative">
               <FreeBadge />
-              <div className="overflow-hidden rounded-xl border border-black/15 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
+              <div className="group overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.14)]">
                 <img
                   src="/kit-cover.jpg"
                   alt="The Toki Pona Reader’s Kit cover"
-                  className="h-auto w-full"
+                  className="h-auto w-full transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.015] group-hover:rotate-[0.25deg]"
                   loading="eager"
                 />
               </div>
