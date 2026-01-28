@@ -93,3 +93,8 @@ VITE_API_BASE_URL=http://localhost:3000
 
 - Your Gemini API key must be stored in environment variables (`backend/.env`) and must not be committed.
 - Gemini usage may incur costs depending on your plan and traffic.
+
+## Free Toki Pona Reader’s Kit (PDF)
+If you’re learning toki pona: download the free beginner-friendly Reader’s Kit (includes *The Golden Verses of Pythagoras* full text).
+- Landing: https://toki.abvx.xyz/kit
+- Direct PDF: https://toki.abvx.xyz/kit.pdf
