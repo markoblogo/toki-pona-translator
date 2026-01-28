@@ -28,16 +28,20 @@ function FreeBadge() {
   );
 }
 
+const LINKS = {
+  medium: 'https://medium.com/@abvx',
+  substack: 'https://abvx.substack.com',
+  github: 'https://github.com/markoblogo',
+} as const;
+
 export default function KitPage() {
   return (
-    <div className="min-h-screen bg-[#f6f3ee] text-[#111]">
+    <div className="min-h-screen bg-white text-[#111]">
       <main className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Copy */}
           <div>
-            <p className="text-xs font-semibold tracking-widest text-black/60">ABVX · TOKI PONA</p>
-
-            <h1 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">
+            <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
               The Toki Pona Reader’s Kit
             </h1>
 
@@ -101,7 +105,33 @@ export default function KitPage() {
             </div>
           </div>
 
-          <div className="mt-6 text-xs text-black/50">© {new Date().getFullYear()} ABVX.xyz</div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-black/50">
+            <span>© {new Date().getFullYear()} ABVX.xyz</span>
+            <a
+              href={LINKS.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-black/20 underline-offset-4 hover:text-black"
+            >
+              Medium
+            </a>
+            <a
+              href={LINKS.substack}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-black/20 underline-offset-4 hover:text-black"
+            >
+              Substack
+            </a>
+            <a
+              href={LINKS.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-black/20 underline-offset-4 hover:text-black"
+            >
+              GitHub
+            </a>
+          </div>
         </footer>
       </main>
     </div>
