@@ -10,17 +10,12 @@ function BannerLink({ href, title, subtitle }: BannerLinkProps) {
       href={href}
       className="group block rounded-2xl border border-[#E5E7EB] bg-white px-6 py-5 shadow-sm transition hover:border-[#D1D5DB] hover:shadow"
     >
-      <div className="flex items-center gap-3">
-        <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#DCFCE7] text-[#16A34A]">
-          <span className="text-lg font-bold">&gt;</span>
-        </span>
+      <div className="flex items-start gap-3">
+        <span className="text-[#22C55E] text-2xl font-bold leading-none">&gt;</span>
         <div>
-          <div className="text-base font-semibold text-[#111827]">{title}</div>
-          <div className="mt-1 text-sm text-[#6B7280]">{subtitle}</div>
+          <div className="text-lg font-semibold leading-tight text-[#111827]">{title}</div>
+          <div className="mt-1 text-sm leading-relaxed text-[#6B7280]">{subtitle}</div>
         </div>
-      </div>
-      <div className="mt-4 text-xs font-medium text-[#6B7280] transition group-hover:text-[#111827]">
-        Open translator →
       </div>
     </a>
   );
