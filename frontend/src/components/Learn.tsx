@@ -149,7 +149,7 @@ const Learn: React.FC = () => {
                             </div>
                         </div>
                         <div className="border-t border-black/5">
-                            <img src="/promo/card-kit.jpg" alt="" className="h-28 w-full object-cover" loading="lazy" />
+                            <img src="/promo/card-emoji.jpg" alt="" className="h-28 w-full object-cover" loading="lazy" />
                         </div>
                     </a>
 
@@ -164,7 +164,7 @@ const Learn: React.FC = () => {
                             <div className="mt-4 text-sm text-[#22C55E] font-semibold">Open on GitHub →</div>
                         </div>
                         <div className="border-t border-black/5">
-                            <img src="/promo/card-emoji.jpg" alt="" className="h-28 w-full object-cover" loading="lazy" />
+                            <img src="/promo/card-kit.jpg" alt="" className="h-28 w-full object-cover" loading="lazy" />
                         </div>
                     </a>
 
