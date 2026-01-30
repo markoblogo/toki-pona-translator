@@ -102,10 +102,12 @@ export default function KitPage() {
               <FreeBadge />
               <div className="group overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.14)]">
                 <img
-                  src="/kit-cover.jpg"
+                  src="/kit-cover.webp"
                   alt="The Toki Pona Reader’s Kit cover"
                   className="h-auto w-full transition-transform duration-500 ease-out will-change-transform group-hover:scale-[1.015] group-hover:rotate-[0.25deg]"
                   loading="eager"
+                  width={800}
+                  height={1132}
                 />
               </div>
             </div>
