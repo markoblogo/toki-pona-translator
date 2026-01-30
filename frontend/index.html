@@ -18,7 +18,7 @@
   <meta property="og:title" content="Toki Pona Translator – Translate Anything Into Toki Pona, Sitelen Pona & Emoji" />
   <meta property="og:description"
     content="Free Toki Pona translator that detects your language and converts text into Toki Pona, sitelen pona script, and sitelen emoji." />
-  <meta property="og:image" content="/vite.svg" />
+  <meta property="og:image" content="https://toki.abvx.xyz/og/og-translator.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -27,29 +27,48 @@
     content="Toki Pona Translator – Translate Anything Into Toki Pona, Sitelen Pona & Emoji" />
   <meta property="twitter:description"
     content="Free Toki Pona translator into Toki Pona, sitelen pona script, and sitelen emoji." />
-  <meta property="twitter:image" content="/vite.svg" />
+  <meta property="twitter:image" content="https://toki.abvx.xyz/og/og-translator.jpg" />
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Toki Pona Translator",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "Any",
-      "url": "https://toki.abvx.xyz",
-      "description": "Free browser-based translator that converts natural language into Toki Pona in Latin, sitelen pona, and emoji scripts.",
-      "author": {
-        "@type": "Person",
-        "name": "Anton Biletskyi-Volokh",
-        "url": "https://abvx.xyz"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "ABV",
+          "url": "https://abvx.xyz",
+          "sameAs": [
+            "https://abvcreative.medium.com/",
+            "https://abvx.substack.com/",
+            "https://github.com/markoblogo"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Toki Pona Translator",
+          "url": "https://toki.abvx.xyz"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Toki Pona Translator",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Any",
+          "url": "https://toki.abvx.xyz",
+          "description": "Free browser-based translator that converts natural language into Toki Pona in Latin, sitelen pona, and emoji scripts.",
+          "author": {
+            "@type": "Person",
+            "name": "Anton Biletskyi-Volokh",
+            "url": "https://abvx.xyz"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
     }
-    </script>
+  </script>
 </head>
 
 <body>
