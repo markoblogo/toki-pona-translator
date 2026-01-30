@@ -8,6 +8,8 @@ A minimalist web app that translates text from many languages into **Toki Pona**
 
 **Live demo:** https://toki.abvx.xyz
 
+**License:** MIT. See [LICENSE](LICENSE).
+
 ## Demo
 
 <a href="https://youtu.be/lCAFiDnP2NQ">
