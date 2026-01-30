@@ -108,7 +108,6 @@ const Translator: React.FC = () => {
 
             {/* Cards Container */}
             <div className="max-w-5xl mx-auto">
-                <QuickValueCards />
                 {/* Input/Output Row */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 relative">
                     {/* Input Card */}
@@ -228,6 +227,9 @@ const Translator: React.FC = () => {
                     </div>
                 )}
             </div>
+
+            {/* Ecosystem cards (below the translator to avoid distraction) */}
+            <QuickValueCards />
 
             {/* FAQ */}
             <FaqCards />
