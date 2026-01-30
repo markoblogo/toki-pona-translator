@@ -88,21 +88,23 @@ const Translator: React.FC = () => {
             {/* Subtle hero glow */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.12),transparent_55%)]" />
             {/* Hero Section */}
-            <div className="max-w-5xl mx-auto text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4">
-                    Translate into Toki Pona
-                </h2>
-                <p className="text-lg text-[#6B7280] max-w-2xl mx-auto mb-4">
-                    Type in any language. Get Toki Pona in Latin, sitelen pona, or emoji.
-                </p>
-
-                <div className="max-w-2xl mx-auto text-left sm:text-center mt-4 mb-4">
-                    <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
-                        What is this?
-                    </h3>
-                    <p className="text-[#6B7280] leading-relaxed text-sm">
-                        Toki Pona Translator is a free, browser-based tool for turning natural language into Toki Pona. You can type in (almost) any language, the app detects it automatically, and returns a compact Toki Pona version. Then you can view the same text in three modes: Latin, sitelen pona, and an experimental emoji script.
+            <div className="max-w-5xl mx-auto mb-12">
+                <div className="card-gloss p-8 md:p-10 text-center">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4">
+                        Translate into Toki Pona
+                    </h2>
+                    <p className="text-lg text-[#374151] max-w-2xl mx-auto mb-5">
+                        Type in any language. Get Toki Pona in Latin, sitelen pona, or emoji.
                     </p>
+
+                    <div className="max-w-2xl mx-auto text-left sm:text-center">
+                        <h3 className="text-xs font-semibold text-[#22C55E] uppercase tracking-wide mb-2">
+                            What is this?
+                        </h3>
+                        <p className="text-[#374151] leading-relaxed text-sm">
+                            Toki Pona Translator is a free, browser-based tool for turning natural language into Toki Pona. You can type in (almost) any language, the app detects it automatically, and returns a compact Toki Pona version. Then you can view the same text in three modes: Latin, sitelen pona, and an experimental emoji script.
+                        </p>
+                    </div>
                 </div>
             </div>
 
