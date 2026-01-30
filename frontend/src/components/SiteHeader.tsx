@@ -1,31 +1,36 @@
 type SiteHeaderProps = {
   title: string;
   active?: 'translate' | 'learn' | 'kit';
-  onSelectTab?: (tab: 'translate' | 'learn') => void;
+  /** If provided, we do client-side navigation for Translate/Learn without page reload */
+  onNavigate?: (to: '/' | '/learn') => void;
 };
 
-export default function SiteHeader({ title, active, onSelectTab }: SiteHeaderProps) {
-  const NavLink = ({ href, label, isActive }: { href: string; label: string; isActive?: boolean }) => (
+export default function SiteHeader({ title, active, onNavigate }: SiteHeaderProps) {
+  const NavLink = ({
+    href,
+    label,
+    isActive,
+    clientNav,
+  }: {
+    href: string;
+    label: string;
+    isActive?: boolean;
+    clientNav?: '/' | '/learn';
+  }) => (
     <a
       href={href}
+      onClick={(e) => {
+        if (clientNav && onNavigate) {
+          e.preventDefault();
+          onNavigate(clientNav);
+        }
+      }}
       className={`text-sm font-medium transition-colors ${
         isActive ? 'text-[#111827]' : 'text-[#6B7280] hover:text-[#111827] hover:underline'
       }`}
     >
       {label}
     </a>
-  );
-
-  const NavButton = ({ label, tab }: { label: string; tab: 'translate' | 'learn' }) => (
-    <button
-      type="button"
-      onClick={() => onSelectTab?.(tab)}
-      className={`text-sm font-medium transition-colors ${
-        active === tab ? 'text-[#111827]' : 'text-[#6B7280] hover:text-[#111827]'
-      } ${active !== tab ? 'hover:underline' : ''}`}
-    >
-      {label}
-    </button>
   );
 
   return (
@@ -37,23 +42,10 @@ export default function SiteHeader({ title, active, onSelectTab }: SiteHeaderPro
         </div>
 
         <nav className="flex gap-6 items-center">
-          {/* Translator */}
-          {onSelectTab ? (
-            <>
-              <NavButton label="Translate" tab="translate" />
-              <NavButton label="Learn" tab="learn" />
-            </>
-          ) : (
-            <>
-              <NavLink href="/" label="Translator" isActive={active === 'translate'} />
-              <NavLink href="/" label="Learn" isActive={active === 'learn'} />
-            </>
-          )}
-
-          {/* Kit */}
+          <NavLink href="/" label="Translate" isActive={active === 'translate'} clientNav="/" />
+          <NavLink href="/learn" label="Learn" isActive={active === 'learn'} clientNav="/learn" />
           <NavLink href="/kit" label="Kit" isActive={active === 'kit'} />
 
-          {/* Stoic */}
           <a
             href="https://stoic.abvx.xyz"
             target="_blank"

@@ -8,7 +8,6 @@ import SiteHeader from './components/SiteHeader';
 type Route = 'app' | 'kit';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'translate' | 'learn'>('translate');
   const [path, setPath] = useState(() => window.location.pathname);
 
   useEffect(() => {
@@ -22,6 +21,17 @@ function App() {
     return 'app';
   }, [path]);
 
+  const activeTab = useMemo<'translate' | 'learn'>(() => {
+    if (path === '/learn' || path === '/learn/') return 'learn';
+    return 'translate';
+  }, [path]);
+
+  const navigate = (to: '/' | '/learn') => {
+    if (window.location.pathname === to) return;
+    window.history.pushState({}, '', to);
+    setPath(to);
+  };
+
   if (route === 'kit') {
     return <KitPage />;
   }
@@ -31,10 +41,9 @@ function App() {
       <SiteHeader
         title="Toki Pona Translator"
         active={activeTab}
-        onSelectTab={setActiveTab}
+        onNavigate={navigate}
       />
 
-      {/* Main Content */}
       <main className="flex-grow">{activeTab === 'translate' ? <Translator /> : <Learn />}</main>
 
       <Footer />
