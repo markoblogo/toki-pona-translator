@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/kit", "destination": "/index.html" },
-    { "source": "/kit/", "destination": "/index.html" }
+    { "source": "/kit", "destination": "/kit.html" },
+    { "source": "/kit/", "destination": "/kit.html" },
+
+    { "source": "/learn", "destination": "/index.html" },
+    { "source": "/learn/", "destination": "/index.html" }
   ]
 }
