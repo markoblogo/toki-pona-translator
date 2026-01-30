@@ -78,8 +78,8 @@ const ARTICLES: Array<{ href: string; title: string; desc: string }> = [
 const BOOKS: Book[] = [
     {
         id: 'dao',
-        title: 'Dao De Jing (Tao Te Ching)',
-        subtitle: 'Chinese text + toki pona in sitelen pona',
+        title: 'Dao De Jing (Tao Te Ching): Chinese text with Toki Pona in sitelen pona',
+        subtitle: 'Chinese text with Toki Pona in sitelen pona',
         description:
             'A visual bilingual edition: classical Chinese on the left, toki pona in sitelen pona on the right — chapter-by-chapter plates with a compact reading guide.',
         promoSrc: '/promo/books/dao.jpg',
@@ -89,7 +89,7 @@ const BOOKS: Book[] = [
     },
     {
         id: 'christmas',
-        title: 'A Christmas Carol — in Toki Pona',
+        title: 'A Christmas Carol — in Toki Pona: Translated into the minimalist language Toki Pona',
         subtitle: 'Bilingual edition with sitelen pona',
         description:
             'Dickens retold through radical simplicity — toki pona text paired with sitelen pona and a calm, book-as-art layout.',
@@ -100,8 +100,8 @@ const BOOKS: Book[] = [
     },
     {
         id: 'machine',
-        title: 'Toki Pona and the Machine Mind',
-        subtitle: 'Designing cleaner prompts & smaller models',
+        title: 'Toki Pona and the Machine Mind: Designing cleaner prompts, smaller models, and better systems with the world’s simplest language',
+        subtitle: 'Designing cleaner prompts, smaller models, and better systems',
         description:
             'A practical field guide: prompt compression, constrained DSLs, and predictable AI interfaces inspired by toki pona and its visual scripts.',
         promoSrc: '/promo/books/machine.jpg',
