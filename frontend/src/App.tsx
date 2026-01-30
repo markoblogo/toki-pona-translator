@@ -34,7 +34,13 @@ function App() {
                         <span className="text-[#22C55E] text-xl font-bold">&gt;</span>
                         <h1 className="text-lg font-semibold text-[#111827]">Toki Pona Translator</h1>
                     </div>
-                    <nav className="flex gap-6">
+                    <nav className="flex gap-6 items-center">
+                        <a
+                            href="/kit"
+                            className="text-sm font-medium text-[#6B7280] hover:text-[#111827] hover:underline"
+                        >
+                            Kit
+                        </a>
                         <button
                             onClick={() => setActiveTab('translate')}
                             className={`text-sm font-medium transition-colors ${activeTab === 'translate'

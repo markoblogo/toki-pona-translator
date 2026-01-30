@@ -125,6 +125,19 @@ const Learn: React.FC = () => {
                     </ul>
                 </section>
 
+                {/* Reader's Kit */}
+                <section className="card">
+                    <h3 className="text-lg font-bold text-[#111827] mb-4">Free Reader’s Kit</h3>
+                    <p className="text-[#6B7280] mb-4 leading-relaxed">
+                        A beginner-friendly PDF to start reading toki pona with short philosophical texts (includes a full text).
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                        <a href="/kit" className="text-[#22C55E] hover:underline font-semibold">Open the kit landing</a>
+                        <a href="/kit.pdf" className="text-[#22C55E] hover:underline font-medium" download>Download PDF</a>
+                        <a href="https://youtu.be/F7fSBElppzI" target="_blank" rel="noopener noreferrer" className="text-[#22C55E] hover:underline font-medium">Watch teaser</a>
+                    </div>
+                </section>
+
                 {/* From the Creator */}
                 <section className="card">
                     <h3 className="text-lg font-bold text-[#111827] mb-4">From the Creator</h3>
