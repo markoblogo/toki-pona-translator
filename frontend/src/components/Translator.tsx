@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { mapToSitelenEmoji } from '../utils/sitelenEmoji';
 import { API_BASE_URL } from '../config/api';
+import FaqCards from './FaqCards';
 
 type TranslationResult = {
     sourceLang: string;
@@ -82,7 +83,9 @@ const Translator: React.FC = () => {
     };
 
     return (
-        <div className="py-12 px-4">
+        <div className="relative py-12 px-4">
+            {/* Subtle hero glow */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.12),transparent_55%)]" />
             {/* Hero Section */}
             <div className="max-w-5xl mx-auto text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4">
@@ -105,9 +108,9 @@ const Translator: React.FC = () => {
             {/* Cards Container */}
             <div className="max-w-5xl mx-auto">
                 {/* Input/Output Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 relative">
                     {/* Input Card */}
-                    <div className="card">
+                    <div className="card-gloss p-6">
                         <label className="block text-xs font-semibold text-[#111827] uppercase tracking-wide mb-3">
                             Input Text
                         </label>
@@ -145,7 +148,7 @@ const Translator: React.FC = () => {
                     </div>
 
                     {/* Output Card */}
-                    <div className="card">
+                    <div className="card-gloss p-6">
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
                             <div className="flex items-center gap-4">
                                 <label className="text-xs font-semibold text-[#111827] uppercase tracking-wide">
@@ -210,7 +213,7 @@ const Translator: React.FC = () => {
 
                 {/* Explanation Card */}
                 {result && (
-                    <div className="card">
+                    <div className="card-gloss p-6">
                         <h3 className="text-sm font-bold text-[#111827] uppercase tracking-wide mb-3">
                             Explanation
                         </h3>
@@ -224,33 +227,8 @@ const Translator: React.FC = () => {
                 )}
             </div>
 
-            {/* FAQ Section */}
-            <div className="max-w-2xl mx-auto mt-20 mb-12">
-                <h3 className="text-2xl font-bold text-[#111827] mb-8 text-center">FAQ</h3>
-
-                <div className="space-y-8">
-                    <div>
-                        <h4 className="text-lg font-bold text-[#111827] mb-2">How accurate is this translator?</h4>
-                        <p className="text-[#6B7280] leading-relaxed">
-                            It uses Google Gemini to generate Toki Pona translations. That means it’s great for experimentation and learning, but not an official or guaranteed-perfect translation. Always feel free to tweak the output if you know the language.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="text-lg font-bold text-[#111827] mb-2">Which languages can I type in?</h4>
-                        <p className="text-[#6B7280] leading-relaxed">
-                            You can type in most major languages — English, Russian, Ukrainian, and many others. The app auto-detects the input language and then translates the meaning into Toki Pona.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="text-lg font-bold text-[#111827] mb-2">Is this really free to use?</h4>
-                        <p className="text-[#6B7280] leading-relaxed">
-                            Yes. The translator is a personal side project and is free to use in the browser. There are no accounts, logins, or ads — just the translator and the learning links.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {/* FAQ */}
+            <FaqCards />
         </div >
     );
 };
