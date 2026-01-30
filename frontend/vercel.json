@@ -3,7 +3,7 @@
     { "source": "/kit", "destination": "/kit.html" },
     { "source": "/kit/", "destination": "/kit.html" },
 
-    { "source": "/learn", "destination": "/index.html" },
-    { "source": "/learn/", "destination": "/index.html" }
+    { "source": "/learn", "destination": "/learn.html" },
+    { "source": "/learn/", "destination": "/learn.html" }
   ]
 }

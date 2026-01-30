@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        learn: fileURLToPath(new URL('./learn.html', import.meta.url)),
         kit: fileURLToPath(new URL('./kit.html', import.meta.url)),
       },
     },
