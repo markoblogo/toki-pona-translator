@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { mapToSitelenEmoji } from '../utils/sitelenEmoji';
 import { API_BASE_URL } from '../config/api';
 import FaqCards from './FaqCards';
+import QuickValueCards from './QuickValueCards';
 
 type TranslationResult = {
     sourceLang: string;
@@ -107,6 +108,7 @@ const Translator: React.FC = () => {
 
             {/* Cards Container */}
             <div className="max-w-5xl mx-auto">
+                <QuickValueCards />
                 {/* Input/Output Row */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 relative">
                     {/* Input Card */}
