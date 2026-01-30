@@ -52,15 +52,16 @@ export default function QuickValueCards() {
               <div className="mt-1 text-base font-semibold text-[#111827] leading-tight">{c.title}</div>
               <div className="mt-2 text-sm text-[#6B7280] leading-relaxed">{c.subtitle}</div>
             </div>
-            <div className="border-t border-black/5 bg-[#fbfbfb]">
+            <div className="relative border-t border-black/5">
               <img
                 src={c.imageSrc}
                 alt=""
                 loading="lazy"
                 className="h-28 w-full object-cover"
                 width={900}
-                height={560}
+                height={320}
               />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             </div>
           </a>
         ))}
