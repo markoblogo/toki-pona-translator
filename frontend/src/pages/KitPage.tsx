@@ -1,4 +1,5 @@
 import SiteFooter from '@/components/SiteFooter';
+import SiteHeader from '@/components/SiteHeader';
 
 function FreeBadge() {
   return (
@@ -17,44 +18,22 @@ function FreeBadge() {
 export default function KitPage() {
   return (
     <div className="min-h-screen bg-white text-[#111]">
-      <main className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
-        {/* Top nav (unified with translator) */}
-        <div className="flex items-center justify-between">
-          <a
-            href="/"
-            className="text-sm font-semibold text-[#111827] hover:underline"
-            aria-label="Back to translator"
-          >
-            ← Back to Translator
-          </a>
-          <div className="flex items-center gap-4 text-sm">
-            <a href="/" className="text-[#6B7280] hover:text-[#111827] hover:underline">Translator</a>
-            <a href="/" className="text-[#6B7280] hover:text-[#111827] hover:underline">Learn</a>
-            <a href="/kit" className="text-[#111827] font-semibold">Kit</a>
-            <a
-              href="https://stoic.abvx.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#6B7280] hover:text-[#111827] hover:underline"
-            >
-              Books
-            </a>
-          </div>
-        </div>
+      <SiteHeader title="The Toki Pona Reader’s Kit" active="kit" />
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center">
+      <main className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Copy */}
           <div>
-            <h1 className="font-serif text-4xl leading-tight sm:text-5xl">The Toki Pona Reader’s Kit</h1>
+            <h2 className="font-serif text-4xl leading-tight sm:text-5xl">The Toki Pona Reader’s Kit</h2>
 
             <p className="mt-4 max-w-prose text-base leading-relaxed text-black/80">
-              A free beginner-friendly guide to reading toki pona through short philosophical texts —
-              including <em>The Golden Verses of Pythagoras</em> (full text). Download the PDF, then use the teaser
-              video as a quick tour before you start reading.
+              A free beginner-friendly guide to reading toki pona through short philosophical texts — including{' '}
+              <em>The Golden Verses of Pythagoras</em> (full text). Download the PDF, then use the teaser video as a quick
+              tour before you start reading.
             </p>
 
             <div className="mt-8 rounded-2xl border border-black/10 bg-white/60 p-5">
-              <h2 className="text-xl font-semibold">ilo lipu pi toki pona</h2>
+              <h3 className="text-xl font-semibold">ilo lipu pi toki pona</h3>
               <p className="mt-2 text-sm leading-relaxed text-black/80">
                 lipu ni li pona tawa jan sin: ona li pana e nasin pi kama sona lon toki pona kepeken lipu pi toki sona.
                 lipu ni li jo kin e lipu ale pi “The Golden Verses of Pythagoras”.
