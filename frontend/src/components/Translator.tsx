@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { mapToSitelenEmoji } from '../utils/mappings';
+import { mapToSitelenEmoji } from '../utils/sitelenEmoji';
 import { API_BASE_URL } from '../config/api';
 
 type TranslationResult = {
