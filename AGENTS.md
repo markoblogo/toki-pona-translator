@@ -225,7 +225,7 @@ State:
 ## Repo Structure
 
 <!-- AGENTSGEN:START section=structure -->
-- (not specified)
+- **Source:** `backend`, `frontend`
 <!-- AGENTSGEN:END section=structure -->
 
 ## Output Protocol

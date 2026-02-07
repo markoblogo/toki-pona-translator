@@ -26,7 +26,11 @@
     "docs": [
       "README.md"
     ],
-    "ci": ""
+    "ci": "",
+    "source_dirs": [
+      "backend",
+      "frontend"
+    ]
   },
   "commands": {},
   "evidence": {
