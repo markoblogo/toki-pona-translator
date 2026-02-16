@@ -6,13 +6,11 @@ export type Kit = {
   shortDescription: string;
   bullets: string[];
   coverImage: string;
-  promoImage?: string;
+  promoImage: string;
   pdfUrl: string;
   teaserUrl: string;
-  seriesLink?: {
-    label: string;
-    url: string;
-  };
+  seriesLabel: string;
+  seriesUrl: string;
   badges?: string[];
 };
 
@@ -30,44 +28,40 @@ export const READER_KITS: Kit[] = [
   {
     id: 'stoic-readers-kit',
     slug: 'stoic-kit',
-    title: "The Toki Pona Reader's Kit",
-    subtitle: "A Beginner's Guide Using Philosophical Texts",
+    title: 'The Toki Pona Reader’s Kit',
+    subtitle: 'A Beginner’s Guide Using Philosophical Texts',
     shortDescription:
       'A free reader-friendly guide to reading toki pona through short philosophical texts — including The Golden Verses of Pythagoras (full text).',
     bullets: [
       'Includes The Golden Verses of Pythagoras (full text)',
-      'English -> toki pona -> sitelen-ready duplicate',
+      'English → toki pona → sitelen-ready duplicate',
     ],
     coverImage: '/assets/kits/stoicCover.jpg',
     promoImage: '/assets/kits/stoicPromo.jpg',
     pdfUrl: '/assets/kits/stoicKit.pdf',
     teaserUrl: 'https://youtu.be/F7fSBElppzI',
-    seriesLink: {
-      label: 'Stoic Wisdom series',
-      url: 'https://stoic.abvx.xyz/',
-    },
+    seriesLabel: 'Open series',
+    seriesUrl: 'https://stoic.abvx.xyz/',
     badges: ['FREE'],
   },
   {
     id: 'chinese-readers-kit',
     slug: 'chinese-kit',
     title: 'Chinese Wisdom in toki pona',
-    subtitle: "Free Kit / Reader's Guide",
+    subtitle: 'Free Kit / Reader’s Guide',
     shortDescription:
       'A free kit built around Mozi (墨子) and 兼愛 (Universal Love), plus a small set of art plates demonstrating the series format.',
     bullets: [
       'Includes Mozi (墨子) — 兼愛 (Universal Love) sample',
       'Art plates: Chinese left, sitelen-ready toki pona right',
-      'English -> toki pona -> sitelen-ready duplicate',
+      'English → toki pona → sitelen-ready duplicate',
     ],
     coverImage: '/assets/kits/chineseCover.svg',
     promoImage: '/assets/kits/chinesePromo.svg',
     pdfUrl: '/assets/kits/chineseKit.pdf',
     teaserUrl: 'https://youtu.be/BOVyG1jP580',
-    seriesLink: {
-      label: 'Chinese Wisdom series',
-      url: 'https://dao-toki.abvx.xyz/',
-    },
+    seriesLabel: 'Open series',
+    seriesUrl: 'https://dao-toki.abvx.xyz/',
     badges: ['FREE'],
   },
 ];
@@ -83,35 +77,35 @@ export const KIT_FEATURES: KitFeature[] = [
   },
   {
     title: 'Consistent layout across series',
-    body: 'English reference -> toki pona -> sitelen-ready duplicate. Once you learn one kit, you can read the rest of the series.',
+    body: 'English reference → toki pona → sitelen-ready duplicate. Once you learn one kit, you can read the rest of the series.',
   },
 ];
 
 export const KIT_FAQ: KitFaq[] = [
   {
-    question: "What's inside each kit?",
+    question: 'What’s inside each kit?',
     answer:
-      'A short reading guide, a core glossary, practice drills, and a full sample text presented in the series layout (English reference -> toki pona -> sitelen-ready duplicate). Some kits also include art plates.',
+      'A short reading guide, a core glossary, practice drills, and a full sample text presented in the series layout (English reference → toki pona → sitelen-ready duplicate). Some kits also include art plates.',
   },
   {
     question: 'Do I need to know toki pona already?',
     answer:
-      'No. Each kit includes the minimum grammar and reading conventions you need. If you know a little toki pona, you will move faster, but the kits are designed to work from zero.',
+      'No. Each kit includes the minimum grammar and reading conventions you need. If you know a little toki pona, you’ll move faster — but the kits are designed to work from zero.',
   },
   {
     question: 'Why is the toki pona text duplicated?',
     answer:
-      'The second copy is for sitelen pona. It is the same text, duplicated verbatim, so you can read in Latin or in sitelen without losing alignment.',
+      'The second copy is for sitelen pona. It’s the same text, duplicated verbatim, so you can read in Latin or in sitelen without losing alignment.',
   },
   {
-    question: 'Is it really free? What is the license?',
+    question: 'Is it really free? What’s the license?',
     answer:
-      'Yes. The PDFs are free for personal use and sharing. Commercial use is not allowed. The translations and layout are original to this edition; the classical sources are credited in the kit.',
+      'Yes. The PDFs are free for personal use and sharing. Commercial use isn’t allowed. The translations and layout are original to this edition; the classical sources are credited in the kit.',
   },
   {
     question: 'Can I print the PDF?',
     answer:
-      'Yes, personal printing is fine. If you want to distribute printed copies commercially, contact us first.',
+      'Yes — personal printing is fine. If you want to distribute printed copies commercially, contact us first.',
   },
   {
     question: 'Where do the English and Chinese texts come from?',
@@ -131,7 +125,7 @@ export const KIT_FAQ: KitFaq[] = [
   {
     question: 'Can I remix or translate the kit?',
     answer:
-      'For non-commercial projects, usually yes, but keep attribution and do not remove credit for the sources and translation. If you want to publish or sell derivatives, contact us.',
+      'For non-commercial projects, usually yes — but keep attribution and don’t remove credit for the sources and translation. If you want to publish or sell derivatives, contact us.',
   },
   {
     question: 'How often do you update the kits?',
