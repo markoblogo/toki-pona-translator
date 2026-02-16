@@ -13,10 +13,10 @@ type SeriesLandingPageProps = {
 
 export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
   return (
-    <div className="min-h-screen bg-white text-[#111]">
+    <div className="landing-scope sl-shell">
       <SiteHeader title={config.headerTitle} active={config.activeNav} />
 
-      <main className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+      <main className="sl-main">
         <Hero
           hero={config.hero}
           entries={config.entriesSection.entries}
@@ -26,8 +26,8 @@ export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
 
         <Why why={config.why} />
 
-        <section id={config.entriesSection.id} className="mt-14">
-          <h2 className="font-serif text-3xl leading-tight text-[#111827]">{config.entriesSection.title}</h2>
+        <section id={config.entriesSection.id} className="sl-section sl-entries">
+          <h2 className="sl-title-h2">{config.entriesSection.title}</h2>
           {config.entriesSection.entries.map((entry, index) => (
             <EntrySection key={entry.id} entry={entry} reverse={index % 2 === 1} />
           ))}
