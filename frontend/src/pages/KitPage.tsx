@@ -94,7 +94,7 @@ function ItemSection({ item, reverse = false }: { item: LandingItem; reverse?: b
               </a>
             ) : null}
             <a href={item.detailsUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-[#111827] underline underline-offset-4">
-              Learn more
+              {item.detailsLabel ?? 'Learn more'}
             </a>
           </div>
         </div>
@@ -113,6 +113,23 @@ export default function KitPage() {
           <div>
             <h1 className="font-serif text-4xl leading-tight text-[#111827] sm:text-5xl">{LANDING_CONTENT.hero.title}</h1>
             <p className="mt-4 max-w-prose text-base leading-relaxed text-black/80">{LANDING_CONTENT.hero.subtitle}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#collection"
+                className="inline-flex items-center justify-center rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/90"
+              >
+                {LANDING_CONTENT.hero.primaryCta}
+              </a>
+              <a
+                href="#faq"
+                className="inline-flex items-center justify-center rounded-full border border-black/30 bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-black/[0.03]"
+              >
+                {LANDING_CONTENT.hero.secondaryCta}
+              </a>
+            </div>
+            {'note' in LANDING_CONTENT.hero ? (
+              <p className="mt-3 text-xs text-black/55">{LANDING_CONTENT.hero.note}</p>
+            ) : null}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -160,7 +177,15 @@ export default function KitPage() {
                 <img src={item.coverImage} alt={`${item.title} cover`} className="h-48 w-full rounded-lg object-cover" loading="lazy" />
                 <h3 className="mt-3 text-sm font-semibold leading-snug text-[#111827]">{item.title}</h3>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {item.kindleUrl ? (
+                  {item.downloadPdfUrl ? (
+                    <a
+                      href={item.downloadPdfUrl}
+                      download
+                      className="inline-flex items-center rounded-full border border-black/20 px-3 py-1 text-xs font-semibold text-black hover:bg-black/[0.03]"
+                    >
+                      Download PDF
+                    </a>
+                  ) : item.kindleUrl ? (
                     <a
                       href={item.kindleUrl}
                       target="_blank"
@@ -180,6 +205,14 @@ export default function KitPage() {
                       Teaser
                     </a>
                   ) : null}
+                  <a
+                    href={item.detailsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full border border-[#22C55E]/40 bg-[#ECFDF3] px-3 py-1 text-xs font-semibold text-[#166534] hover:bg-[#dcfce7]"
+                  >
+                    {item.detailsLabel ?? 'Learn more'}
+                  </a>
                 </div>
               </article>
             ))}
