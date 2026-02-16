@@ -29,6 +29,7 @@ export default function Hero({ hero, entries, targetId, faqId }: HeroProps) {
           </a>
         </div>
         {hero.note ? <p className="mt-3 text-xs text-black/55">{hero.note}</p> : null}
+        <p className="mt-1 text-xs font-semibold text-[#166534]">Build: 2c0c9b6</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
