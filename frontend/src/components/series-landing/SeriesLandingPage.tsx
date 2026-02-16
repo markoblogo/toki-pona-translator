@@ -5,6 +5,7 @@ import Why from './Why';
 import EntrySection from './EntrySection';
 import MoreBooks from './MoreBooks';
 import FAQ from './FAQ';
+import './series-landing.css';
 import type { SeriesLandingConfig } from './types';
 
 type SeriesLandingPageProps = {
@@ -13,7 +14,8 @@ type SeriesLandingPageProps = {
 
 export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
   return (
-    <div className="landing-scope sl-shell" style={{ border: "12px solid #ff00ff", boxSizing: "border-box" }}> 
+    <div className="landing-scope">
+      <div className="sl-shell">
       <SiteHeader title={config.headerTitle} active={config.activeNav} />
 
       <main className="sl-main">
@@ -39,6 +41,7 @@ export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
 
         <SiteFooter />
       </main>
+      </div>
     </div>
   );
 }

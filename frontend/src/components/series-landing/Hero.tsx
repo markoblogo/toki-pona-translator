@@ -23,8 +23,6 @@ export default function Hero({ hero, entries, targetId, faqId }: HeroProps) {
           </a>
         </div>
         {hero.note ? <p className="sl-note">{hero.note}</p> : null}
-        <p className="sl-stamp">Build: 2c0c9b6</p>
-        <p className="sl-stamp">Probe border on sl-shell</p>
       </div>
 
       <div className="sl-hero-covers">
