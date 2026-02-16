@@ -2,6 +2,10 @@
   "rewrites": [
     { "source": "/kit", "destination": "/kit.html" },
     { "source": "/kit/", "destination": "/kit.html" },
+    { "source": "/kit/en", "destination": "/kit.html" },
+    { "source": "/kit/en/", "destination": "/kit.html" },
+    { "source": "/kit/tp", "destination": "/kit.html" },
+    { "source": "/kit/tp/", "destination": "/kit.html" },
 
     { "source": "/learn", "destination": "/learn.html" },
     { "source": "/learn/", "destination": "/learn.html" }

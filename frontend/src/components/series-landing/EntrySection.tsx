@@ -1,11 +1,12 @@
-import type { LandingEntry } from './types';
+import type { LandingEntry, SeriesLandingConfig } from './types';
 
 type EntrySectionProps = {
   entry: LandingEntry;
   reverse?: boolean;
+  labels: SeriesLandingConfig['labels'];
 };
 
-export default function EntrySection({ entry, reverse = false }: EntrySectionProps) {
+export default function EntrySection({ entry, reverse = false, labels }: EntrySectionProps) {
   return (
     <section id={entry.id} className="section bookSection">
       <div className={`container ${reverse ? 'reverse' : ''}`}>
@@ -32,17 +33,17 @@ export default function EntrySection({ entry, reverse = false }: EntrySectionPro
           <div className="actions">
             {entry.pdfUrl ? (
               <a href={entry.pdfUrl} download className="btn btnPrimary">
-                Download PDF
+                {labels.downloadPdf}
               </a>
             ) : null}
             {entry.teaserUrl ? (
               <a href={entry.teaserUrl} target="_blank" rel="noopener noreferrer" className="btn btnSecondary">
-                Watch teaser
+                {labels.watchTeaser}
               </a>
             ) : null}
             {entry.seriesUrl ? (
               <a href={entry.seriesUrl} target="_blank" rel="noopener noreferrer" className="btn btnPill">
-                {entry.seriesLabel ?? 'Open series'}
+                {entry.seriesLabel ?? labels.openSeries}
               </a>
             ) : null}
           </div>

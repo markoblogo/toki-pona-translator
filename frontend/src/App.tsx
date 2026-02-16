@@ -7,6 +7,13 @@ import SiteHeader from './components/SiteHeader';
 
 type Route = 'app' | 'kit';
 
+function getKitLang(pathname: string): 'en' | 'tp' | null {
+  if (pathname === '/kit' || pathname === '/kit/') return null;
+  if (pathname === '/kit/en' || pathname === '/kit/en/') return 'en';
+  if (pathname === '/kit/tp' || pathname === '/kit/tp/') return 'tp';
+  return null;
+}
+
 function App() {
   const [path, setPath] = useState(() => window.location.pathname);
 
@@ -16,9 +23,20 @@ function App() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
+  useEffect(() => {
+    if (path === '/kit' || path === '/kit/') {
+      window.history.replaceState({}, '', '/kit/en');
+      setPath('/kit/en');
+    }
+  }, [path]);
+
   const route: Route = useMemo(() => {
-    if (path === '/kit' || path === '/kit/') return 'kit';
+    if (path.startsWith('/kit')) return 'kit';
     return 'app';
+  }, [path]);
+
+  const kitLang = useMemo<'en' | 'tp'>(() => {
+    return getKitLang(path) ?? 'en';
   }, [path]);
 
   const activeTab = useMemo<'translate' | 'learn'>(() => {
@@ -33,16 +51,12 @@ function App() {
   };
 
   if (route === 'kit') {
-    return <KitPage />;
+    return <KitPage lang={kitLang} />;
   }
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] flex flex-col">
-      <SiteHeader
-        title="Toki Pona Translator"
-        active={activeTab}
-        onNavigate={navigate}
-      />
+      <SiteHeader title="Toki Pona Translator" active={activeTab} onNavigate={navigate} />
 
       <main className="flex-grow">{activeTab === 'translate' ? <Translator /> : <Learn />}</main>
 

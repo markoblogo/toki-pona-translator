@@ -84,6 +84,11 @@
   color: #111827;
 }
 
+.kitLanding .navSep {
+  color: rgba(17, 24, 39, 0.35);
+  font-size: 0.85rem;
+}
+
 /* Hero (stoic-like skeleton) */
 .kitLanding .hero {
   position: relative;
