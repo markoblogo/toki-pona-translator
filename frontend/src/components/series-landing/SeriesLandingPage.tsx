@@ -13,7 +13,7 @@ type SeriesLandingPageProps = {
 
 export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
   return (
-    <div className="landing-scope sl-shell">
+    <div className="landing-scope sl-shell" style={{ outline: "10px solid #ff00ff" }}> 
       <SiteHeader title={config.headerTitle} active={config.activeNav} />
 
       <main className="sl-main">
