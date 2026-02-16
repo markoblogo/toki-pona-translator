@@ -1,0 +1,96 @@
+.page {
+  padding: 40px 0 80px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(240px, 420px) 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.coverWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+.coverImg {
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin: 0;
+}
+
+.author {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.shortDesc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2f2f2f;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.teaserLink {
+  margin-top: 8px;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.longDesc {
+  margin-top: 48px;
+  max-width: 820px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .coverWrap {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

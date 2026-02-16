@@ -1,0 +1,70 @@
+.badge {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: 50;
+    /* Ensure high visibility above covers */
+    width: 90px;
+    height: 90px;
+    background: #e63946;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    transform: rotate(15deg);
+    border: 3px solid white;
+    font-family: var(--font-sans), sans-serif;
+    animation: stampIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.innerRing {
+    width: 88%;
+    height: 88%;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-size: 1.1rem;
+    /* Larger text */
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 1px;
+    transform: rotate(-5deg);
+    /* Slight internal counter-rotation for dynamic feel */
+}
+
+/* Desktop sizing */
+@media (min-width: 768px) {
+    .badge {
+        width: 110px;
+        /* Much larger as requested */
+        height: 110px;
+        top: -30px;
+        right: -30px;
+        border-width: 4px;
+    }
+
+    .text {
+        font-size: 1.4rem;
+    }
+}
+
+@keyframes stampIn {
+    0% {
+        transform: rotate(45deg) scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(15deg) scale(1);
+        opacity: 1;
+    }
+}

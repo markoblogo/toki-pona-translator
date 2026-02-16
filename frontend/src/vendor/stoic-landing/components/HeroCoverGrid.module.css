@@ -1,0 +1,149 @@
+/* Container */
+.stackContainer {
+    position: relative;
+    width: 100%;
+    /* Ensure enough height for the staircase stack + popups */
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center visuals */
+}
+
+.scroller {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+   MOBILE LAYOUT 
+   Vertical stack (desktop logic, but vertical) with slight overlap.
+*/
+@media (max-width: 1023px) {
+    .stackContainer {
+        height: auto;
+        min-height: 0;
+        padding: 0;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .scroller {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .cardWrapper {
+        flex: 0 0 auto;
+        width: min(240px, 70vw);
+        aspect-ratio: 2/3;
+        position: relative;
+        margin-right: 0;
+        transition: transform 0.25s ease;
+        /* Invert desktop z so the last (bottom) card sits on top on mobile */
+        z-index: calc(100 - var(--z));
+        /* baseline: keep rotation + a per-item X drift via CSS var */
+        --tx: 0px;
+        transform: translateX(var(--tx)) rotate(var(--r));
+    }
+
+    .cardWrapper:not(:first-child) {
+        margin-top: -110px;
+    }
+
+    /* subtle left/right drift like the desktop staircase */
+    .cardWrapper:nth-child(odd) {
+        --tx: -10px;
+    }
+
+    .cardWrapper:nth-child(even) {
+        --tx: 10px;
+    }
+
+    .cardWrapper:focus-within,
+    .cardWrapper:hover {
+        /* ensure the active card is always on top (even after z inversion) */
+        z-index: 200;
+        /* preserve X drift + rotation, add lift + slight scale */
+        transform: translateX(var(--tx)) translateY(-10px) scale(1.03) rotate(var(--r));
+    }
+}
+
+/* 
+   DESKTOP LAYOUT 
+   Absolute Staircase Stack
+*/
+@media (min-width: 1024px) {
+    .stackContainer {
+        height: 650px;
+        /* Tall enough */
+        width: 100%;
+        max-width: 760px;
+        /* Constrain width to keep stack tight */
+    }
+
+    .scroller {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        /* Allow pop-outs */
+    }
+
+    .cardWrapper {
+        position: absolute;
+        width: 280px;
+        height: 420px;
+        left: var(--x);
+        top: var(--y);
+        transform: rotate(var(--r));
+        z-index: var(--z);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        cursor: pointer;
+        transform-origin: center bottom;
+    }
+
+    /* Hover Effect: Pop Out */
+    .cardWrapper:hover {
+        transform: translateY(-50px) translateX(10px) scale(1.05) rotate(0deg) !important;
+        /* z-index handled by inline style state */
+    }
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s ease;
+    /* Ensure overflow visible for badge */
+    overflow: visible;
+}
+
+.cardWrapper:hover .card {
+    box-shadow: -20px 30px 50px rgba(0, 0, 0, 0.35);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    /* Force GPU */
+    transform: translateZ(0);
+}
+
+.coverImg {
+    object-fit: cover;
+}

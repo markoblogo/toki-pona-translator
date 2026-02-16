@@ -1,0 +1,33 @@
+.switch {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-ink-light);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+.active {
+    color: var(--color-ink);
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.sep {
+    opacity: 0.4;
+}

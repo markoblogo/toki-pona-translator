@@ -1,0 +1,169 @@
+{
+  "lang": "tp",
+  "meta": {
+    "title": "sona stoic lon toki pona — sitelen pona kin",
+    "description": "lipu pi sona stoic lon toki pona. lipu li jo e sitelen Lasina en sitelen pona; toki Inli pi lukin ante li lon."
+  },
+  "header": {
+    "lang": "EN / TP"
+  },
+  "hero": {
+    "title": "sona stoic lon toki pona",
+    "subtitle": "lipu pi sona stoic li kama sin lon toki pona. nimi lili, sona pona: sitelen pona li lon poka toki pona, la lukin lipu li kama sama pali pi lukin.",
+    "buy_kindle": "lipu Kindle",
+    "buy_print": "lipu pepa",
+    "download_pdf": "o kama jo e PDF",
+    "download_epub": "o kama jo e EPUB",
+    "watch_teaser": "o lukin e sitelen tawa"
+  },
+  "why": {
+    "title": "tan seme la kulupu lipu ni li pona?",
+    "cards": {
+      "history": {
+        "title": "toki pi wawa pi sona",
+        "text": "toki pona li wile e ni: sina toki e kon taso. ni li pona tawa nasin stoic: toki lili, nasa lili, sona suli."
+      },
+      "style": {
+        "title": "lipu lili, ken lukin lon tenpo ale",
+        "text": "lipu ni li lili li pona tawa pali. sina ken lukin lili lon tenpo suno ale, li kama sin tawa toki wan, li kama sona e ona."
+      },
+      "europe": {
+        "title": "sitelen Lasina + sitelen pona",
+        "text": "toki pona li lon sitelen Lasina, li lon sitelen pona kin. wan li tawa lukin lipu; ante li pana e lukin pi nasin en pi tempo toki."
+      },
+      "discovery": {
+        "title": "kulupu wan, nasin wan",
+        "text": "kulupu lipu ni li jo e nasin wan: lukin pona, nimi pona, nasin ante ala. sina ken open lon lipu ale, anu o jo e lipu ale sama kulupu wan."
+      }
+    }
+  },
+  "collection": {
+    "title": "lipu lon kulupu ni",
+    "buy_button": "o lukin",
+    "learn_more": "o sona",
+    "marcus-meditations": {
+      "title": "lipu “Meditations” pi jan Maku — lon toki pona",
+      "author": "jan Maku",
+      "shortDesc": "lipu ni li lipu suli pi nasin stoic.",
+      "longDesc": "toki ona li kama lon toki pona, li lon sitelen Lasina en sitelen pona. sina ken lukin e toki lili lon tenpo suno ale, la pilin en lawa li kama pona."
+    },
+    "readers-kit": {
+      "title": "ilo lipu pi toki pona (lipu pi mani ala)",
+      "author": "ABV en jan Pitakola",
+      "shortDesc": "lipu ni li pona tawa jan sin.",
+      "longDesc": "ona li pana e nasin pi lukin lipu lon toki pona, li jo kin e lipu ale pi “The Golden Verses of Pythagoras”. o kama jo e lipu, o kama sona lili, la sina ken tawa lipu pi kulupu ni."
+    },
+    "epictetus-enchiridion": {
+      "title": "jan Epiteto: lipu Enkilijon lon toki pona",
+      "author": "jan Epiteto",
+      "shortDesc": "lipu Enkilijon li lipu lili pi sona Sito. ona li pana e nasin pi lawa insa: ijo li lon pali mi, ijo li lon pali ala mi. ona li pona tawa tenpo pi wile mute en tenpo pi pilin pakala.",
+      "longDesc": "lipu Enkilijon li lipu pi nasin pali. lipu lili mute li lon. sina ken lukin e wan, sina awen, sina kepeken sona ona lon tenpo suno. lipu ni li ante e toki pi jan Epiteto kepeken toki pona, tawa ni: lukin li nasa ala, lawa li ken awen. ijo lon lipu ni: toki Inli pi lipu pi jan Elizabeth Carter tawa lukin ante. toki pona lon sitelen Lasina, en toki sama lon sitelen pona. nasin pi lukin lili lon tenpo mute: o lukin e lipu lili, o awen, o pana e sona ona tawa tenpo suno. nasin pona: “toki pona pi lipu ni li wile ni: sina ken lukin e pali wile.” sina ken kama jo e lipu pona pi kama sona, e lipu pi kulupu lipu, lon nimi lon lipu."
+    },
+    "seneca-shortness-of-life": {
+      "title": "jan Seneka — lipu pi tenpo lili pi lon — lon toki pona",
+      "author": "jan Seneka",
+      "shortDesc": "lipu ni li pana e sona pi tenpo: tenpo li lili ala; mi weka e tenpo mute. lipu ni li pana e nasin pona tawa lawa en pali, li toki e ni: o kama jo sin e tenpo sina — lon toki pona.",
+      "longDesc": "jan mute li toki e ni: “tenpo mi li lili.” taso jan Seneka li toki wawa: tenpo li lili ala; mi weka e tenpo mute. lipu ni li pana e nasin pona tawa ni: o lukin e weka pi tenpo, o awen e lawa, o kepeken tenpo kepeken wile pona. lipu ni li lon kulupu Stoic Wisdom in Toki Pona. toki Inli li tan lipu pi jan ala. toki pona li pali sin, li pali tawa ni: toki pi jan Seneka li awen wawa, taso toki li awen pona, li awen lili, li awen ken lukin. toki pona lon lipu ni li awen sama lon ijo suli: nimi li awen sama la, sina ken lukin e ijo sama lon tenpo mute. lipu pi nimi pi pana sona li pana e nasin tan kulupu pi toki sama. sina wile open la, lipu “Reader’s Kit” en nasin pi sitelen pona li lon (kepeken nimi pi pana tawa sina)."
+    },
+    "cicero-on-duties": {
+      "title": "jan Sise: lipu pi pali wile pona lon toki pona; sitelen pona kin",
+      "author": "jan Sise",
+      "shortDesc": "lipu ni li pana e nasin pi pali wile pona lon tenpo ale. ona li pana e toki pona en sitelen pona tawa lukin sin, tawa lawa insa pi awen pona.",
+      "longDesc": "lipu ni li lon kulupu pi sona pona stoika lon toki pona. toki Inli li lon tawa lukin ante; toki pona li pali sin, li awen pona, li awen lili, li awen ken lukin. sitelen pona kin li lon tawa lukin sin, tawa pali pi lawa insa. lipu Book I li pana e open: ona li toki e ni: pali wile pona li seme, ona li kama tan seme, ona li kama nasin pi pali lon tenpo ale. lipu Book II li alasa e pona tawa kulupu lon mani, lon pali, lon nimi, lon pana pona, lon pali pi kulupu. lipu Book III li wile e pona pi awen: pona pi lon ala li ken kama tan pali ike. sina pali ike tawa jan, sina pakala e toki, anu sina pakala e nasin pona sina la, “pona” ni li len taso; ona li kama ike lon tenpo kama tawa sina anu tawa kulupu."
+    }
+  },
+  "faq": {
+    "title": "toki wile (FAQ)",
+    "subtitle": "toki lili pi kulupu lipu, sitelen pona, en nasin lukin.",
+    "items": [
+      {
+        "q": "lipu ni li seme: sona pi nasin stoika kepeken toki pona?",
+        "a": "ni li kulupu lipu pi sona pi nasin stoika. toki ale li toki pona, li toki sin kepeken sitelen pona. nasin ni li pana e lukin lipu pi lete pilin: nimi li lili, sona li wawa, toki len li lili."
+      },
+      {
+        "q": "lipu seme li lon kulupu lipu ni?",
+        "a": "lipu pi jan Maku Auleli en jan Epikete en jan Seneka en jan Siselo li lon. lipu ale li jo e nasin lukin sama, tawa lukin lon tenpo suno ale."
+      },
+      {
+        "q": "lipu ni li lipu ale anu lipu lili taso?",
+        "a": "lipu ni li lipu ale. ona li lipu lili pi sona wan ala. taso nasin pi pali lipu li pona tawa lukin weka e nasa."
+      },
+      {
+        "q": "toki Inli li lon lipu ni anu seme?",
+        "a": "lon. toki Inli li lon tawa ni: sina ken lukin e kon, ken ante e lukin, ken alasa e lon pi sona."
+      },
+      {
+        "q": "sitelen pona li seme?",
+        "a": "sitelen pona li nasin sitelen tawa toki pona. lon lipu ni la ona li lukin sin: toki sama li lon, taso ona li lon kepeken sitelen. ni li pana e lukin lipu pi lete pilin."
+      },
+      {
+        "q": "mi wile sona e sitelen pona tan open lipu anu seme?",
+        "a": "ala. sina ken lukin e toki pona kepeken sitelen Lasina open. sitelen pona li tawa lukin sin pi tenpo lili, li tawa kama sona lon tenpo."
+      },
+      {
+        "q": "lipu ni li pona tawa jan pi kama sona lon toki pona anu seme?",
+        "a": "ona li pona tawa jan pi open, taso jan ni o wile awen, o ken lukin sin. sina jan pi open mute la o kama sona tan lipu lili, lon tenpo kama la o tawa lipu ni kepeken kulupu toki."
+      },
+      {
+        "q": "jan pi sona seme lon toki pona li pona tawa lipu ni?",
+        "a": "jan pi sona meso li pona mute: ona li ken lukin pona, li ken kama sona sin. jan pi sona suli li kepeken lipu ni tawa pona e nasin toki, tawa awen sama, tawa wawa e sona pi pali pona."
+      },
+      {
+        "q": "mi o lukin e lipu ni lon tenpo suno ale kepeken nasin seme?",
+        "a": "o lukin e kipisi lili. o lukin sin e toki sama kepeken sitelen pona. o kama jo e toki wan pi kama lon mute, o kepeken ona tawa lawa e tenpo suno sina."
+      },
+      {
+        "q": "lipu ni li lon ilo Kindle en lipu palisa anu seme?",
+        "a": "lon. lipu palisa en lipu pi ilo Kindle li lon. nasin lipu li sama, li wile awen sama lon ilo."
+      },
+      {
+        "q": "mi ken kama jo e ijo pona pi sona lipu kepeken nasin seme?",
+        "a": "sina ken kama jo e ijo ni tan lipu pi kulupu lipu. ona li pana e nasin pi kama sona, tawa lukin e toki pona en sitelen pona lon nasin lipu ni."
+      },
+      {
+        "q": "lipu ni li ante seme tan lipu ante pi sona stoika?",
+        "a": "ante li lon nasin lukin: toki pona li lili, sitelen pona li pana e lukin sin, toki Inli li lon tawa sona, kulupu toki li pana e awen sama lon lipu ale."
+      }
+    ]
+  },
+  "legal": {
+    "title": "lipu lawa",
+    "editorLabel": "jan lawa:",
+    "editorValue": "Anton Biletskyi-Volokh",
+    "contactLabel": "toki:",
+    "hostingLabel": "tomo ilo:",
+    "hostingValue": "Vercel",
+    "ipLabel": "ijo pi jan ante:",
+    "ipValue": "lipu en sitelen ale li tan jan lawa anu li jo e wile.",
+    "liabilityLabel": "ike:",
+    "liabilityValue": "sona ni li kama sama ni taso.",
+    "externalLinksLabel": "linja tawa tomo ante:",
+    "externalLinksValue": "Amazon, YouTube, ante.",
+    "back": "← o tawa pini"
+  },
+  "privacy": {
+    "title": "nasin len",
+    "dataLabel": "sona:",
+    "dataValue": "tomo lipu ni li alasa ala e sona pi jan.",
+    "cookiesLabel": "kuki:",
+    "cookiesValue": "kuki pi sona lukin ala. taso sitelen tawa YouTube li ken pana e kuki.",
+    "thirdPartyLabel": "ilo pi jan ante:",
+    "thirdPartyValue": "YouTube, Amazon, ante.",
+    "rightsLabel": "wile sina:",
+    "rightsValue": "sina wile sona la, o toki tawa mi.",
+    "contactLabel": "toki:",
+    "contactValue": "a.biletskyi@gmail.com",
+    "back": "← o tawa pini"
+  },
+  "contact": {
+    "text": "toki",
+    "social_medium": "Medium",
+    "social_substack": "Substack"
+  },
+  "footer": {
+    "copyright": "© 2026 ABVX.xyz",
+    "legal_mentions": "lipu lawa",
+    "privacy_policy": "nasin len",
+    "back_home": "← o tawa tomo"
+  }
+}

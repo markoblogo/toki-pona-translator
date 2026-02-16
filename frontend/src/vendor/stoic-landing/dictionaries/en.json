@@ -1,0 +1,169 @@
+{
+  "lang": "en",
+  "meta": {
+    "title": "Stoic Wisdom in toki pona — with sitelen pona",
+    "description": "Read Stoic classics in toki pona. Two-layer format: Latin script + sitelen pona, plus English reference text and practical glossary frames."
+  },
+  "header": {
+    "lang": "EN / TP"
+  },
+  "hero": {
+    "title": "Stoic Wisdom in Toki Pona",
+    "subtitle": "Classic Stoic texts reimagined in the world’s simplest language. Minimal words, clear ideas — with sitelen pona alongside toki pona for a calm, visual reread.",
+    "buy_kindle": "Kindle edition",
+    "buy_print": "Paperback",
+    "download_pdf": "Download PDF",
+    "download_epub": "Download EPUB",
+    "watch_teaser": "Watch teaser"
+  },
+  "why": {
+    "title": "Why this series?",
+    "cards": {
+      "history": {
+        "title": "A language built for clarity",
+        "text": "Toki pona forces you to say the essence. That constraint fits Stoicism: fewer claims, less noise, more control over meaning."
+      },
+      "style": {
+        "title": "Stoicism in small, readable pieces",
+        "text": "These books are short, practical, and aphoristic. You can read them slowly, revisit passages, and use them as daily prompts."
+      },
+      "europe": {
+        "title": "Latin script + sitelen pona",
+        "text": "Each text is available in Latin toki pona and sitelen pona. One is for reading, the other is for seeing structure and rhythm."
+      },
+      "discovery": {
+        "title": "A coherent set, not random books",
+        "text": "Same visual style, same reading approach, consistent vocabulary choices. You can start anywhere — or collect the full set as one project."
+      }
+    }
+  },
+  "collection": {
+    "title": "Books in the series",
+    "buy_button": "View",
+    "learn_more": "Learn more",
+    "marcus-meditations": {
+      "title": "Meditations of Marcus Aurelius — in Toki Pona",
+      "author": "Marcus Aurelius",
+      "shortDesc": "A minimalist Stoic classic, reimagined through toki pona.",
+      "longDesc": "Each passage is rendered in Latin toki pona and mirrored in sitelen pona, turning daily reflection into a clean, low-noise reading practice. If you want one book that defines the whole series, start here."
+    },
+    "readers-kit": {
+      "title": "The Toki Pona Reader’s Kit (Free PDF)",
+      "author": "ABV & Pythagoras",
+      "shortDesc": "A beginner-friendly entry point into reading toki pona with philosophical texts — plus the full practice text: The Golden Verses of Pythagoras.",
+      "longDesc": "Download it, learn the cues, and use it as your fast start before diving into the series."
+    },
+    "epictetus-enchiridion": {
+      "title": "Epictetus: The Enchiridion in toki pona",
+      "author": "Epictetus",
+      "shortDesc": "A compact Stoic manual for clear choices under pressure: learn what is in your control, what is not, and how to act without noise.",
+      "longDesc": "The Enchiridion is a practical handbook: short chapters meant to be revisited, especially when life gets loud. This edition reimagines Epictetus in toki pona for a calmer, more inspectable kind of reading. What you get in this volume: Public-domain English reference text (Elizabeth Carter, 1758) for comparison. Two-layer toki pona reading format: Latin script + the same line repeated for sitelen pona. A reading method designed for slow progress: small daily units, repetition, and “What is the instruction?” as the main question. Links to the free beginner kit and the series page. Created & curated by Biletskyi-Volokh Anton."
+    },
+    "seneca-shortness-of-life": {
+      "title": "Seneca: On the Shortness of Life in toki pona",
+      "author": "Seneca",
+      "shortDesc": "A sharp, calming reminder that life isn’t “too short” — we simply waste much of it. Readable, practical Stoic advice on attention, priorities, and reclaiming your days, reimagined in toki pona.",
+      "longDesc": "“Life is short” is the common complaint. Seneca’s answer is tougher and more useful: the problem isn’t the length of life, but what we trade it for. This short classic is a practical guide to noticing waste, resisting distraction, and investing your days on purpose. This edition is part of Stoic Wisdom in Toki Pona — classic Stoic texts reimagined in the world’s simplest language. The English text is public domain; the toki pona version is a new creative work, written to keep the language clean, small, and readable while preserving Seneca’s practical force. Reading help is built into the edition: the translation keeps key phrases stable so repeated ideas stay easy to spot, and the glossary is designed around recurring “anchor patterns.” You can also start with the free Reader’s Kit and links provided in the book."
+    },
+    "cicero-on-duties": {
+      "title": "Cicero: On Duties (De Officiis) in toki pona — with sitelen pona",
+      "author": "Cicero",
+      "shortDesc": "A practical handbook for moral decision-making in real life—promises, reputation, money, public duty, friendship, and pressure—reimagined in toki pona with sitelen pona for slow, clear rereading.",
+      "longDesc": "Cicero’s On Duties is built for the hardest everyday question: what to do when advantage pulls one way and conscience pulls another. This edition keeps the public-domain English reference text for comparison, then presents a full toki pona translation in two reading layers—Latin script and sitelen pona—so you can reread the same claims with fresh attention. Book I lays the foundation: what moral rightness is, where it comes from, and how it becomes practical rules you can carry into any situation. Book II tests “useful” choices in work, wealth, reputation, favors, and public life. Book III is the stress test: when the honorable and the useful seem to clash, Cicero argues that real advantage can’t be built on injustice—and that “benefit” bought by wrongdoing is a hidden debt paid later by you or the community."
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Short answers about the series, sitelen pona, and reading method.",
+    "items": [
+      {
+        "q": "What is Stoic Wisdom in toki pona?",
+        "a": "It’s a book series that reimagines classic Stoic texts in toki pona, with each line also repeated in sitelen pona. The goal is a calmer, lower-noise way to read ethics: fewer words, clearer choices, less room for self-deception."
+      },
+      {
+        "q": "Which books are in the series?",
+        "a": "The series includes key classics commonly read as practical ethics: Marcus Aurelius, Epictetus, Seneca, and Cicero. Each book is edited for slow, daily reading in the same visual system."
+      },
+      {
+        "q": "Are these full texts or summaries?",
+        "a": "They are full editions in a structured reading format, not short summaries. The editing focuses on clarity and pacing, while keeping the work complete as a book."
+      },
+      {
+        "q": "Do you include the English reference text?",
+        "a": "Yes. Each book includes a public-domain English reference text so you can verify meaning and compare choices made in the translation."
+      },
+      {
+        "q": "What is sitelen pona?",
+        "a": "It’s a pictographic writing system for toki pona. In these books it works as a second pass: the same line is shown again visually, turning rereading into a quiet practice."
+      },
+      {
+        "q": "Do I need to know sitelen pona before reading?",
+        "a": "No. You can read the Latin script first. The sitelen pona layer is there for slower rereading and for building recognition over time."
+      },
+      {
+        "q": "Is this suitable for beginners in toki pona?",
+        "a": "It works best for motivated beginners who can tolerate ambiguity and rereading. If you’re brand new, start with a short guide, then return to the books with the glossary as support."
+      },
+      {
+        "q": "What level of toki pona is best for these books?",
+        "a": "Intermediate is the sweet spot: you’ll read smoothly and still learn. Advanced readers use the books to refine style, consistency, and moral vocabulary."
+      },
+      {
+        "q": "How should I read these books daily?",
+        "a": "Read one short section, then reread the same lines in sitelen pona. Pick one “anchor phrase” and use it as a rule for your day."
+      },
+      {
+        "q": "Are these available on Kindle and paperback?",
+        "a": "Yes. The editions are designed as print-style reading, and the Kindle version follows the same structure as closely as possible."
+      },
+      {
+        "q": "Where can I get the free reader’s kit?",
+        "a": "The reader’s kit is linked from the series page and includes a quick orientation for reading toki pona and sitelen pona in this format."
+      },
+      {
+        "q": "How is this different from other Stoic editions?",
+        "a": "The difference is the reading system: minimal language, two-layer reread with sitelen pona, English reference for checking, and a phrase-based glossary for consistency."
+      }
+    ]
+  },
+  "legal": {
+    "title": "Legal notice",
+    "editorLabel": "Editor:",
+    "editorValue": "Anton Biletskyi-Volokh (France)",
+    "contactLabel": "Contact:",
+    "hostingLabel": "Hosting:",
+    "hostingValue": "Standard web hosting (Vercel)",
+    "ipLabel": "Intellectual property:",
+    "ipValue": "All texts and visuals are owned by the publisher or used with permission.",
+    "liabilityLabel": "Liability:",
+    "liabilityValue": "Information provided as-is.",
+    "externalLinksLabel": "External links:",
+    "externalLinksValue": "Links to third-party websites (Amazon, YouTube, etc.).",
+    "back": "← Back"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "dataLabel": "Data:",
+    "dataValue": "This website does not collect personal data by default.",
+    "cookiesLabel": "Cookies:",
+    "cookiesValue": "No analytics cookies. Embedded content (e.g. YouTube) may set cookies when played.",
+    "thirdPartyLabel": "Third-party services:",
+    "thirdPartyValue": "YouTube, Amazon, etc.",
+    "rightsLabel": "Your rights:",
+    "rightsValue": "Contact us for any privacy questions.",
+    "contactLabel": "Contact:",
+    "contactValue": "a.biletskyi@gmail.com",
+    "back": "← Back"
+  },
+  "contact": {
+    "text": "Contact",
+    "social_medium": "Medium",
+    "social_substack": "Substack"
+  },
+  "footer": {
+    "copyright": "© 2026 ABVX.xyz",
+    "legal_mentions": "Legal",
+    "privacy_policy": "Privacy",
+    "back_home": "← Back to home"
+  }
+}

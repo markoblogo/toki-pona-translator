@@ -1,0 +1,226 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  padding: 4.5rem 0 3rem;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-ink);
+  opacity: 0.9;
+  max-width: 46ch;
+}
+
+.heroNote {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-light);
+}
+
+.heroVisuals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.heroCover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  background: #f2f2f2;
+}
+
+.coverImg {
+  object-fit: cover;
+}
+
+.section {
+  padding: 2.5rem 0;
+}
+
+.sectionTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 1rem;
+}
+
+.sectionLead {
+  color: var(--color-ink-light);
+  margin-bottom: 1.6rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.featureCard {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1.3rem;
+}
+
+.featureCard h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.45rem;
+}
+
+.featureCard p {
+  color: var(--color-ink-light);
+}
+
+.kitsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.kitCard {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1.1rem;
+}
+
+.kitInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.kitMedia {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #f2f2f2;
+}
+
+.kitTitle {
+  font-size: 1.35rem;
+  margin-bottom: 0.2rem;
+}
+
+.kitSubtitle {
+  font-size: 0.95rem;
+  color: var(--color-ink-light);
+  margin-bottom: 0.7rem;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.45rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #f4f4f5;
+  color: #111827;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kitDesc {
+  color: var(--color-ink);
+  opacity: 0.9;
+}
+
+.kitBullets {
+  margin-top: 0.8rem;
+  padding-left: 1rem;
+}
+
+.kitBullets li {
+  margin-bottom: 0.2rem;
+}
+
+.kitActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.licenseLine {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-ink-light);
+}
+
+.bridgeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.bridgeCard {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bridgeLabel {
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .kitsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kitInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroVisuals {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,142 @@
+.section {
+  padding: 2.5rem 0 0;
+}
+
+.heading {
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.55rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: var(--color-ink-light);
+  opacity: 0.9;
+}
+
+.grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.07);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 28px 90px rgba(15, 23, 42, 0.14);
+  position: relative;
+  z-index: 5;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  padding: 1.15rem;
+}
+
+@media (min-width: 900px) {
+  .inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+  }
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f6f6f6;
+}
+
+.promoImg {
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+}
+
+.bookTitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+.bookSubtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  opacity: 0.6;
+  margin-bottom: 0.7rem;
+}
+
+.desc {
+  font-size: 0.98rem;
+  color: var(--color-ink);
+  opacity: 0.9;
+  line-height: 1.55;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.btnCompact {
+  padding: 0.65rem 1.05rem;
+  font-size: 0.82rem;
+}
+
+.teaser {
+  font-size: 0.92rem;
+  color: var(--color-ink);
+  opacity: 0.8;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s ease;
+}
+
+.teaser:hover {
+  opacity: 1;
+  border-bottom-color: var(--color-ink);
+}

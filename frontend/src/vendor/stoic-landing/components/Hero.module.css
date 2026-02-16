@@ -1,0 +1,96 @@
+.hero {
+    position: relative;
+    padding: 6rem 0 3rem;
+    /* Reduced top padding (was 8rem) */
+    background: var(--color-bg);
+    overflow: hidden;
+    min-height: 70vh;
+    /* Slightly reduced min-height */
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: 0.9fr 1.1fr;
+        /* Adjusted ratio */
+        gap: 4rem;
+    }
+}
+
+.leftCol {
+    z-index: 10;
+    max-width: 600px;
+    /* Limit line length */
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    /* Larger */
+    margin-bottom: 1rem;
+    /* Tighter gap */
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    /* Increased body size */
+    line-height: 1.5;
+    color: var(--color-ink);
+    opacity: 0.9;
+    max-width: 38ch;
+    /* Readability limit */
+}
+
+/* Preserved modal styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.detailPanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    z-index: 1000;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    display: none;
+}
+
+.detailPanel.visible {
+    display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 5rem 0 2rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,264 @@
+.footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fbfbfb;
+    padding: 2rem 0;
+    /* Reduced padding further for compactness */
+    margin-top: 3rem;
+    /* Reduced top margin significantly */
+    font-size: 0.95rem;
+    color: var(--color-ink);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+/* LEFT COLUMN */
+.leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.contactRow {
+    display: flex;
+    align-items: center;
+    /* Align items horizontally */
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Matching style for label to other links */
+.contactLabel {
+    font-weight: 500;
+    /* Regular weight, not bold */
+    margin: 0;
+    font-size: 1rem;
+    font-family: inherit;
+    /* Inherit sans/serif from parent, consistent */
+    color: var(--color-ink);
+}
+
+.mailLink {
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.2);
+    text-underline-offset: 4px;
+    color: var(--color-ink);
+}
+
+.mailLink:hover {
+    text-decoration-color: var(--color-ink);
+}
+
+.socials {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.socialLink {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    text-decoration: none;
+}
+
+.socialLink:hover {
+    text-decoration: underline;
+}
+
+/* Legal Row */
+.legalRow {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.9rem;
+}
+
+.copyright {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-ink);
+}
+
+.legalLinks {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.legalLink {
+    color: var(--color-ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.legalLink:hover {
+    color: var(--color-ink);
+    text-decoration: underline;
+}
+
+/* RIGHT COLUMN: Banners */
+.rightCol {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.banners {
+    width: 660px;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+}
+
+.bannerCard {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    display: block;
+    padding: 0.75rem 0.85rem;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: white;
+    text-decoration: none;
+    color: var(--color-ink);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.bannerCard:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.18);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
+}
+
+.bannerInner {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+}
+
+.bannerText {
+    min-width: 0;
+}
+
+.bannerIcon {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #22C55E;
+    margin-top: 1px;
+}
+
+.bannerThumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.10);
+}
+
+.bannerTitle {
+    font-size: 0.95rem;
+    font-weight: 750;
+    line-height: 1.15;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.bannerSubtitle {
+    margin-top: 0.25rem;
+    font-size: 0.80rem;
+    line-height: 1.2;
+    color: var(--color-ink-light);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Variants */
+.banner_translator .bannerIcon {
+    color: #22C55E;
+}
+
+.banner_learn {
+    background: #f3fbf6;
+}
+
+.banner_learn .bannerIcon {
+    color: #22C55E;
+}
+
+.banner_kit {
+    background: #f6f3ee;
+}
+
+.banner_ukr {
+    background: #ffffff;
+}
+
+.banner_ukr .bannerIcon {
+    color: #111;
+    font-family: var(--font-serif);
+    font-weight: 800;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contactRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .socials {
+        margin-left: 0;
+    }
+
+    .legalRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .rightCol {
+        justify-content: flex-start;
+    }
+
+    .banners {
+        width: 100%;
+        max-width: 720px;
+        flex-wrap: wrap;
+    }
+
+    .bannerCard {
+        flex: 1 1 240px;
+    }
+
+    .footer {
+        margin-top: 3rem;
+    }
+}
