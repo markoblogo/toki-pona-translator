@@ -1,10 +1,10 @@
-import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
 import Hero from './Hero';
 import Why from './Why';
 import EntrySection from './EntrySection';
 import MoreBooks from './MoreBooks';
 import FAQ from './FAQ';
+import LandingHeader from './LandingHeader';
+import LandingFooter from './LandingFooter';
 import './series-landing.css';
 import type { SeriesLandingConfig } from './types';
 
@@ -16,31 +16,26 @@ export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
   return (
     <div className="landing-scope">
       <div className="sl-shell">
-      <SiteHeader title={config.headerTitle} active={config.activeNav} />
+        <LandingHeader />
 
-      <main className="sl-main">
-        <Hero
-          hero={config.hero}
-          entries={config.entriesSection.entries}
-          targetId={config.entriesSection.id}
-          faqId={config.faq.id}
-        />
+        <main className="sl-main">
+          <Hero hero={config.hero} entries={config.entriesSection.entries} />
 
-        <Why why={config.why} />
+          <Why why={config.why} />
 
-        <section id={config.entriesSection.id} className="sl-section sl-entries">
-          <h2 className="sl-title-h2">{config.entriesSection.title}</h2>
-          {config.entriesSection.entries.map((entry, index) => (
-            <EntrySection key={entry.id} entry={entry} reverse={index % 2 === 1} />
-          ))}
-        </section>
+          <section id={config.entriesSection.id} className="sl-section sl-entries">
+            <h2 className="sl-title-h2">{config.entriesSection.title}</h2>
+            {config.entriesSection.entries.map((entry, index) => (
+              <EntrySection key={entry.id} entry={entry} reverse={index % 2 === 1} />
+            ))}
+          </section>
 
-        <MoreBooks section={config.moreSection} />
+          <MoreBooks section={config.moreSection} />
 
-        <FAQ faq={config.faq} />
+          <FAQ faq={config.faq} />
+        </main>
 
-        <SiteFooter />
-      </main>
+        <LandingFooter />
       </div>
     </div>
   );

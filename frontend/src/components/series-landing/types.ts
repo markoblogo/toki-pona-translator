@@ -25,12 +25,11 @@ export type LandingEntry = {
 
 export type SeriesLandingConfig = {
   headerTitle: string;
-  activeNav: 'translate' | 'learn' | 'kit';
   hero: {
     title: string;
     lead: string;
     primaryCtaLabel: string;
-    secondaryCtaLabel: string;
+    primaryCtaHref: string;
     note?: string;
   };
   why: {

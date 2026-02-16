@@ -2,12 +2,11 @@ import type { SeriesLandingConfig } from '@/components/series-landing/types';
 
 export const kitsLandingConfig: SeriesLandingConfig = {
   headerTitle: 'The Toki Pona Reader’s Kits',
-  activeNav: 'kit',
   hero: {
     title: 'The Toki Pona Reader’s Kits',
     lead: 'Free beginner-friendly guides to reading toki pona through real philosophical texts. Download the PDF, then watch the teaser video as a quick visual tour.',
-    primaryCtaLabel: 'Free books',
-    secondaryCtaLabel: 'FAQ',
+    primaryCtaLabel: 'Start with the kits',
+    primaryCtaHref: '#free-books',
     note: 'Free for personal use (non-commercial). No signup.',
   },
   why: {
@@ -72,7 +71,7 @@ export const kitsLandingConfig: SeriesLandingConfig = {
     ],
   },
   moreSection: {
-    title: 'More books',
+    title: 'More books about toki pona',
     subtitle: 'Start with a kit. Continue with the series if the format clicks.',
     entries: [
       {

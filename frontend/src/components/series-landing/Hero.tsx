@@ -3,11 +3,12 @@ import type { LandingEntry, SeriesLandingConfig } from './types';
 type HeroProps = {
   hero: SeriesLandingConfig['hero'];
   entries: LandingEntry[];
-  targetId: string;
-  faqId: string;
 };
 
-export default function Hero({ hero, entries, targetId, faqId }: HeroProps) {
+export default function Hero({ hero, entries }: HeroProps) {
+  const first = entries[0];
+  const second = entries[1];
+
   return (
     <section className="sl-hero">
       <div className="sl-hero-copy">
@@ -15,27 +16,34 @@ export default function Hero({ hero, entries, targetId, faqId }: HeroProps) {
         <p className="sl-lead">{hero.lead}</p>
 
         <div className="sl-actions">
-          <a href={`#${targetId}`} className="sl-btn sl-btn-primary">
+          <a href={hero.primaryCtaHref} className="sl-btn sl-btn-primary">
             {hero.primaryCtaLabel}
-          </a>
-          <a href={`#${faqId}`} className="sl-btn sl-btn-secondary">
-            {hero.secondaryCtaLabel}
           </a>
         </div>
         {hero.note ? <p className="sl-note">{hero.note}</p> : null}
       </div>
 
-      <div className="sl-hero-covers">
-        {entries.slice(0, 2).map((entry) => (
-          <article key={entry.id} className="sl-cover-card">
-            {entry.badges?.includes('FREE') ? (
-              <div className="sl-free-badge" aria-hidden>
-                <span>FREE</span>
-              </div>
-            ) : null}
-            <img src={entry.coverImage} alt={`${entry.title} cover`} className="sl-cover-image" loading="eager" width={560} height={800} />
-          </article>
-        ))}
+      <div className="sl-showcase" aria-label="Featured kits showcase">
+        {second ? (
+          <img
+            src={second.coverImage}
+            alt={`${second.title} cover`}
+            className="sl-showcase-cover sl-showcase-cover-back"
+            loading="eager"
+            width={560}
+            height={800}
+          />
+        ) : null}
+        {first ? (
+          <img
+            src={first.coverImage}
+            alt={`${first.title} cover`}
+            className="sl-showcase-cover sl-showcase-cover-front"
+            loading="eager"
+            width={560}
+            height={800}
+          />
+        ) : null}
       </div>
     </section>
   );
