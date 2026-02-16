@@ -1,0 +1,22 @@
+<!-- AGENTSGEN:START section=llms -->
+Project: toki-pona-translator
+Stack: node
+
+Agent context bundle (LLMO Pack):
+- Run guide: docs/ai/how-to-run.md
+- Test guide: docs/ai/how-to-test.md
+- Architecture: docs/ai/architecture.md
+- Data contracts: docs/ai/data-contracts.md
+- Security: SECURITY_AI.md
+- Contributing: CONTRIBUTING_AI.md
+
+Quick commands:
+- install: (not detected)
+- dev: (not detected)
+- test: (not detected)
+- lint: (not detected)
+- build: (not detected)
+
+Notes:
+- Keep these files concise and command-accurate. Avoid speculative guidance.
+<!-- AGENTSGEN:END section=llms -->

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "mode": "safe",
+  "on_missing_markers": "write_generated",
+  "generated_suffix": ".generated",
+  "markers": {
+    "start": "<!-- AGENTSGEN:START section={section} -->",
+    "end": "<!-- AGENTSGEN:END section={section} -->"
+  },
+  "sections": [
+    "guardrails",
+    "workflow",
+    "style",
+    "verification",
+    "stack",
+    "repo_context"
+  ],
+  "presets": {},
+  "defaults": {},
+  "project": {
+    "primary_stack": "node",
+    "name": "toki-pona-translator",
+    "repo_root": "."
+  },
+  "paths": {
+    "docs": [
+      "README.md"
+    ],
+    "ci": "",
+    "source_dirs": [
+      "backend",
+      "frontend"
+    ]
+  },
+  "commands": {},
+  "evidence": {
+    "python": [],
+    "node": [
+      "backend/package.json",
+      "frontend/package.json"
+    ],
+    "make": [],
+    "ci": []
+  },
+  "pack": {
+    "enabled": true,
+    "llms_format": "txt",
+    "output_dir": "docs/ai",
+    "files": []
+  }
+}
