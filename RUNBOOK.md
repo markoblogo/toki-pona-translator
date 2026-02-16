@@ -3,15 +3,26 @@
 ## Quickstart
 
 <!-- AGENTSGEN:START section=quickstart -->
-- (no quickstart commands configured)
+```sh
+npm --prefix backend install && npm --prefix frontend install
+```
+```sh
+npm --prefix backend run dev && npm --prefix frontend run dev
+```
+```sh
+not available
+```
+```sh
+npm --prefix frontend run lint
+```
 <!-- AGENTSGEN:END section=quickstart -->
 
 ## Common Tasks
 
 <!-- AGENTSGEN:START section=common_tasks -->
-- Run tests: (not set)
-- Lint: (not set)
-- Build: (not set)
+- Run tests: `not available`
+- Lint: `npm --prefix frontend run lint`
+- Build: `npm --prefix frontend run build`
 <!-- AGENTSGEN:END section=common_tasks -->
 
 ## Troubleshooting

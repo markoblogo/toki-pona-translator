@@ -4,7 +4,7 @@
 - Project: `toki-pona-translator`
 - Stack profile: node
 - Source dirs: `backend`, `frontend`
-- Docs: `README.md`, `RUNBOOK.md`
+- Docs: `README.md`
 
 ## Agent guidance
 - Prefer localized edits near existing modules.

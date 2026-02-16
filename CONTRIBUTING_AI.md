@@ -10,6 +10,6 @@
 ## Minimal flow
 1. Reproduce / understand task.
 2. Implement small change.
-3. Run checks (`(not detected)`, `(not detected)`).
+3. Run checks (`not available`, `npm --prefix frontend run lint`).
 4. Summarize: changed files + verification + risks.
 <!-- AGENTSGEN:END section=contributing_ai -->

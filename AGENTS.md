@@ -28,6 +28,22 @@ This file is for coding agents (Codex/Claude/Cursor/etc.). Keep it strict and ac
 - Useful scripts (if any): `scripts/`
 
 #### Commands (copy/paste)
+**Dev / run**
+```bash
+npm --prefix backend run dev && npm --prefix frontend run dev
+```
+**Build**
+```bash
+npm --prefix frontend run build
+```
+**Lint**
+```bash
+npm --prefix frontend run lint
+```
+**Tests**
+```bash
+not available
+```
 
 #### Local environment notes
 
@@ -202,7 +218,11 @@ State:
 ## Commands
 
 <!-- AGENTSGEN:START section=commands -->
-- (no commands configured)
+- **Install:** `npm --prefix backend install && npm --prefix frontend install`
+- **Dev:** `npm --prefix backend run dev && npm --prefix frontend run dev`
+- **Test:** `not available`
+- **Lint:** `npm --prefix frontend run lint`
+- **Build:** `npm --prefix frontend run build`
 
 - **Run a single test:** (not specified)
 - **Where configs live:** (not specified)

@@ -16,7 +16,7 @@
 ## Suggested snippet: local checks
 
 ```sh
-(not detected)
-(not detected)
+not available
+npm --prefix frontend run lint
 ```
 <!-- AGENTSGEN:END section=readme_snippets -->

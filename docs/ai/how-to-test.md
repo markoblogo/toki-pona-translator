@@ -7,8 +7,8 @@
 ## Commands
 - Fast check: `(not detected)`
 - Full check: `(not detected)`
-- Tests: `(not detected)`
-- Lint: `(not detected)`
+- Tests: `not available`
+- Lint: `npm --prefix frontend run lint`
 - Format: `(not detected)`
 
 ## Policy
