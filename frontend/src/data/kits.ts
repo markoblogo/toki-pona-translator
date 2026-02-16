@@ -4,7 +4,7 @@ export const kitsLandingConfig: SeriesLandingConfig = {
   headerTitle: 'The Toki Pona Reader’s Kits',
   activeNav: 'kit',
   hero: {
-    title: 'The Toki Pona Reader’s Kits',
+    title: 'The Toki Pona Reader’s Kits (DEPLOY TEST 6b22cab)',
     lead: 'Free beginner-friendly guides to reading toki pona through real philosophical texts. Download the PDF, then watch the teaser video as a quick visual tour.',
     primaryCtaLabel: 'Free books',
     secondaryCtaLabel: 'FAQ',
