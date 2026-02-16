@@ -14,29 +14,27 @@ type SeriesLandingPageProps = {
 
 export default function SeriesLandingPage({ config }: SeriesLandingPageProps) {
   return (
-    <div className="landing-scope">
-      <div className="sl-shell">
-        <LandingHeader />
+    <div className="kitLanding main">
+      <LandingHeader />
 
-        <main className="sl-main">
-          <Hero hero={config.hero} entries={config.entriesSection.entries} />
+      <main className="pageContainer">
+        <Hero hero={config.hero} entries={config.entriesSection.entries} />
 
-          <Why why={config.why} />
+        <Why why={config.why} />
 
-          <section id={config.entriesSection.id} className="sl-section sl-entries">
-            <h2 className="sl-title-h2">{config.entriesSection.title}</h2>
-            {config.entriesSection.entries.map((entry, index) => (
-              <EntrySection key={entry.id} entry={entry} reverse={index % 2 === 1} />
-            ))}
-          </section>
+        <section id={config.entriesSection.id} className="section collectionSection">
+          <h2 className="title">{config.entriesSection.title}</h2>
+          {config.entriesSection.entries.map((entry, index) => (
+            <EntrySection key={entry.id} entry={entry} reverse={index % 2 === 1} />
+          ))}
+        </section>
 
-          <MoreBooks section={config.moreSection} />
+        <MoreBooks section={config.moreSection} />
 
-          <FAQ faq={config.faq} />
-        </main>
+        <FAQ faq={config.faq} />
+      </main>
 
-        <LandingFooter />
-      </div>
+      <LandingFooter />
     </div>
   );
 }

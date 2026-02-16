@@ -1,17 +1,21 @@
 export default function LandingHeader() {
   return (
-    <header className="sl-headerbar">
-      <div className="sl-headerbar-inner">
-        <a href="/" className="sl-brand" aria-label="Toki ABVX home">
-          <span className="sl-brand-mark">&gt;</span>
-          <span className="sl-brand-text">Toki Reader Kits</span>
-        </a>
+    <header className="headerBar">
+      <div className="inner">
+        <div className="brand">
+          <span className="brandMark">&gt;</span>
+          <a href="/kit" className="brandTitle">Toki Reader Kits</a>
+        </div>
 
-        <nav className="sl-nav" aria-label="Primary">
-          <a href="/" className="sl-nav-link">Translate</a>
-          <a href="/learn" className="sl-nav-link">Learn</a>
-          <a href="/kit" className="sl-nav-link is-active">Kit</a>
-          <a href="https://stoic.abvx.xyz/" target="_blank" rel="noopener noreferrer" className="sl-nav-link">Toki Stoic</a>
+        <nav className="nav" aria-label="Site navigation">
+          <a className="navLink" href="/">Translator</a>
+          <a className="navLink" href="/learn">Learn</a>
+          <a className="navLink" href="/kit">Kit</a>
+          <a className="navLink" href="#more-books">More books</a>
+          <a className="navLink" href="#faq">FAQ</a>
+          <a className="navLink navLinkActive" href="https://stoic.abvx.xyz/" target="_blank" rel="noopener noreferrer">
+            Toki Stoic
+          </a>
         </nav>
       </div>
     </header>

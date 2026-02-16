@@ -1,149 +1,135 @@
-/* Scoped visual reset for /kit series landing */
-.landing-scope {
-  --sl-bg: #f5f4f2;
-  --sl-surface: #ffffff;
-  --sl-ink: #111827;
-  --sl-ink-soft: rgba(17, 24, 39, 0.72);
-  --sl-border: rgba(15, 23, 42, 0.1);
-  --sl-shadow: 0 16px 48px rgba(15, 23, 42, 0.08);
-  --sl-shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.07);
-  background: var(--sl-bg);
-  color: var(--sl-ink);
-}
-
-.landing-scope .sl-shell {
+.kitLanding {
+  --color-bg: #f5f4f2;
+  --color-ink: #111827;
+  --color-ink-light: rgba(17, 24, 39, 0.7);
+  --color-accent: #22c55e;
   min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-ink);
 }
 
-.landing-scope .sl-headerbar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  border-bottom: 1px solid var(--sl-border);
-  background: color-mix(in srgb, var(--sl-bg) 92%, white 8%);
-  backdrop-filter: blur(8px);
-}
-
-.landing-scope .sl-headerbar-inner {
+.kitLanding .pageContainer {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  padding: 56px 24px 80px;
 }
 
-.landing-scope .sl-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--sl-ink);
-}
-
-.landing-scope .sl-brand-mark {
-  color: #22c55e;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.landing-scope .sl-brand-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.landing-scope .sl-nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.landing-scope .sl-nav-link {
-  color: color-mix(in srgb, var(--sl-ink) 72%, white 28%);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-}
-
-.landing-scope .sl-nav-link:hover,
-.landing-scope .sl-nav-link.is-active {
-  color: var(--sl-ink);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.landing-scope .sl-main {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 60px 24px 80px;
-}
-
-.landing-scope .sl-section {
+.kitLanding .section {
   padding-top: 56px;
 }
 
-.landing-scope .sl-title-h1,
-.landing-scope .sl-title-h2,
-.landing-scope .sl-title-h3 {
-  font-family: Georgia, 'Times New Roman', serif;
-  color: var(--sl-ink);
-  letter-spacing: -0.01em;
+/* Header (stoic-like) */
+.kitLanding .headerBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.landing-scope .sl-title-h1 {
-  font-size: clamp(2.5rem, 4.7vw, 4.2rem);
-  line-height: 1.02;
+.kitLanding .headerBar .inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 24px;
 }
 
-.landing-scope .sl-title-h2 {
-  font-size: clamp(1.85rem, 3vw, 2.7rem);
-  line-height: 1.09;
+.kitLanding .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
-.landing-scope .sl-title-h3 {
-  font-size: 1.32rem;
-  line-height: 1.18;
+.kitLanding .brandMark {
+  color: #22c55e;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.landing-scope .sl-lead,
-.landing-scope .sl-text,
-.landing-scope .sl-subtitle,
-.landing-scope .sl-entry-subtitle,
-.landing-scope .sl-note,
-.landing-scope .sl-more-subtitle,
-.landing-scope .sl-faq-answer {
-  color: var(--sl-ink-soft);
+.kitLanding .brandTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  text-decoration: none;
 }
 
-.landing-scope .sl-lead {
-  margin-top: 18px;
-  max-width: 62ch;
-  font-size: 1.08rem;
-  line-height: 1.62;
+.kitLanding .nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
-.landing-scope .sl-subtitle {
-  margin-top: 10px;
-  font-size: 1rem;
+.kitLanding .navLink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(17, 24, 39, 0.6);
+  text-decoration: none;
 }
 
-.landing-scope .sl-hero {
+.kitLanding .navLink:hover {
+  color: #111827;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(0, 0, 0, 0.15);
+}
+
+.kitLanding .navLinkActive {
+  color: #111827;
+}
+
+/* Hero (stoic-like skeleton) */
+.kitLanding .hero {
+  position: relative;
+  padding-top: 20px;
+}
+
+.kitLanding .hero .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 42px;
+  gap: 3rem;
   align-items: center;
 }
 
-.landing-scope .sl-actions {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.kitLanding .hero .leftCol {
+  max-width: 600px;
 }
 
-.landing-scope .sl-btn {
+.kitLanding .hero .title,
+.kitLanding .collectionSection .title,
+.kitLanding .whySection .title,
+.kitLanding .moreBooksSection .title,
+.kitLanding .faqSection .title,
+.kitLanding .bookSection .title {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+
+.kitLanding .hero .title {
+  font-size: clamp(2.5rem, 4.8vw, 4.15rem);
+  margin-bottom: 1rem;
+}
+
+.kitLanding .hero .subtitle {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-ink-light);
+  max-width: 42ch;
+}
+
+.kitLanding .hero .actions {
+  margin-top: 1.5rem;
+}
+
+.kitLanding .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -156,325 +142,415 @@
   transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
-.landing-scope .sl-btn-primary {
-  background: #101010;
+.kitLanding .btnPrimary,
+.kitLanding .btn-accent {
+  background: #111;
   color: #fff;
 }
 
-.landing-scope .sl-btn-primary:hover {
+.kitLanding .btnPrimary:hover,
+.kitLanding .btn-accent:hover {
   background: #000;
 }
 
-.landing-scope .sl-btn-secondary {
+.kitLanding .btnSecondary {
   background: #fff;
-  border-color: rgba(15, 23, 42, 0.24);
-  color: #121212;
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #111;
 }
 
-.landing-scope .sl-btn-secondary:hover {
-  background: rgba(15, 23, 42, 0.03);
+.kitLanding .btnSecondary:hover {
+  background: rgba(0, 0, 0, 0.03);
 }
 
-.landing-scope .sl-btn-pill {
+.kitLanding .btnPill {
   background: #ecfdf3;
   border-color: rgba(34, 197, 94, 0.35);
   color: #166534;
 }
 
-.landing-scope .sl-btn-pill:hover {
+.kitLanding .btnPill:hover {
   background: #dcfce7;
 }
 
-.landing-scope .sl-btn-compact {
+.kitLanding .btnCompact {
   padding: 7px 12px;
   font-size: 0.76rem;
 }
 
-.landing-scope .sl-note {
-  margin-top: 12px;
-  font-size: 0.78rem;
+.kitLanding .hero .note {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--color-ink-light);
 }
 
-.landing-scope .sl-showcase {
+.kitLanding .hero .rightCol {
+  display: flex;
+  justify-content: center;
+}
+
+.kitLanding .showcase {
   position: relative;
-  min-height: 460px;
-  max-width: 520px;
-  margin: 0 auto;
+  width: min(520px, 100%);
+  height: 480px;
 }
 
-.landing-scope .sl-showcase-cover {
+.kitLanding .showcase .cover {
   position: absolute;
   width: min(290px, 54vw);
   border-radius: 14px;
-  border: 1px solid var(--sl-border);
-  background: var(--sl-surface);
-  box-shadow: var(--sl-shadow);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.12);
+  background: #fff;
 }
 
-.landing-scope .sl-showcase-cover-front {
+.kitLanding .showcase .frontCover {
   left: 50%;
   bottom: 0;
-  transform: translateX(-55%) rotate(-2.5deg);
+  transform: translateX(-56%) rotate(-2.8deg);
   z-index: 3;
 }
 
-.landing-scope .sl-showcase-cover-back {
+.kitLanding .showcase .backCover {
   left: 50%;
   top: 24px;
-  transform: translateX(-8%) rotate(4deg);
+  transform: translateX(-6%) rotate(4.5deg);
   z-index: 2;
-  opacity: 0.98;
 }
 
-.landing-scope .sl-feature-grid {
-  margin-top: 24px;
+/* Why section */
+.kitLanding .whySection .header,
+.kitLanding .faqSection .header {
+  margin-bottom: 2rem;
+}
+
+.kitLanding .whySection .title,
+.kitLanding .collectionSection .title,
+.kitLanding .moreBooksSection .title,
+.kitLanding .faqSection .title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.kitLanding .whySection .subtitle,
+.kitLanding .moreBooksSection .subtitle,
+.kitLanding .faqSection .subtitle {
+  margin-top: 0.6rem;
+  color: var(--color-ink-light);
+}
+
+.kitLanding .whySection .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 1rem;
 }
 
-.landing-scope .sl-card {
-  border: 1px solid var(--sl-border);
-  border-radius: 14px;
-  background: var(--sl-surface);
-  box-shadow: var(--sl-shadow-soft);
+.kitLanding .whySection .card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.35rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.07);
 }
 
-.landing-scope .sl-feature-card {
-  padding: 24px;
+.kitLanding .whySection .cardTitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  line-height: 1.2;
 }
 
-.landing-scope .sl-feature-card .sl-text {
-  margin-top: 10px;
-  font-size: 0.98rem;
-  line-height: 1.6;
+.kitLanding .whySection .cardText {
+  margin-top: 0.55rem;
+  color: var(--color-ink-light);
+  line-height: 1.58;
 }
 
-.landing-scope .sl-entry {
-  border-top: 1px solid var(--sl-border);
-  padding: 52px 0 40px;
+/* Entry sections */
+.kitLanding .bookSection {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 50px 0 40px;
 }
 
-.landing-scope .sl-entry-grid {
+.kitLanding .bookSection .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px;
+  gap: 2rem;
   align-items: center;
 }
 
-.landing-scope .sl-entry-media {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid var(--sl-border);
-  background: var(--sl-surface);
-  box-shadow: var(--sl-shadow);
+.kitLanding .bookSection .container.reverse .imageCol {
+  order: 2;
 }
 
-.landing-scope .sl-entry-image {
-  display: block;
+.kitLanding .bookSection .container.reverse .contentCol {
+  order: 1;
+}
+
+.kitLanding .bookSection .imageWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.12);
+}
+
+.kitLanding .bookSection .promoImg {
   width: 100%;
   height: auto;
+  display: block;
   object-fit: cover;
 }
 
-.landing-scope .sl-entry-subtitle {
-  margin-top: 10px;
+.kitLanding .bookSection .title {
+  font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+}
+
+.kitLanding .bookSection .author {
+  margin-top: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.74rem;
   font-weight: 600;
+  color: var(--color-ink-light);
 }
 
-.landing-scope .sl-entry-short {
-  margin-top: 14px;
-  line-height: 1.62;
+.kitLanding .bookSection .desc {
+  margin-top: 0.9rem;
+  color: var(--color-ink-light);
+  line-height: 1.6;
   font-size: 1.02rem;
 }
 
-.landing-scope .sl-bullets {
-  margin-top: 14px;
+.kitLanding .bookSection .bullets {
+  margin-top: 0.85rem;
   padding-left: 1.05rem;
-  color: var(--sl-ink-soft);
-  line-height: 1.62;
-  font-size: 0.94rem;
+  color: var(--color-ink-light);
+  line-height: 1.58;
 }
 
-.landing-scope .sl-bullets li + li {
-  margin-top: 6px;
+.kitLanding .bookSection .bullets li + li {
+  margin-top: 0.35rem;
 }
 
-.landing-scope .sl-more-grid {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.landing-scope .sl-more-card {
-  padding: 14px;
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  gap: 14px;
-  align-items: center;
-}
-
-.landing-scope .sl-more-thumb {
-  width: 70px;
-  height: 96px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--sl-border);
-}
-
-.landing-scope .sl-more-title {
-  font-size: 0.98rem;
-  line-height: 1.35;
-  color: var(--sl-ink);
-  font-weight: 600;
-}
-
-.landing-scope .sl-more-subtitle {
-  margin-top: 4px;
-  font-size: 0.78rem;
-}
-
-.landing-scope .sl-more-actions {
-  margin-top: 10px;
+.kitLanding .bookSection .actions {
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.65rem;
 }
 
-.landing-scope .sl-header-center {
+/* More books grid (stoic module feel) */
+.kitLanding .moreBooksSection {
+  padding-top: 28px;
+}
+
+.kitLanding .moreBooksSection .heading {
+  margin-bottom: 0.75rem;
+}
+
+.kitLanding .moreBooksSection .grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+.kitLanding .moreBooksSection .card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.08);
+}
+
+.kitLanding .moreBooksSection .inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.kitLanding .moreBooksSection .media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f6f6f6;
+}
+
+.kitLanding .moreBooksSection .promoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.kitLanding .moreBooksSection .bookTitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.16rem;
+  line-height: 1.15;
+}
+
+.kitLanding .moreBooksSection .bookSubtitle {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-ink-light);
+}
+
+.kitLanding .moreBooksSection .actions {
+  margin-top: 0.85rem;
+}
+
+.kitLanding .moreBooksSection .ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* FAQ */
+.kitLanding .faqSection .header {
   text-align: center;
 }
 
-.landing-scope .sl-faq-list {
-  margin-top: 24px;
+.kitLanding .faqSection .list {
   display: grid;
   gap: 12px;
+  margin: 0 auto;
+  max-width: 940px;
+  grid-template-columns: 1fr;
 }
 
-.landing-scope .sl-faq-item {
-  padding: 14px 18px;
+.kitLanding .faqSection .item {
+  border: 1px solid #e5e2dc;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: #fff;
 }
 
-.landing-scope .sl-faq-question {
-  list-style: none;
+.kitLanding .faqSection .question {
   cursor: pointer;
-  color: var(--sl-ink);
-  font-size: 1rem;
   font-weight: 600;
+  list-style: none;
 }
 
-.landing-scope .sl-faq-question::-webkit-details-marker {
+.kitLanding .faqSection .question::-webkit-details-marker {
   display: none;
 }
 
-.landing-scope .sl-faq-answer {
-  margin-top: 10px;
-  font-size: 0.93rem;
+.kitLanding .faqSection .answer {
+  margin-top: 8px;
+  color: #333;
   line-height: 1.6;
 }
 
-.landing-scope .sl-footer {
-  border-top: 1px solid var(--sl-border);
-  margin-top: 24px;
+/* Footer */
+.kitLanding .footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fbfbfb;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  color: var(--color-ink);
 }
 
-.landing-scope .sl-footer-inner {
+.kitLanding .footer .container {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 18px 24px 28px;
+  padding: 0 24px;
+}
+
+.kitLanding .footer .grid {
   display: flex;
-  gap: 18px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.kitLanding .footer .leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.kitLanding .footer .contactRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
   flex-wrap: wrap;
 }
 
-.landing-scope .sl-footer-link {
-  color: color-mix(in srgb, var(--sl-ink) 72%, white 28%);
-  font-size: 0.84rem;
+.kitLanding .footer .contactLabel {
+  font-weight: 500;
+  margin: 0;
+}
+
+.kitLanding .footer .mailLink,
+.kitLanding .footer .socialLink,
+.kitLanding .footer .copyright {
+  color: var(--color-ink);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.landing-scope .sl-footer-link:hover {
-  color: var(--sl-ink);
+.kitLanding .footer .socials {
+  display: flex;
+  gap: 1rem;
 }
 
 @media (min-width: 900px) {
-  .landing-scope .sl-main {
-    padding: 64px 32px 84px;
+  .kitLanding .hero .container {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
   }
 
-  .landing-scope .sl-hero {
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 56px;
-  }
-
-  .landing-scope .sl-feature-grid {
+  .kitLanding .whySection .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .landing-scope .sl-entry-grid {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 48px;
+  .kitLanding .bookSection .container {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
   }
 
-  .landing-scope .sl-entry-grid.is-reverse > :first-child {
-    order: 2;
+  .kitLanding .moreBooksSection .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .landing-scope .sl-entry-grid.is-reverse > :last-child {
-    order: 1;
+  .kitLanding .moreBooksSection .inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
   }
 
-  .landing-scope .sl-more-grid {
+  .kitLanding .faqSection .list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 900px) {
-  .landing-scope .sl-headerbar-inner {
+  .kitLanding .headerBar .inner {
     justify-content: center;
   }
 
-  .landing-scope .sl-brand {
+  .kitLanding .brand {
     display: none;
   }
 
-  .landing-scope .sl-showcase {
-    min-height: 390px;
+  .kitLanding .showcase {
+    height: 360px;
   }
 
-  .landing-scope .sl-showcase-cover {
-    width: min(260px, 62vw);
-  }
-}
-
-@media (max-width: 640px) {
-  .landing-scope .sl-main {
-    padding: 44px 18px 68px;
+  .kitLanding .showcase .cover {
+    width: min(240px, 66vw);
   }
 
-  .landing-scope .sl-showcase {
-    min-height: 320px;
-  }
-
-  .landing-scope .sl-showcase-cover {
-    width: min(220px, 74vw);
-  }
-
-  .landing-scope .sl-showcase-cover-back {
-    top: 18px;
-    transform: translateX(-2%) rotate(3deg);
-  }
-
-  .landing-scope .sl-showcase-cover-front {
+  .kitLanding .showcase .frontCover {
     transform: translateX(-58%) rotate(-2deg);
   }
 
-  .landing-scope .sl-faq-item {
-    padding: 12px 14px;
+  .kitLanding .showcase .backCover {
+    transform: translateX(-2%) rotate(3deg);
+    top: 16px;
+  }
+
+  .kitLanding .footer .grid,
+  .kitLanding .footer .contactRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

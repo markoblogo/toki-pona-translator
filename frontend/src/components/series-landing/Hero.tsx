@@ -10,40 +10,43 @@ export default function Hero({ hero, entries }: HeroProps) {
   const second = entries[1];
 
   return (
-    <section className="sl-hero">
-      <div className="sl-hero-copy">
-        <h1 className="sl-title-h1">{hero.title}</h1>
-        <p className="sl-lead">{hero.lead}</p>
-
-        <div className="sl-actions">
-          <a href={hero.primaryCtaHref} className="sl-btn sl-btn-primary">
-            {hero.primaryCtaLabel}
-          </a>
+    <section className="hero section">
+      <div className="container">
+        <div className="leftCol">
+          <h1 className="title">{hero.title}</h1>
+          <p className="subtitle">{hero.lead}</p>
+          <div className="actions">
+            <a href={hero.primaryCtaHref} className="btn btn-accent">
+              {hero.primaryCtaLabel}
+            </a>
+          </div>
+          {hero.note ? <p className="note">{hero.note}</p> : null}
         </div>
-        {hero.note ? <p className="sl-note">{hero.note}</p> : null}
-      </div>
 
-      <div className="sl-showcase" aria-label="Featured kits showcase">
-        {second ? (
-          <img
-            src={second.coverImage}
-            alt={`${second.title} cover`}
-            className="sl-showcase-cover sl-showcase-cover-back"
-            loading="eager"
-            width={560}
-            height={800}
-          />
-        ) : null}
-        {first ? (
-          <img
-            src={first.coverImage}
-            alt={`${first.title} cover`}
-            className="sl-showcase-cover sl-showcase-cover-front"
-            loading="eager"
-            width={560}
-            height={800}
-          />
-        ) : null}
+        <div className="rightCol">
+          <div className="showcase">
+            {second ? (
+              <img
+                src={second.coverImage}
+                alt={`${second.title} cover`}
+                className="cover backCover"
+                loading="eager"
+                width={560}
+                height={800}
+              />
+            ) : null}
+            {first ? (
+              <img
+                src={first.coverImage}
+                alt={`${first.title} cover`}
+                className="cover frontCover"
+                loading="eager"
+                width={560}
+                height={800}
+              />
+            ) : null}
+          </div>
+        </div>
       </div>
     </section>
   );
