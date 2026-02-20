@@ -11,11 +11,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toki.abvx.xyz/kit</loc>
+    <loc>https://toki-free.abvx.xyz/en</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <!-- TODO: migrate this URL after confirming the new direct PDF path on toki-free.abvx.xyz -->
     <loc>https://toki.abvx.xyz/kit.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

@@ -106,7 +106,7 @@ export default function Footer({ dict, lang }: { dict: any; lang: 'en' | 'tp' })
               />
               <Banner
                 variant="kit"
-                href="https://toki.abvx.xyz/kit"
+                href="https://toki-free.abvx.xyz/en"
                 title="The Toki Pona Reader’s Kit"
                 subtitle="Free PDF: fast start into reading toki pona (includes Pythagoras full text)."
                 thumbSrc="/assets/books/readers-kit/cover.jpg"

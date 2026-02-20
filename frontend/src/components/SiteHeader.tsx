@@ -44,7 +44,7 @@ export default function SiteHeader({ title, active, onNavigate }: SiteHeaderProp
         <nav className="flex gap-6 items-center">
           <NavLink href="/" label="Translate" isActive={active === 'translate'} clientNav="/" />
           <NavLink href="/learn" label="Learn" isActive={active === 'learn'} clientNav="/learn" />
-          <NavLink href="/kit" label="Kit" isActive={active === 'kit'} />
+          <NavLink href="https://toki-free.abvx.xyz/en" label="Kit" isActive={active === 'kit'} />
 
           <a
             href="https://stoic.abvx.xyz"

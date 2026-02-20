@@ -131,7 +131,7 @@ const Learn: React.FC = () => {
                 {/* My resources */}
                 <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Kit */}
-                    <a href="/kit" className="card-gloss overflow-hidden block hover:shadow-[0_22px_70px_rgba(15,23,42,0.10)] transition">
+                    <a href="https://toki-free.abvx.xyz/en" className="card-gloss overflow-hidden block hover:shadow-[0_22px_70px_rgba(15,23,42,0.10)] transition">
                         <div className="p-5">
                             <div className="text-[11px] font-semibold tracking-wide text-[#22C55E] uppercase">Free PDF</div>
                             <div className="mt-1 text-base font-semibold text-[#111827] leading-tight">The Reader’s Kit</div>
@@ -140,6 +140,7 @@ const Learn: React.FC = () => {
                             </div>
                             <div className="mt-4 flex flex-wrap gap-3 text-sm">
                                 <span className="text-[#22C55E] font-semibold">Open</span>
+                                {/* TODO: switch to toki-free.abvx.xyz direct PDF URL after the new path is confirmed */}
                                 <a className="text-[#22C55E] hover:underline" href="/kit.pdf" download onClick={(e) => e.stopPropagation()}>
                                     PDF
                                 </a>

@@ -98,5 +98,5 @@ VITE_API_BASE_URL=http://localhost:3000
 
 ## Free Toki Pona Reader’s Kit (PDF)
 If you’re learning toki pona: download the free beginner-friendly Reader’s Kit (includes *The Golden Verses of Pythagoras* full text).
-- Landing: https://toki.abvx.xyz/kit
+- Landing: https://toki-free.abvx.xyz/en
 - Direct PDF: https://toki.abvx.xyz/kit.pdf

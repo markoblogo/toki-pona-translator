@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   const safeLang = lang === 'tp' ? 'tp' : 'en';
-  const base = `https://toki.abvx.xyz/${safeLang}/kit`;
+  const base = `https://toki-free.abvx.xyz/${safeLang}`;
 
   return {
     title: 'The Toki Pona Reader’s Kits',
@@ -23,7 +23,7 @@ export async function generateMetadata({
     alternates: {
       canonical: base,
       languages: {
-        en: 'https://toki.abvx.xyz/en/kit',
+        en: 'https://toki-free.abvx.xyz/en',
       },
     },
     openGraph: {
