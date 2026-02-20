@@ -192,7 +192,7 @@ export default async function KitHubPage({
                     </ul>
 
                     <div className={styles.kitActions}>
-                      <a href={kit.pdfUrl} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
+                      <a href={kit.downloadUrl} className="btn btn-accent" target="_blank" rel="noopener noreferrer">
                         Download PDF
                       </a>
                       <a href={kit.teaserUrl} className="btn" target="_blank" rel="noopener noreferrer">

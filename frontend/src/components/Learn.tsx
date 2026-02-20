@@ -140,9 +140,8 @@ const Learn: React.FC = () => {
                             </div>
                             <div className="mt-4 flex flex-wrap gap-3 text-sm">
                                 <span className="text-[#22C55E] font-semibold">Open</span>
-                                {/* TODO: switch to toki-free.abvx.xyz direct PDF URL after the new path is confirmed */}
-                                <a className="text-[#22C55E] hover:underline" href="/kit.pdf" download onClick={(e) => e.stopPropagation()}>
-                                    PDF
+                                <a className="text-[#22C55E] hover:underline" href="https://toki-free.abvx.xyz/en" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                                    Landing
                                 </a>
                                 <a className="text-[#22C55E] hover:underline" href="https://youtu.be/F7fSBElppzI" target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                                     Teaser

@@ -146,8 +146,7 @@ export const books: Book[] = [
         },
         coverImage: "/assets/books/readers-kit/cover.webp",
         promoImage: "/assets/books/readers-kit/promo.webp",
-        // TODO: migrate to toki-free.abvx.xyz equivalent when the new direct PDF path is confirmed.
-        downloadPdfUrl: "https://toki.abvx.xyz/kit.pdf",
+        downloadPdfUrl: "https://toki-free.abvx.xyz/en",
         teaserVideoId: "F7fSBElppzI",
         shortDescription: {
             en: "A beginner-friendly entry point into reading toki pona with philosophical texts — plus the full practice text: The Golden Verses of Pythagoras.",

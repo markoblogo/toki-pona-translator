@@ -5,7 +5,7 @@ export type FreeKit = {
   subtitle: string;
   shortDescription: string;
   bullets: string[];
-  pdfUrl: string;
+  downloadUrl: string;
   teaserUrl: string;
   coverImage: string;
   promoImage: string;
@@ -28,7 +28,7 @@ export const freeKits: FreeKit[] = [
       'Includes The Golden Verses of Pythagoras (full text)',
       'English → toki pona → sitelen-ready duplicate',
     ],
-    pdfUrl: '/assets/kits/stoicKit.pdf',
+    downloadUrl: '/assets/kits/stoicKit.pdf',
     teaserUrl: 'https://youtu.be/6AhXMiVvsXg',
     coverImage: '/assets/kits/stoicCover.png',
     promoImage: '/assets/kits/stoicPromo.jpg',
@@ -50,7 +50,7 @@ export const freeKits: FreeKit[] = [
       'Art plates: Chinese left, sitelen-ready toki pona right',
       'English → toki pona → sitelen-ready duplicate',
     ],
-    pdfUrl: '/assets/kits/chineseKit.pdf',
+    downloadUrl: '/assets/kits/chineseKit.pdf',
     teaserUrl: 'https://youtu.be/BOVyG1jP580',
     coverImage: '/assets/kits/chineseCover.jpg',
     promoImage: '/assets/kits/chinesePromo.png',
