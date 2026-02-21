@@ -53,13 +53,26 @@ const Translator: React.FC = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Translation failed');
+                let message = 'Translation failed';
+                try {
+                    const payload = await response.json();
+                    if (typeof payload?.error === 'string' && payload.error.trim()) {
+                        message = payload.error;
+                    }
+                } catch {
+                    // Keep generic message if response is not JSON.
+                }
+                throw new Error(message);
             }
 
             const data = await response.json();
             setResult(data);
         } catch (err) {
-            setError('Failed to translate. Please try again.');
+            const message =
+                err instanceof Error && err.message
+                    ? err.message
+                    : 'Failed to translate. Please try again.';
+            setError(message);
             console.error('Translation error details:', err);
         } finally {
             setLoading(false);
