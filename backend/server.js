@@ -53,7 +53,14 @@ if (!OPENAI_API_KEY) {
 }
 
 const openai = OPENAI_API_KEY ? new OpenAI({ apiKey: OPENAI_API_KEY }) : null;
-const OPENAI_MODEL = process.env.OPENAI_MODEL?.trim() || 'gpt-4.1-mini';
+const OPENAI_MODELS = (
+  process.env.OPENAI_MODELS ||
+  process.env.OPENAI_MODEL ||
+  'gpt-4o-mini,gpt-4.1-mini'
+)
+  .split(',')
+  .map((m) => m.trim())
+  .filter(Boolean);
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY?.trim();
 if (!GEMINI_API_KEY) {
@@ -102,25 +109,27 @@ async function generateWithFallback(prompt, timeoutMs) {
   const providerErrors = [];
 
   if (openai) {
-    try {
-      const completion = await withTimeout(
-        openai.chat.completions.create({
-          model: OPENAI_MODEL,
-          response_format: { type: 'json_object' },
-          messages: [
-            { role: 'system', content: 'You are a precise Toki Pona translation assistant. Return only valid JSON.' },
-            { role: 'user', content: prompt },
-          ],
-        }),
-        timeoutMs
-      );
-      const text = completion?.choices?.[0]?.message?.content;
-      if (typeof text === 'string' && text.trim()) {
-        return text;
+    for (const modelName of OPENAI_MODELS) {
+      try {
+        const completion = await withTimeout(
+          openai.chat.completions.create({
+            model: modelName,
+            response_format: { type: 'json_object' },
+            messages: [
+              { role: 'system', content: 'You are a precise Toki Pona translation assistant. Return only valid JSON.' },
+              { role: 'user', content: prompt },
+            ],
+          }),
+          timeoutMs
+        );
+        const text = completion?.choices?.[0]?.message?.content;
+        if (typeof text === 'string' && text.trim()) {
+          return text;
+        }
+        providerErrors.push(`openai:${modelName}: empty response`);
+      } catch (e) {
+        providerErrors.push(`openai:${modelName}: ${e?.message || String(e)}`);
       }
-      providerErrors.push(`openai:${OPENAI_MODEL}: empty response`);
-    } catch (e) {
-      providerErrors.push(`openai:${OPENAI_MODEL}: ${e?.message || String(e)}`);
     }
   }
 
