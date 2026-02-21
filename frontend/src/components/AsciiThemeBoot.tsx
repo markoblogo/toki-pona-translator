@@ -10,8 +10,8 @@ declare global {
 
 const ASCII_STYLE_ID = "ascii-theme-css";
 const ASCII_SCRIPT_ID = "ascii-theme-js";
-const ASCII_CSS_SRC = "https://cdn.jsdelivr.net/gh/markoblogo/AsciiTheme@0.1.0/dist/style.css";
-const ASCII_JS_SRC = "https://cdn.jsdelivr.net/gh/markoblogo/AsciiTheme@0.1.0/dist/ascii-theme.umd.js";
+const ASCII_CSS_SRC = "https://cdn.jsdelivr.net/gh/markoblogo/AsciiTheme@10b1cde/dist/style.css";
+const ASCII_JS_SRC = "https://cdn.jsdelivr.net/gh/markoblogo/AsciiTheme@10b1cde/dist/ascii-theme.umd.js";
 
 function initAsciiTheme(): void {
   if (typeof window === "undefined") return;
