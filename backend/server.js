@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const crypto = require('crypto');
+const OpenAI = require('openai');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
@@ -45,10 +46,18 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Initialize Gemini API
+// Initialize providers
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY?.trim();
+if (!OPENAI_API_KEY) {
+  console.warn('⚠️ OPENAI_API_KEY is not set. OpenAI translation is disabled.');
+}
+
+const openai = OPENAI_API_KEY ? new OpenAI({ apiKey: OPENAI_API_KEY }) : null;
+const OPENAI_MODEL = process.env.OPENAI_MODEL?.trim() || 'gpt-4.1-mini';
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY?.trim();
 if (!GEMINI_API_KEY) {
-  console.warn('⚠️ GEMINI_API_KEY is not set. /api/translate will fail until configured.');
+  console.warn('⚠️ GEMINI_API_KEY is not set. Gemini fallback is disabled.');
 }
 
 const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
@@ -90,31 +99,55 @@ function extractJsonObject(text) {
 }
 
 async function generateWithFallback(prompt, timeoutMs) {
-  if (!genAI) {
-    const err = new Error('GEMINI_API_KEY is not configured');
-    err.statusCode = 503;
-    throw err;
-  }
+  const providerErrors = [];
 
-  const errors = [];
-  for (const modelName of MODEL_CANDIDATES) {
+  if (openai) {
     try {
-      const model = genAI.getGenerativeModel({
-        model: modelName,
-        generationConfig: {
-          responseMimeType: 'application/json',
-        },
-      });
-      const result = await withTimeout(model.generateContent(prompt), timeoutMs);
-      const response = await result.response;
-      return response.text();
+      const completion = await withTimeout(
+        openai.chat.completions.create({
+          model: OPENAI_MODEL,
+          response_format: { type: 'json_object' },
+          messages: [
+            { role: 'system', content: 'You are a precise Toki Pona translation assistant. Return only valid JSON.' },
+            { role: 'user', content: prompt },
+          ],
+        }),
+        timeoutMs
+      );
+      const text = completion?.choices?.[0]?.message?.content;
+      if (typeof text === 'string' && text.trim()) {
+        return text;
+      }
+      providerErrors.push(`openai:${OPENAI_MODEL}: empty response`);
     } catch (e) {
-      errors.push(`${modelName}: ${e?.message || String(e)}`);
+      providerErrors.push(`openai:${OPENAI_MODEL}: ${e?.message || String(e)}`);
     }
   }
 
-  const err = new Error(`All Gemini model attempts failed (${errors.join(' | ')})`);
-  err.statusCode = 502;
+  if (genAI) {
+    for (const modelName of MODEL_CANDIDATES) {
+      try {
+        const model = genAI.getGenerativeModel({
+          model: modelName,
+          generationConfig: {
+            responseMimeType: 'application/json',
+          },
+        });
+        const result = await withTimeout(model.generateContent(prompt), timeoutMs);
+        const response = await result.response;
+        return response.text();
+      } catch (e) {
+        providerErrors.push(`gemini:${modelName}: ${e?.message || String(e)}`);
+      }
+    }
+  }
+
+  const err = new Error(
+    providerErrors.length
+      ? `All translation provider attempts failed (${providerErrors.join(' | ')})`
+      : 'No translation provider is configured (OPENAI_API_KEY or GEMINI_API_KEY required)'
+  );
+  err.statusCode = providerErrors.length ? 502 : 503;
   throw err;
 }
 
@@ -147,14 +180,16 @@ Response format:
   "explanation": "..."
 }`;
 
-    const timeoutMs = Number(process.env.GEMINI_TIMEOUT_MS || 12_000);
+    const timeoutMs = Number(
+      process.env.TRANSLATION_TIMEOUT_MS || process.env.OPENAI_TIMEOUT_MS || process.env.GEMINI_TIMEOUT_MS || 12_000
+    );
 
     const textResponse = await generateWithFallback(prompt, timeoutMs);
 
     // Extract JSON object safely
     const jsonRaw = extractJsonObject(textResponse);
     if (!jsonRaw) {
-      throw new Error('Failed to parse JSON from Gemini response');
+      throw new Error('Failed to parse JSON from provider response');
     }
 
     const jsonResponse = JSON.parse(jsonRaw);
