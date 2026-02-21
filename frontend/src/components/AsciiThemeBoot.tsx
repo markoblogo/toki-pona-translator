@@ -13,9 +13,25 @@ const ASCII_SCRIPT_ID = "ascii-theme-js";
 const ASCII_CSS_SRC = "https://unpkg.com/@abvx/ascii-theme@0.2.0/dist/style.css";
 const ASCII_JS_SRC = "https://unpkg.com/@abvx/ascii-theme@0.2.0/dist/ascii-theme.umd.js";
 
+function resetAsciiStyleOnLoad(storageKey: string): void {
+  document.documentElement.dataset.style = "default";
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return;
+    const parsed = JSON.parse(raw) as { style?: "default" | "ascii"; mode?: "light" | "dark" };
+    if (!parsed || typeof parsed !== "object" || parsed.style === undefined) return;
+    delete parsed.style;
+    window.localStorage.setItem(storageKey, JSON.stringify(parsed));
+  } catch {
+    // no-op
+  }
+}
+
 function initAsciiTheme(): void {
   if (typeof window === "undefined") return;
   if (document.documentElement.dataset.asciiThemeInit === "1") return;
+
+  resetAsciiStyleOnLoad("toki_theme_v1");
 
   window.AsciiTheme?.initAsciiTheme?.({
     integrateTheme: "auto",
