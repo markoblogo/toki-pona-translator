@@ -53,7 +53,10 @@ module.exports = async function handler(req, res) {
     const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
     const OPENAI_MODELS = (process.env.OPENAI_MODELS || process.env.OPENAI_MODEL || 'gpt-4o-mini,gpt-4.1-mini')
       .split(',').map((m) => m.trim()).filter(Boolean);
-    const MODEL_CANDIDATES = (process.env.GEMINI_MODELS || 'gemini-2.0-flash,gemini-1.5-flash')
+    const MODEL_CANDIDATES = (
+      process.env.GEMINI_MODELS ||
+      'gemini-2.0-flash,gemini-2.0-flash-exp,gemini-1.5-flash-latest,gemini-1.5-flash'
+    )
       .split(',').map((m) => m.trim()).filter(Boolean);
 
     const prompt = `You are a Toki Pona translator. Detect the input language and translate the meaning into Toki Pona. Output ONLY valid Toki Pona words as a space-separated list. Return a JSON object with: - sourceLang: language code (e.g., 'en', 'es'), - tokiPonaWords: array of strings (the translated words), - explanation: 1-2 sentences in English describing the Toki Pona translation. Input text: "${text}" Response format: { "sourceLang": "...", "tokiPonaWords": ["...", "..."], "explanation": "..." }`;
@@ -122,11 +125,18 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error('Translation error:', { requestId, message: error?.message });
-    res.status(error?.statusCode || 500).json({
-      error: error?.statusCode === 503
-        ? 'Translation service is not configured'
-        : 'Failed to translate text',
+    const payload = {
+      error:
+        error?.statusCode === 503
+          ? 'Translation service is not configured'
+          : 'Failed to translate text',
       requestId,
-    });
+    };
+
+    if (process.env.TRANSLATION_DEBUG === '1' && typeof error?.message === 'string') {
+      payload.details = error.message.slice(0, 1200);
+    }
+
+    res.status(error?.statusCode || 500).json(payload);
   }
 };

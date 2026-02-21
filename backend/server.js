@@ -68,7 +68,10 @@ if (!GEMINI_API_KEY) {
 }
 
 const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
-const MODEL_CANDIDATES = (process.env.GEMINI_MODELS || 'gemini-2.0-flash,gemini-1.5-flash')
+const MODEL_CANDIDATES = (
+  process.env.GEMINI_MODELS ||
+  'gemini-2.0-flash,gemini-2.0-flash-exp,gemini-1.5-flash-latest,gemini-1.5-flash'
+)
   .split(',')
   .map((m) => m.trim())
   .filter(Boolean);
@@ -220,10 +223,16 @@ Response format:
       stack: error?.stack,
     });
 
-    res.status(error?.statusCode || 500).json({
+    const payload = {
       error: error?.statusCode === 503 ? 'Translation service is not configured' : 'Failed to translate text',
       requestId: req.requestId,
-    });
+    };
+
+    if (process.env.TRANSLATION_DEBUG === '1' && typeof error?.message === 'string') {
+      payload.details = error.message.slice(0, 1200);
+    }
+
+    res.status(error?.statusCode || 500).json(payload);
   }
 });
 
