@@ -4,6 +4,7 @@ import Learn from './components/Learn';
 import Footer from './components/Footer';
 import KitPage from './pages/KitPage';
 import SiteHeader from './components/SiteHeader';
+import AsciiThemeBoot from './components/AsciiThemeBoot';
 
 type Route = 'app' | 'kit';
 
@@ -51,11 +52,17 @@ function App() {
   };
 
   if (route === 'kit') {
-    return <KitPage lang={kitLang} />;
+    return (
+      <>
+        <AsciiThemeBoot />
+        <KitPage lang={kitLang} />
+      </>
+    );
   }
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] flex flex-col">
+      <AsciiThemeBoot />
       <SiteHeader title="Toki Pona Translator" active={activeTab} onNavigate={navigate} />
 
       <main className="flex-grow">{activeTab === 'translate' ? <Translator /> : <Learn />}</main>

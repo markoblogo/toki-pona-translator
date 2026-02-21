@@ -54,6 +54,8 @@ export default function SiteHeader({ title, active, onNavigate }: SiteHeaderProp
           >
             Toki Stoic
           </a>
+
+          <div id="ascii-toggle-anchor" className="ascii-toggle-anchor" />
         </nav>
       </div>
     </header>

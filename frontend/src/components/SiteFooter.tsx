@@ -89,6 +89,20 @@ export default function SiteFooter() {
           GitHub
         </a>
       </div>
+
+      <div className="ascii-footnote mt-3 text-xs text-black/45">
+        <span>Experimental ASCII</span>
+        <span aria-hidden="true">&nbsp;·&nbsp;</span>
+        <a
+          href="https://github.com/markoblogo/AsciiTheme"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-black/20 underline-offset-4 hover:text-black"
+        >
+          AsciiTheme
+        </a>
+      </div>
+
     </footer>
   );
 }

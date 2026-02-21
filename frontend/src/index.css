@@ -65,3 +65,98 @@
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   }
 }
+
+.ascii-toggle-anchor {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ascii-toggle-anchor .ascii-theme-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ascii-toggle-anchor .ascii-theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  padding: 0.35rem 0.65rem;
+  font-size: 12px;
+  line-height: 1;
+}
+
+:root[data-style="ascii"] .ascii-toggle-anchor .ascii-theme-toggle-btn {
+  color: currentColor;
+  border-color: currentColor;
+  background: transparent;
+}
+
+.ascii-footnote {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+:root[data-style="ascii"] .ascii-footnote a {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .ascii-toggle-anchor .ascii-theme-toggle-btn {
+    min-height: 30px;
+    min-width: 30px;
+    padding: 0.3rem 0.55rem;
+  }
+}
+
+
+/* Managed mode dark fallback for sites without native theme. */
+:root[data-style="default"][data-ascii-mode="dark"] body {
+  background-color: #0c1118;
+  color: #f4f8fc;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .bg-\[\#F9FAFB\] {
+  background-color: #0c1118 !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .bg-white,
+:root[data-style="default"][data-ascii-mode="dark"] .card,
+:root[data-style="default"][data-ascii-mode="dark"] .card-gloss {
+  background-color: #111827 !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .text-\[\#111827\] {
+  color: #f4f8fc !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .text-\[\#6B7280\],
+:root[data-style="default"][data-ascii-mode="dark"] .text-black\/50,
+:root[data-style="default"][data-ascii-mode="dark"] .text-black\/45,
+:root[data-style="default"][data-ascii-mode="dark"] .text-secondary {
+  color: #aebdce !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .border-\[\#E5E7EB\],
+:root[data-style="default"][data-ascii-mode="dark"] .border-black\/10,
+:root[data-style="default"][data-ascii-mode="dark"] .btn-pill-inactive {
+  border-color: #3a4b5d !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .btn-pill-inactive {
+  background-color: #101823 !important;
+  color: #e2e8f0 !important;
+}
+
+:root[data-style="default"][data-ascii-mode="dark"] .btn-pill-active {
+  background-color: rgba(25, 161, 131, 0.16) !important;
+  border-color: #19a183 !important;
+  color: #f4f8fc !important;
+}
