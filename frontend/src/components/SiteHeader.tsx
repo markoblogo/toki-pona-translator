@@ -45,6 +45,14 @@ export default function SiteHeader({ title, active, onNavigate }: SiteHeaderProp
           <NavLink href="/" label="Translate" isActive={active === 'translate'} clientNav="/" />
           <NavLink href="/learn" label="Learn" isActive={active === 'learn'} clientNav="/learn" />
           <NavLink href="https://toki-free.abvx.xyz/en" label="Kit" isActive={active === 'kit'} />
+          <a
+            href="https://dao-toki.abvx.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-[#6B7280] hover:text-[#111827] hover:underline"
+          >
+            Chinese Wisdom
+          </a>
 
           <a
             href="https://stoic.abvx.xyz"

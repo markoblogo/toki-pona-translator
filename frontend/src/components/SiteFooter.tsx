@@ -35,9 +35,9 @@ export default function SiteFooter() {
     <footer className="mt-12 border-t border-black/10 pt-8">
       <div className="grid gap-3 md:grid-cols-3">
         <BannerLink
-          href="/"
-          title="Toki Pona Translator"
-          subtitle="Type in any language. Get Toki Pona in Latin, sitelen pona, or emoji."
+          href="https://dao-toki.abvx.xyz/"
+          title="Chinese Wisdom in toki pona"
+          subtitle="Bilingual series landing for Chinese classics in toki pona."
           icon=">"
         />
         <BannerLink
