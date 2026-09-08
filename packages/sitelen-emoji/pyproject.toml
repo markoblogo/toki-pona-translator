@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sitelen-emoji"
+version = "1.1.0"
+description = "toki pona to sitelen emoji lookup and translation helpers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "sitelen-emoji-truth contributors" }]
+keywords = ["toki pona", "emoji", "sitelen emoji"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only"
+]
+
+[project.urls]
+Homepage = "https://github.com/markoblogo/sitelen-emoji-truth"
+Repository = "https://github.com/markoblogo/sitelen-emoji-truth"
+
+[tool.setuptools]
+packages = ["sitelen_emoji", "sitelen_emoji.profiles"]
+
+[tool.setuptools.package-data]
+sitelen_emoji = ["profiles/default-stable.v1.json"]
