@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.10
+
+### Changed
+
+- Moved the canonical package source and registry metadata to the toki pona monorepository.
+- Synchronized the bundled emoji profile and Python static-assets package from the shared source.
+- Kept the JavaScript API, adapters, and generated display behavior compatible with v0.3.9.
+
 ## v0.3.9
 
 ### Added/Improved

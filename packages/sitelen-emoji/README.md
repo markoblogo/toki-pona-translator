@@ -54,10 +54,10 @@ Pin to a **git tag** (recommended) and fetch the frozen profile via `raw.githubu
 Example:
 
 ```text
-https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.0/packages/sitelen-emoji/profiles/default-stable.v1.json
+https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.1/packages/sitelen-emoji/profiles/default-stable.v1.json
 ```
 
-Replace `sitelen-emoji-v1.1.0` with the release tag you want to pin to.
+Replace `sitelen-emoji-v1.1.1` with the release tag you want to pin to.
 
 Why pin: your translator/book pipeline should not change output unless **you** intentionally update the pinned version.
 
@@ -227,7 +227,7 @@ Releases are managed by release-please from Conventional Commits.
 Consumers can pin to release tags:
 
 ```
-https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.0/packages/sitelen-emoji/profiles/default-stable.v1.json
+https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.1/packages/sitelen-emoji/profiles/default-stable.v1.json
 ```
 
 ---

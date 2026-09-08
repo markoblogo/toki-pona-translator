@@ -10,7 +10,7 @@ from sitelen_layer_static import (
 
 
 def test_upstream_version_is_exposed():
-    assert UPSTREAM_VERSION == "0.3.9"
+    assert UPSTREAM_VERSION == "0.3.10"
 
 
 def test_expected_assets_exist():

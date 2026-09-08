@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 (2026-09-09)
+
+- Moved the canonical source and package metadata to the toki pona monorepository.
+- Kept the frozen `default-stable.v1` profile and public APIs unchanged.
+
 ## [1.1.0](https://github.com/markoblogo/sitelen-emoji-truth/compare/sitelen-emoji-truth-v1.0.0...sitelen-emoji-truth-v1.1.0) (2026-06-08)
 
 
