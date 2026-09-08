@@ -1,0 +1,13 @@
+{
+  "name": "sitelen-layer-plugin-ghost",
+  "artifact": "ghost-theme-snippet",
+  "version": "0.3.0",
+  "entry": {
+    "manifest": "manifest.json",
+    "template": "template.hbs"
+  },
+  "build": {
+    "tool": "copy-to-theme",
+    "notes": "paste template.hbs into theme partials"
+  }
+}

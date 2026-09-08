@@ -1,0 +1,8 @@
+{
+  "id": "sitelen-layer-plugin-logseq",
+  "name": "Sitelen Layer Plugin",
+  "version": "0.3.0",
+  "description": "PoC integration for Logseq",
+  "icon": "icon.png",
+  "author": "sitelen-layer-plugin"
+}

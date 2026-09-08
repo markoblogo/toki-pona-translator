@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/sitelen-layer-plugin/dist/sitelen-layer-plugin.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sitelen-layer-plugin/dist/sitelen-layer-plugin.css" />
+<script>
+  const ALLOW = ['/tp', '/toki-pona'];
+  const BLOCK = ['/admin'];
+
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!window.createSitelenLayerPlugin) {
+      return;
+    }
+
+    const path = window.location.pathname || '';
+    if (BLOCK.some((rule) => path.includes(rule))) {
+      return;
+    }
+
+    if (!ALLOW.some((rule) => path.includes(rule))) {
+      return;
+    }
+
+    window.createSitelenLayerPlugin({
+      container: 'main',
+      showToggle: true,
+      defaultLayer: 'latin',
+      routeExclude: BLOCK,
+      routeMatchMode: 'contains'
+    }).init();
+  });
+</script>

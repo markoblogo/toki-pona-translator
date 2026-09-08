@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QA Profile EN</title></head>
+  <body>
+    <h1>QA Profile Route: /en/</h1>
+    <div id="en-content">This page is English-heavy and should not show toggle by profile setup.</div>
+    <pre id="diag"></pre>
+    <script type="module">
+      import { createSitelenLayerPluginFromProfiles } from '../../../../src/index.ts';
+      const diag = document.querySelector('#diag');
+
+      const plugin = createSitelenLayerPluginFromProfiles(
+        [
+          {
+            id: 'tok-profile',
+            priority: 20,
+            match: { pathnamePrefix: '/qa/fixtures/profile-routes/tok/' },
+            config: { container: '#tok-content', defaultLayer: 'sitelen-emoji' }
+          },
+          {
+            id: 'en-profile',
+            priority: 10,
+            match: { pathnamePrefix: '/qa/fixtures/profile-routes/en/' },
+            config: { container: '#en-content', showToggle: false }
+          }
+        ],
+        {
+          baseConfig: {
+            debug: true,
+            debugOverlay: true,
+            onDiagnostics: (d) => (diag.textContent = JSON.stringify(d, null, 2))
+          }
+        }
+      );
+
+      plugin.init();
+      window.qaPlugin = plugin;
+    </script>
+  </body>
+</html>

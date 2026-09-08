@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v0.3 Integration: Extension CSP-safe Flow</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f3f7ff;
+        color: #0d1730;
+        padding: 24px;
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #d7dcec;
+        border-radius: 12px;
+        padding: 14px;
+        margin: 12px 0;
+      }
+
+      code {
+        display: block;
+        white-space: pre;
+        margin-top: 8px;
+        background: #f1f5ff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>v0.3 demo: extension PoC CSP-safe flow</h1>
+      <section class="card">
+        <h2>Browser extension content checks</h2>
+        <ul>
+          <li>dynamic import uses extension asset URL (no inline eval/code injection)</li>
+          <li>global plugin handle avoids duplicate init on reinjection</li>
+          <li>route allow/deny guard is centralized and route-safe</li>
+        </ul>
+        <code>
+chrome.runtime.sendMessage({ type: 'GET_ENABLED' }, ...);
+import(chrome.runtime.getURL('sitelen-layer-plugin.bundle.js'));
+        </code>
+      </section>
+      <section class="card">
+        <h2>Reference files</h2>
+        <a href="../../adapters/browser-extension/README.md">Browser extension PoC README</a><br />
+        <a href="../../adapters/browser-extension/content.js">content.js</a>
+      </section>
+    </main>
+  </body>
+</html>

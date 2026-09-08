@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Sitelen Layer Reader (PoC)",
+  "description": "Optional read-only toggle for toki pona page rendering",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Sitelen Layer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

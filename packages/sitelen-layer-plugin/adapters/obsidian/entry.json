@@ -1,0 +1,13 @@
+{
+  "name": "sitelen-layer-plugin-obsidian",
+  "artifact": "obsidian-plugin",
+  "version": "0.3.0",
+  "entry": {
+    "manifest": "manifest.json",
+    "main": "main.ts"
+  },
+  "build": {
+    "tool": "obsidian-plugin",
+    "notes": "compile main.ts to dist/main.js for release"
+  }
+}

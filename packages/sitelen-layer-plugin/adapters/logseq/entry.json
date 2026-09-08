@@ -1,0 +1,13 @@
+{
+  "name": "sitelen-layer-plugin-logseq",
+  "artifact": "logseq-plugin",
+  "version": "0.3.0",
+  "entry": {
+    "main": "main.ts",
+    "manifest": "logseq-plugin.json"
+  },
+  "build": {
+    "tool": "logseq-plugin-cli",
+    "notes": "bundle main.ts to dist/main.js for release"
+  }
+}

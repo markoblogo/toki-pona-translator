@@ -1,0 +1,155 @@
+{
+  "name": "sitelen-layer-plugin",
+  "version": "0.3.9",
+  "description": "Site-owner display-layer plugin for toki pona pages (latin / sitelen-pona / sitelen-emoji)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markoblogo/sitelen-layer-plugin.git"
+  },
+  "type": "module",
+  "main": "./dist/sitelen-layer-plugin.cjs",
+  "module": "./dist/sitelen-layer-plugin.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "sitelen-layer-cli": "bin/sitelen-layer-cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/sitelen-layer-plugin.js",
+      "require": "./dist/sitelen-layer-plugin.cjs"
+    },
+    "./styles.css": "./dist/sitelen-layer-plugin.css",
+    "./sitelen-pona-font.css": "./sitelen-pona-font.css",
+    "./sitelen-emoji-truth": {
+      "types": "./dist/sitelen-emoji-truth.d.ts",
+      "import": "./dist/sitelen-emoji-truth.js",
+      "require": "./dist/sitelen-emoji-truth.cjs"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.ts",
+      "import": "./dist/cli.js",
+      "require": "./dist/cli.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "import": "./dist/vue.js",
+      "require": "./dist/vue.cjs"
+    },
+    "./svelte": {
+      "types": "./dist/svelte.d.ts",
+      "import": "./dist/svelte.js",
+      "require": "./dist/svelte.cjs"
+    },
+    "./next": {
+      "types": "./dist/next.d.ts",
+      "import": "./dist/next.js",
+      "require": "./dist/next.cjs"
+    },
+    "./vite-plugin": {
+      "types": "./dist/vite-plugin.d.ts",
+      "import": "./dist/vite-plugin.js",
+      "require": "./dist/vite-plugin.cjs"
+    },
+    "./webpack-plugin": {
+      "types": "./dist/webpack-plugin.d.ts",
+      "import": "./dist/webpack-plugin.js",
+      "require": "./dist/webpack-plugin.cjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/index.d.ts"
+      ],
+      "sitelen-emoji-truth": [
+        "dist/sitelen-emoji-truth.d.ts"
+      ],
+      "cli": [
+        "dist/cli.d.ts"
+      ],
+      "styles.css": [
+        "dist/sitelen-layer-plugin.css"
+      ],
+      "sitelen-pona-font.css": [
+        "sitelen-pona-font.css"
+      ],
+      "react": [
+        "dist/react.d.ts"
+      ],
+      "vue": [
+        "dist/vue.d.ts"
+      ],
+      "svelte": [
+        "dist/svelte.d.ts"
+      ],
+      "next": [
+        "dist/next.d.ts"
+      ],
+      "vite-plugin": [
+        "dist/vite-plugin.d.ts"
+      ],
+      "webpack-plugin": [
+        "dist/webpack-plugin.d.ts"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vue": "^3.5.12",
+    "svelte": "^4.2.19"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "bin/sitelen-layer-cli.mjs",
+    "vendor/sitelen-emoji-truth/default-stable.v1.json",
+    "sitelen-pona-font.css",
+    "assets/fonts",
+    "adapters",
+    "demo/integration",
+    "docs/MIGRATION_v0.3.0.md",
+    "docs/V0.3_INTEGRATION_TRACK.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "cli": "node bin/sitelen-layer-cli.mjs",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "preview": "vite preview",
+    "pack:adapters": "node scripts/pack-adapters.mjs",
+    "smoke:adapters": "node scripts/smoke-adapter-packages.mjs",
+    "smoke:publication": "node scripts/smoke-publication.mjs",
+    "ci:release": "npm run build && npm run test:run && npm run pack:adapters && npm run smoke:adapters && npm run smoke:publication",
+    "typecheck": "tsc --noEmit",
+    "emoji:update": "node scripts/update-emoji-mapping.mjs",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "keywords": [
+    "toki-pona",
+    "sitelen-pona",
+    "sitelen-emoji",
+    "plugin"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "svelte": "^4.2.19",
+    "vue": "^3.5.12",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3",
+    "vitest": "^3.2.4"
+  }
+}

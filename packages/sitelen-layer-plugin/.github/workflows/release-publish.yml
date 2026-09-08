@@ -1,0 +1,190 @@
+name: v0.3 publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (required for manual dispatch). Example: v0.3.0'
+        required: true
+        type: string
+      publishMode:
+        description: 'Auth mode for npm publish: auto (default), token, trusted'
+        required: false
+        default: auto
+        type: choice
+        options:
+          - auto
+          - token
+          - trusted
+      dryRun:
+        description: 'Staging run: skip npm publish, still create/update GitHub release with artifacts'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish npm package and release artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve publish mode
+        id: publish_mode
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.dryRun }}" == "true" ]]; then
+            echo "run_publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Resolve release tag
+        id: release_tag
+        run: |
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate tag format
+        run: |
+          if ! [[ "${{ steps.release_tag.outputs.tag }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid tag format: ${{ steps.release_tag.outputs.tag }}"
+            echo "Expected format: v<major>.<minor>.<patch>"
+            exit 1
+          fi
+
+      - name: Verify tag exists
+        run: |
+          tag_name="${{ steps.release_tag.outputs.tag }}"
+          if ! git rev-parse --verify --quiet "$tag_name^{commit}"; then
+            echo "Tag $tag_name not found in repository"
+            exit 1
+          fi
+
+      - name: Verify package version matches release tag
+        run: |
+          package_version="$(node -p "require('./package.json').version")"
+          release_version="${{ steps.release_tag.outputs.tag }}"
+          release_version="${release_version#v}"
+
+          if [[ "$package_version" != "$release_version" ]]; then
+            echo "Version mismatch: package.json has $package_version but tag is v$release_version"
+            echo "Align both before running production release."
+            exit 1
+          fi
+
+      - name: Resolve release label
+        id: release_name
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.dryRun }}" == "true" ]]; then
+            echo "name=Release ${{ steps.release_tag.outputs.tag }} (staging)" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=Release ${{ steps.release_tag.outputs.tag }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test:run
+
+      - name: Build adapter packages
+        run: npm run pack:adapters
+
+      - name: Verify adapter package artifacts
+        run: npm run smoke:adapters
+
+      - name: Prepare npm tarball
+        run: npm run smoke:publication
+
+      - name: Resolve npm publish mode
+        if: steps.publish_mode.outputs.run_publish == 'true'
+        id: npm_publish_mode
+        run: |
+          requested_mode="${{ github.event.inputs.publishMode }}"
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            if [[ "$requested_mode" == "token" ]]; then
+              echo "mode=token" >> "$GITHUB_OUTPUT"
+              echo "Using classic auth via NPM_TOKEN by explicit request."
+            elif [[ "$requested_mode" == "trusted" ]]; then
+              echo "mode=trusted" >> "$GITHUB_OUTPUT"
+              echo "Using npm Trusted Publishing by explicit request."
+            else
+              if [[ -n "${{ secrets.NPM_TOKEN }}" ]]; then
+                echo "mode=token" >> "$GITHUB_OUTPUT"
+                echo "Using classic auth via NPM_TOKEN (auto mode)."
+              else
+                echo "mode=trusted" >> "$GITHUB_OUTPUT"
+                echo "Using npm Trusted Publishing via GitHub OIDC (auto mode)."
+              fi
+            fi
+          elif [[ -n "${{ secrets.NPM_TOKEN }}" ]]; then
+            echo "mode=token" >> "$GITHUB_OUTPUT"
+            echo "Using classic auth via NPM_TOKEN."
+          else
+            echo "mode=trusted" >> "$GITHUB_OUTPUT"
+            echo "Using npm Trusted Publishing via GitHub OIDC."
+          fi
+
+      - name: Publish to npm (classic auth)
+        if: |
+          steps.publish_mode.outputs.run_publish == 'true' &&
+          steps.npm_publish_mode.outputs.mode == 'token'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --access public
+
+      - name: Publish to npm (trusted publishing)
+        if: |
+          steps.publish_mode.outputs.run_publish == 'true' &&
+          steps.npm_publish_mode.outputs.mode == 'trusted'
+        run: |
+          unset NODE_AUTH_TOKEN
+          npm publish --access public --provenance
+
+      - name: Find npm tarball
+        id: tgz
+        run: |
+          tarball_file="$(ls -1 *.tgz | head -n 1)"
+          if [[ -z "$tarball_file" ]]; then
+            echo "npm tarball was not found"
+            exit 1
+          fi
+          echo "file=$tarball_file" >> "$GITHUB_OUTPUT"
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release_tag.outputs.tag }}
+          name: ${{ steps.release_name.outputs.name }}
+          prerelease: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dryRun == 'true' }}
+          generate_release_notes: true
+          files: |
+            ${{ steps.tgz.outputs.file }}
+            dist/adapters/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

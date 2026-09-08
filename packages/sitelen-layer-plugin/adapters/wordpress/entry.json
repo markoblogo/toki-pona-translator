@@ -1,0 +1,13 @@
+{
+  "name": "sitelen-layer-plugin-wordpress",
+  "artifact": "wordpress-plugin",
+  "version": "0.3.0",
+  "entry": {
+    "manifest": "manifest.json",
+    "php": "plugin.php"
+  },
+  "build": {
+    "tool": "wp-scripts",
+    "notes": "bundle/compile plugin assets if needed"
+  }
+}

@@ -1,0 +1,11 @@
+import type { SitelenLayer, SitelenPonaConfig } from '../types';
+export declare const DEFAULT_SITELEN_PONA_FONT = "'sitelen seli kiwen asuki', 'nasin nanpa', sans-serif";
+export declare const DEFAULT_SITELEN_PONA_CLASS = "slp-layer--sitelen-pona";
+export declare const LATIN_CLASS = "slp-layer--latin";
+export declare const EMOJI_CLASS = "slp-layer--sitelen-emoji";
+export declare function ensureFontCssLink(fontCssUrl?: string): void;
+export declare function applySitelenPonaVariables(container: Element, sitelenPonaConfig: Required<SitelenPonaConfig>): void;
+export declare function clearSitelenPonaVariables(container: Element, applyToRoot: boolean): void;
+export declare function isSitelenPonaFontReady(fontFamily: string): boolean;
+export declare function getSitelenPonaClassName(configClassName?: string): string;
+export declare function applyContainerLayerClass(container: Element, layer: SitelenLayer, sitelenPonaClassName: string): void;

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitelen Layer Plugin Playground</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #0f1220;
+        color: #e8ebf7;
+      }
+
+      .layout {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px 20px 60px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .panel {
+        border-radius: 14px;
+        border: 1px solid #2f3d5f;
+        background: #141a2f;
+        padding: 16px;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        color: #bbc4de;
+      }
+
+      input[type='text'],
+      textarea,
+      select {
+        width: 100%;
+        margin-top: 6px;
+        box-sizing: border-box;
+        border: 1px solid #2e3a5a;
+        border-radius: 8px;
+        background: #0d1124;
+        color: #eef2ff;
+        padding: 8px;
+      }
+
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+      }
+
+      button {
+        border: 1px solid #4a5a87;
+        background: #2b3a68;
+        color: #f5f7ff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #32437a;
+      }
+
+      .preview {
+        white-space: pre-wrap;
+        line-height: 1.5;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <h2>Sitelen Layer Plugin Playground</h2>
+        <p>
+          Live playground with editable source, strategy options, toggle mount mode and live diagnostics.
+        </p>
+      </section>
+
+      <section class="panel controls">
+        <label>
+          Container selector
+          <input id="selector" type="text" value="#playground-preview" />
+        </label>
+        <label>
+          Threshold
+          <input id="threshold" type="text" value="0.7" />
+        </label>
+        <label>
+          Detection strategy
+          <select id="detection-strategy">
+            <option value="weighted" selected>weighted</option>
+            <option value="simple">simple</option>
+          </select>
+        </label>
+        <label>
+          Sitelen pona strategy
+          <select id="transform-strategy">
+            <option value="mvp">mvp</option>
+            <option value="rules">rules</option>
+            <option value="api">api</option>
+          </select>
+        </label>
+        <label>
+          Render strategy
+          <select id="render-strategy">
+            <option value="ligature-font" selected>ligature-font</option>
+            <option value="transform">transform</option>
+            <option value="font-only">font-only</option>
+          </select>
+        </label>
+        <label>
+          Toggle mode
+          <select id="toggle-mode">
+            <option value="floating" selected>floating</option>
+            <option value="auto">auto</option>
+            <option value="inline">inline</option>
+          </select>
+        </label>
+        <div>
+          <label>
+            <input id="show-toggle" type="checkbox" checked />
+            Show toggle
+          </label>
+          <label>
+            <input id="use-custom-theme" type="checkbox" />
+            Custom theme vars
+          </label>
+        </div>
+        <div>
+          <button id="recreate-btn" type="button">Re-create plugin</button>
+          <button id="refresh-btn" type="button">Refresh</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Input</h3>
+        <textarea id="source-editor">
+toki pona li pona tawa mi. mi toki e toki pona lon tenpo suli. jan pona li toki e toki pona.
+tenpo suno ni la mi moku e kili li telo. sitelen pona li suli ala li pona.
+        </textarea>
+      </section>
+
+      <section class="panel">
+        <h3>Preview</h3>
+        <div id="playground-preview" class="preview panel">
+          <p>Initialize script will mount preview here.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Diagnostics</h3>
+        <div id="diagnostics-log" class="mono">Waiting for plugin...</div>
+      </section>
+    </main>
+
+    <div id="playground-toggle-slot" style="position: fixed; left: 16px; top: 16px;"></div>
+
+    <script type="module" src="./playground.ts"></script>
+  </body>
+</html>

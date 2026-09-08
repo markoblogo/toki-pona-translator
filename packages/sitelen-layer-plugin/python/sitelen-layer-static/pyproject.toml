@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sitelen-layer-static"
+version = "0.1.0"
+description = "Python static-asset integration package for sitelen-layer-plugin."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "Anton BV" }
+]
+keywords = [
+  "toki-pona",
+  "sitelen-pona",
+  "static-assets",
+  "frontend",
+  "django",
+  "flask",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/markoblogo/sitelen-layer-plugin"
+Repository = "https://github.com/markoblogo/sitelen-layer-plugin"
+Issues = "https://github.com/markoblogo/sitelen-layer-plugin/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sitelen_layer_static"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/README.md",
+  "/pyproject.toml",
+  "/src/sitelen_layer_static",
+  "/tests",
+]
