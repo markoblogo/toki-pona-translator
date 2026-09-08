@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v0.3 Integration: Route Guard Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f5f7fc;
+        color: #0f1d33;
+        padding: 24px;
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #d7dcec;
+        border-radius: 12px;
+        padding: 14px;
+        margin: 12px 0;
+      }
+
+      code {
+        display: block;
+        white-space: pre;
+        margin-top: 8px;
+        background: #f1f5ff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>v0.3 demo: route-aware build plugins</h1>
+      <p>Use this page as a reference for CI/static docs snapshots and smoke runs.</p>
+
+      <section class="card">
+        <h2>Vite plugin route config</h2>
+        <code>
+import sitelenLayerVitePlugin from 'sitelen-layer-plugin/vite-plugin';
+
+export default defineConfig({
+  plugins: [
+    sitelenLayerVitePlugin({
+      autoImportStyle: true,
+      autoInit: true,
+      routeInclude: ['/tp', '/toki-pona'],
+      routeExclude: ['/admin', '/api/'],
+      routeMatchMode: 'contains'
+    })
+  ]
+});
+        </code>
+      </section>
+
+      <section class="card">
+        <h2>Webpack plugin route config</h2>
+        <code>
+const { SitelenLayerWebpackPlugin } = require('sitelen-layer-plugin/webpack-plugin');
+
+new SitelenLayerWebpackPlugin({
+  autoInjectStyles: true,
+  autoInit: true,
+  routeInclude: ['/tp', '/toki-pona'],
+  routeExclude: ['/admin', '/login'],
+  routeMatchMode: 'contains'
+});
+        </code>
+      </section>
+
+      <section class="card">
+        <h2>Smoke checks</h2>
+        <ul>
+          <li>allowed routes should include plugin init script</li>
+          <li>blocked routes should skip plugin init script</li>
+          <li>rebuild output must contain only one injected style/script marker</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

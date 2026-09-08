@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitelen Layer Plugin Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #f6f7f9;
+        color: #121316;
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 18px 80px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #d9dde5;
+        border-radius: 12px;
+        padding: 16px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #edf3ff;
+        color: #164089;
+      }
+
+      #debug-log {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #101214;
+        color: #d5fbd8;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+
+      .toggle-slot {
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .controls button {
+        border: 1px solid #ccd4e1;
+        border-radius: 8px;
+        background: #fff;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .muted {
+        color: #596579;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Sitelen Layer Plugin Demo (Stage 2)</h1>
+        <p class="muted">
+          Toggle appears only for toki pona-dominant container. Diagnostics overlay shows score, pass/fail and active layer.
+        </p>
+        <p class="muted">
+          QA fixture index: <a href="/qa/index.html">/qa/index.html</a> (eligible / non-eligible / dynamic / profiles).
+        </p>
+      </section>
+
+      <section class="card" id="eligible-container" data-sitelen-layer-scope>
+        <span class="badge">Expected: eligible (>= 70%)</span>
+        <h2>toki pona dominant block</h2>
+        <p>
+          toki pona li pona tawa mi. mi toki e toki pona lon tenpo mute. jan pona mi li toki e toki pona kin.
+          ma tomo la jan li kama sona e nimi pona pi toki pona. sina wile sona la o kute e jan pona sina.
+        </p>
+        <p>
+          tenpo suno ni la mi moku e kili li telo. jan lili en jan suli li musi lon tomo. ilo sona li pona tawa pali.
+        </p>
+        <p data-sitelen-layer-ignore>
+          This line is ignored by plugin using data-sitelen-layer-ignore.
+        </p>
+      </section>
+
+      <section class="card" id="mixed-container">
+        <span class="badge">Expected: not eligible (&lt; 70%)</span>
+        <h2>mixed language block</h2>
+        <p>
+          This block is mostly English text with only a few toki pona words like pona and toki.
+          Поэтому порог здесь обычно не проходит.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Controls</h2>
+        <div id="toggle-slot" class="toggle-slot"></div>
+        <div class="controls">
+          <button id="refresh-btn" type="button">Refresh plugin</button>
+          <button id="overlay-btn" type="button">Toggle overlay</button>
+        </div>
+        <div id="debug-log">Waiting for plugin init...</div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

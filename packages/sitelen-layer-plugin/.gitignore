@@ -1,0 +1,7 @@
+node_modules
+dist
+.vite
+.DS_Store
+*.log
+!python/sitelen-layer-static/src/sitelen_layer_static/assets/dist/
+!python/sitelen-layer-static/src/sitelen_layer_static/assets/dist/**

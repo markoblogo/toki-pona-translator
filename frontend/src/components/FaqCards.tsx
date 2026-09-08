@@ -6,7 +6,7 @@ type FAQ = {
 const FAQS: FAQ[] = [
   {
     q: 'How accurate is this translator?',
-    a: "It uses Google Gemini to generate Toki Pona translations. Great for experimentation and learning, but not official or guaranteed-perfect. Feel free to tweak the output.",
+    a: "It uses OpenAI with an optional Gemini fallback. Results are checked against the bundled Toki Pona display profile, but they remain experimental rather than official or guaranteed-perfect translations.",
   },
   {
     q: 'Which languages can I type in?',

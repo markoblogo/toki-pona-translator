@@ -1,0 +1,9 @@
+{
+  "name": "sitelen-layer-plugin-ghost",
+  "type": "ghost-theme-snippet",
+  "version": "0.3.0",
+  "routes": {
+    "include": ["/tp", "/toki-pona"],
+    "exclude": ["/editor", "/admin"]
+  }
+}

@@ -1,0 +1,102 @@
+name: Publish package
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Package to build or publish
+        required: true
+        type: choice
+        options:
+          - sitelen-emoji-npm
+          - sitelen-emoji-pypi
+          - sitelen-layer-plugin-npm
+          - sitelen-layer-static-pypi
+      dry_run:
+        description: Build and verify without publishing
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  sitelen-emoji-npm:
+    if: inputs.target == 'sitelen-emoji-npm'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/sitelen-emoji/packages/js
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm install
+      - run: npm test
+      - run: npm pack
+      - if: ${{ !inputs.dry_run }}
+        run: npm publish --provenance --access public
+
+  sitelen-emoji-pypi:
+    if: inputs.target == 'sitelen-emoji-pypi'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install build twine -r packages/sitelen-emoji/requirements-dev.txt
+      - working-directory: packages/sitelen-emoji
+        run: python -m pytest -q && python -m build && python -m twine check dist/*
+      - if: ${{ !inputs.dry_run }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/sitelen-emoji/dist/
+
+  sitelen-layer-plugin-npm:
+    if: inputs.target == 'sitelen-layer-plugin-npm'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/sitelen-layer-plugin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+          cache-dependency-path: packages/sitelen-layer-plugin/package-lock.json
+      - run: npm ci
+      - run: npm run emoji:update && git diff --exit-code -- src/generated/emojiMapping.generated.ts
+      - run: npm run ci:release
+      - if: ${{ !inputs.dry_run }}
+        run: npm publish --provenance --access public
+
+  sitelen-layer-static-pypi:
+    if: inputs.target == 'sitelen-layer-static-pypi'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: packages/sitelen-layer-plugin/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: npm ci --prefix packages/sitelen-layer-plugin
+      - run: npm run build --prefix packages/sitelen-layer-plugin
+      - run: npm run sync:python-static --prefix packages/sitelen-layer-plugin
+      - run: python -m pip install build twine pytest
+      - working-directory: packages/sitelen-layer-plugin/python/sitelen-layer-static
+        run: python -m pip install -e . && python -m pytest -q && python -m build && python -m twine check dist/*
+      - if: ${{ !inputs.dry_run }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/sitelen-layer-plugin/python/sitelen-layer-static/dist/

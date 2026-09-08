@@ -1,6 +1,6 @@
-import profile from '@/data/sitelen-emoji-default-stable.v1.json';
+import profile from '../../../packages/sitelen-emoji/profiles/default-stable.v1.json';
 
-// Pinned profile (tagged) from https://github.com/markoblogo/sitelen-emoji-truth
+// Canonical profile from the monorepo mapping package.
 // This is the ONLY source of truth used by the translator.
 // If we want to update, we bump the pinned file and redeploy.
 

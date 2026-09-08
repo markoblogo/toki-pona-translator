@@ -1,0 +1,4 @@
+interface:
+  display_name: "Toki Pona formatting pass"
+  short_description: "Format or audit layered Toki Pona manuscripts"
+  default_prompt: "Use $toki-pona-formatting-pass to audit my layered ODT manuscript without changing it."

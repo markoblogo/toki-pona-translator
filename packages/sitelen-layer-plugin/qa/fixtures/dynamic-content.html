@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tok">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QA Dynamic Content</title></head>
+  <body>
+    <h1>QA: Dynamic Content</h1>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button id="append">append content</button>
+      <button id="replace">replace section</button>
+      <button id="toggle-lang">toggle language block</button>
+      <button id="refresh">refresh()</button>
+    </div>
+    <section id="content">
+      <p>toki pona li pona tawa mi.</p>
+    </section>
+    <pre id="diag"></pre>
+    <script type="module">
+      import { createSitelenLayerPlugin } from '../../src/index.ts';
+
+      const content = document.querySelector('#content');
+      const diag = document.querySelector('#diag');
+      let englishVisible = false;
+
+      const plugin = createSitelenLayerPlugin({
+        container: '#content',
+        defaultLayer: 'sitelen-emoji',
+        debug: true,
+        mutationObserver: {
+          enabled: true,
+          debounceMs: 120,
+          incremental: true,
+          observeAttributes: false
+        },
+        onDiagnostics: (d) => (diag.textContent = JSON.stringify(d, null, 2))
+      });
+
+      plugin.init();
+
+      document.querySelector('#append').addEventListener('click', () => {
+        const p = document.createElement('p');
+        p.textContent = 'jan pona li toki e nimi pona.';
+        content.appendChild(p);
+      });
+
+      document.querySelector('#replace').addEventListener('click', () => {
+        content.innerHTML = '<p>tenpo ni la mi moku e kili lon tomo.</p>';
+      });
+
+      document.querySelector('#toggle-lang').addEventListener('click', () => {
+        englishVisible = !englishVisible;
+        let block = content.querySelector('#lang-block');
+        if (!englishVisible && block) {
+          block.remove();
+          return;
+        }
+        if (!block) {
+          block = document.createElement('p');
+          block.id = 'lang-block';
+          block.textContent = 'This block is English-heavy and can reduce eligibility.';
+          content.appendChild(block);
+        }
+      });
+
+      document.querySelector('#refresh').addEventListener('click', () => plugin.refresh());
+      window.qaPlugin = plugin;
+    </script>
+  </body>
+</html>

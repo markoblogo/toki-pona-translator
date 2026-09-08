@@ -1,108 +1,87 @@
-# Toki Pona Translator
+# Toki Pona Toolkit
 
+[![CI](https://github.com/markoblogo/toki-pona-translator/actions/workflows/monorepo-ci.yml/badge.svg)](https://github.com/markoblogo/toki-pona-translator/actions/workflows/monorepo-ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/markoblogo/toki-pona-translator)](https://github.com/markoblogo/toki-pona-translator/commits/main)
 [![Stars](https://img.shields.io/github/stars/markoblogo/toki-pona-translator?style=social)](https://github.com/markoblogo/toki-pona-translator)
 
-A minimalist web app that translates text from many languages into **Toki Pona** using **OpenAI** (with optional Gemini fallback).
+Translate into **Toki Pona**, render the result as **sitelen pona** or **sitelen emoji**, and reuse the same canonical mapping in apps, websites, and publishing workflows.
 
-**Live demo:** https://toki.abvx.xyz
+**[Try the translator](https://toki.abvx.xyz)** · **[Browse the emoji mapping](https://toki.abvx.xyz/mapping/)**
 
-**License:** MIT. See [LICENSE](LICENSE).
+## What is included
 
-## Demo
+| Product | Use it for | Install / open |
+| --- | --- | --- |
+| Translator | Translate from many languages into Toki Pona with OpenAI and optional Gemini fallback | [Live app](https://toki.abvx.xyz) |
+| [`sitelen-emoji`](packages/sitelen-emoji) | Versioned Toki Pona to emoji data and helpers | `pip install sitelen-emoji` or `npm install sitelen-emoji` |
+| [`sitelen-layer-plugin`](packages/sitelen-layer-plugin) | Add Latin, sitelen pona, and emoji display modes to a site | `npm install sitelen-layer-plugin` |
+| [`sitelen-layer-static`](packages/sitelen-layer-plugin/python/sitelen-layer-static) | Ship the display layer from Python web apps | `pip install sitelen-layer-static` |
+| [`toki-pona-formatting-pass`](skills/toki-pona-formatting-pass) | Audit bilingual ODT manuscripts without changing their wording | Copy the skill into your Codex skills directory |
 
-<a href="https://youtu.be/lCAFiDnP2NQ">
-  <img src="https://img.youtube.com/vi/lCAFiDnP2NQ/hqdefault.jpg" alt="Toki Pona Translator demo" width="860">
-</a>
+The packages keep their public names and APIs. Their former Git histories are preserved in this repository under `packages/`.
 
-## Features
+## Run the translator locally
 
-- Automatic language detection (input in most languages)
-- Multiple output modes:
-  - **Latin** (standard Toki Pona)
-  - **sitelen pona** (logographic script via a custom font)
-  - **sitelen emoji** (emoji-based representation)
-- Learn page with curated resources (sitelen pona / sitelen emosi / sitelen pilin)
-
-## Project structure
-
-toki-pona-translator/
-backend/   Node.js + Express API (OpenAI + optional Gemini fallback)
-frontend/  React + Vite + TypeScript app
-
-## Local setup
-
-### Prerequisites
-
-- Node.js (LTS recommended)
-- An OpenAI API key
-
-### Backend
-
-Install dependencies:
+Requirements: Node.js 22 (see `.nvmrc`) and an OpenAI API key.
 
 ```bash
+git clone https://github.com/markoblogo/toki-pona-translator.git
+cd toki-pona-translator
+
 cd backend
-npm install
+npm ci
+cp .env.example .env
+# Add OPENAI_API_KEY to .env
+npm start
 ```
 
-Create `backend/.env`:
-
-```env
-OPENAI_API_KEY=your_openai_api_key_here
-OPENAI_MODEL=gpt-4.1-mini
-# Optional fallback:
-# GEMINI_API_KEY=your_gemini_api_key_here
-PORT=3000
-```
-
-Run the API:
+In a second terminal:
 
 ```bash
-node server.js
-```
-
-By default, the API runs at:
-
-- http://localhost:3000
-
-### Frontend
-
-Install dependencies and start the dev server:
-
-```bash
-cd frontend
-npm install
+cd toki-pona-translator/frontend
+npm ci
 npm run dev
 ```
 
-The UI will be available at:
+Open <http://localhost:5173>. Set `GEMINI_API_KEY` in `backend/.env` only if you want Gemini as a fallback.
 
-- http://localhost:5173
+## Use the libraries
 
-Optional `frontend/.env` (only needed if your backend is not `http://localhost:3000`):
-
-```env
-VITE_API_BASE_URL=http://localhost:3000
+```bash
+npm install sitelen-emoji sitelen-layer-plugin
 ```
 
-### Deployment
+```ts
+import { createSitelenLayerPlugin } from 'sitelen-layer-plugin';
+import 'sitelen-layer-plugin/styles.css';
+import 'sitelen-layer-plugin/sitelen-pona-font.css';
 
-- Backend: deploy as a Node/Express service (Render / Railway / Fly.io, etc.)
-  - Required env vars: `OPENAI_API_KEY`, `PORT`
-- Frontend: deploy from `/frontend` (Vercel recommended)
-  - Set `VITE_API_BASE_URL` to your backend URL (production)
+createSitelenLayerPlugin({ defaultMode: 'sitelen-emoji' }).init();
+```
 
-### Privacy and cost notes
+The display layer is not a translator. It renders existing Toki Pona text and reads the canonical profile from [`packages/sitelen-emoji/profiles/default-stable.v1.json`](packages/sitelen-emoji/profiles/default-stable.v1.json).
 
-- Your API keys must be stored in environment variables (`backend/.env`) and must not be committed.
-- OpenAI/Gemini usage may incur costs depending on your plan and traffic.
+Install the manuscript QA skill from a clone:
 
-## Free Toki Pona Reader’s Kit
-If you’re learning toki pona: open the free beginner-friendly Reader’s Kit landing page (includes *The Golden Verses of Pythagoras* full text).
-- Landing: https://toki-free.abvx.xyz/en
+```bash
+mkdir -p ~/.codex/skills
+cp -R skills/toki-pona-formatting-pass ~/.codex/skills/
+```
 
-## ASCII theme
+## Development
 
-Experimental ASCII theme mode (toggle in header) powered by [AsciiTheme](https://github.com/markoblogo/AsciiTheme).
+Each product remains independently testable and publishable. Run the same checks as CI:
+
+```bash
+bash scripts/check-all.sh
+```
+
+See [`AGENTS.md`](AGENTS.md) for repository boundaries and [`docs/REPOSITORY-CONSOLIDATION.md`](docs/REPOSITORY-CONSOLIDATION.md) for migration and release continuity.
+
+## Demo
+
+[![Toki Pona Translator demo](https://img.youtube.com/vi/lCAFiDnP2NQ/hqdefault.jpg)](https://youtu.be/lCAFiDnP2NQ)
+
+## License
+
+MIT. The bundled sitelen pona font keeps its own SIL Open Font License notice.

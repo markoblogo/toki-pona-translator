@@ -1,0 +1,10 @@
+{
+  "name": "sitelen-layer-plugin-wordpress",
+  "type": "wordpress-plugin",
+  "main": "plugin.php",
+  "version": "0.3.0",
+  "routes": {
+    "include": ["/tp", "/toki-pona"],
+    "exclude": ["/wp-admin", "/wp-login.php"]
+  }
+}

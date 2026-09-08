@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tok">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QA Mixed Layout</title></head>
+  <body>
+    <header><nav>Home | Docs | Contact</nav></header>
+    <main id="content">
+      <h1>QA: Mixed Layout</h1>
+      <p>toki pona li pona. jan li toki e toki pona lon ma tomo.</p>
+      <p data-sitelen-layer-ignore>ignore: toki pona li pona</p>
+      <code>const message = "toki pona";</code>
+      <pre>toki pona in pre should stay untouched</pre>
+      <input value="toki pona" />
+      <textarea>toki pona</textarea>
+    </main>
+    <footer>footer text in English</footer>
+    <pre id="diag"></pre>
+    <script type="module">
+      import { createSitelenLayerPlugin } from '../../src/index.ts';
+      const diag = document.querySelector('#diag');
+      const plugin = createSitelenLayerPlugin({
+        container: '#content',
+        defaultLayer: 'sitelen-emoji',
+        debug: true,
+        onDiagnostics: (d) => (diag.textContent = JSON.stringify(d, null, 2))
+      });
+      plugin.init();
+      window.qaPlugin = plugin;
+    </script>
+  </body>
+</html>

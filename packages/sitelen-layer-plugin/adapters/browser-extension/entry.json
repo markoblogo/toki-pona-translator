@@ -1,0 +1,13 @@
+{
+  "name": "sitelen-layer-plugin-browser-extension",
+  "artifact": "manifest-v3-extension",
+  "version": "0.3.0",
+  "entry": {
+    "manifest": "manifest.json",
+    "content": "content.js",
+    "background": "background.js"
+  },
+  "assets": [
+    "sitelen-layer-plugin.bundle.js"
+  ]
+}

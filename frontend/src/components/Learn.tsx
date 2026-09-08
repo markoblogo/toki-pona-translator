@@ -154,7 +154,7 @@ const Learn: React.FC = () => {
                     </a>
 
                     {/* Emoji mapping */}
-                    <a href="https://github.com/markoblogo/sitelen-emoji-truth" target="_blank" rel="noopener noreferrer" className="card-gloss overflow-hidden block hover:shadow-[0_22px_70px_rgba(15,23,42,0.10)] transition">
+                    <a href="https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-emoji" target="_blank" rel="noopener noreferrer" className="card-gloss overflow-hidden block hover:shadow-[0_22px_70px_rgba(15,23,42,0.10)] transition">
                         <div className="p-5">
                             <div className="text-[11px] font-semibold tracking-wide text-[#22C55E] uppercase">Dictionary</div>
                             <div className="mt-1 text-base font-semibold text-[#111827] leading-tight">sitelen-emoji-truth</div>

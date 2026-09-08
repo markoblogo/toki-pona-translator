@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QA Non TP Dominant</title></head>
+  <body>
+    <h1>QA: Non-TP Dominant</h1>
+    <div id="content">
+      <p>This page mostly contains English text with only a few toki pona words like toki and pona.</p>
+      <p>It should fail the 70 percent threshold check.</p>
+    </div>
+    <pre id="diag"></pre>
+    <script type="module">
+      import { createSitelenLayerPlugin } from '../../src/index.ts';
+      const diag = document.querySelector('#diag');
+      const plugin = createSitelenLayerPlugin({
+        container: '#content',
+        debug: true,
+        debugOverlay: true,
+        requireDominantTokiPona: true,
+        onDiagnostics: (d) => (diag.textContent = JSON.stringify(d, null, 2))
+      });
+      plugin.init();
+      window.qaPlugin = plugin;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tok">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QA Profile TOK</title></head>
+  <body>
+    <h1>QA Profile Route: /tok/</h1>
+    <div id="tok-content">toki pona li pona tawa jan ale. mi toki e toki pona lon tenpo ni.</div>
+    <pre id="diag"></pre>
+    <script type="module">
+      import { createSitelenLayerPluginFromProfiles } from '../../../../src/index.ts';
+      const diag = document.querySelector('#diag');
+
+      const plugin = createSitelenLayerPluginFromProfiles(
+        [
+          {
+            id: 'tok-profile',
+            priority: 20,
+            match: { pathnamePrefix: '/qa/fixtures/profile-routes/tok/' },
+            config: { container: '#tok-content', defaultLayer: 'sitelen-emoji' }
+          },
+          {
+            id: 'en-profile',
+            priority: 10,
+            match: { pathnamePrefix: '/qa/fixtures/profile-routes/en/' },
+            config: { container: '#en-content' }
+          }
+        ],
+        {
+          baseConfig: {
+            debug: true,
+            debugOverlay: true,
+            onDiagnostics: (d) => (diag.textContent = JSON.stringify(d, null, 2))
+          }
+        }
+      );
+
+      plugin.init();
+      window.qaPlugin = plugin;
+    </script>
+  </body>
+</html>

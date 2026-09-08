@@ -24,7 +24,7 @@ const CARDS: Card[] = [
     external: true,
   },
   {
-    href: 'https://github.com/markoblogo/sitelen-emoji-truth',
+    href: 'https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-emoji',
     kicker: 'DICTIONARY',
     title: 'Sitelen Emoji “Truth”',
     subtitle: 'Pinned, versioned mapping used by this translator (single source of truth).',

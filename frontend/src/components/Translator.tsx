@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { mapToSitelenEmoji } from '../utils/sitelenEmoji';
 import { API_BASE_URL } from '../config/api';
 import FaqCards from './FaqCards';
@@ -40,7 +40,8 @@ const Translator: React.FC = () => {
         }
     };
 
-    const handleTranslate = async () => {
+    const handleTranslate = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         if (!inputText.trim()) return;
 
         setLoading(true);
@@ -97,27 +98,26 @@ const Translator: React.FC = () => {
     };
 
     return (
-        <div className="relative py-12 px-4">
+        <div className="relative py-8 px-4">
             {/* Subtle hero glow */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.12),transparent_55%)]" />
             {/* Hero Section */}
-            <div className="max-w-5xl mx-auto mb-12">
-                <div className="card-gloss p-8 md:p-10 text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4">
+            <div className="max-w-5xl mx-auto mb-8">
+                <div className="card-gloss p-6 md:p-8 text-center">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-3">
                         Translate into Toki Pona
                     </h2>
-                    <p className="text-lg text-[#374151] max-w-2xl mx-auto mb-5">
+                    <p className="text-lg text-[#374151] max-w-2xl mx-auto">
                         Type in any language. Get Toki Pona in Latin, sitelen pona, or emoji.
                     </p>
-
-                    <div className="max-w-2xl mx-auto text-left sm:text-center">
-                        <h3 className="text-xs font-semibold text-[#22C55E] uppercase tracking-wide mb-2">
+                    <details className="max-w-2xl mx-auto mt-4 text-left">
+                        <summary className="w-fit mx-auto cursor-pointer text-xs font-semibold text-[#22C55E] uppercase tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E] rounded">
                             What is this?
-                        </h3>
-                        <p className="text-[#374151] leading-relaxed text-sm">
+                        </summary>
+                        <p className="text-[#374151] leading-relaxed text-sm mt-3 text-left sm:text-center">
                             Toki Pona Translator is a free, browser-based tool for turning natural language into Toki Pona. You can type in (almost) any language, the app detects it automatically, and returns a compact Toki Pona version. Then you can view the same text in three modes: Latin, sitelen pona, and an experimental emoji script.
                         </p>
-                    </div>
+                    </details>
                 </div>
             </div>
 
@@ -126,25 +126,29 @@ const Translator: React.FC = () => {
                 {/* Input/Output Row */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 relative">
                     {/* Input Card */}
-                    <div className="card-gloss p-6">
-                        <label className="block text-xs font-semibold text-[#111827] uppercase tracking-wide mb-3">
+                    <form className="card-gloss p-6" onSubmit={handleTranslate}>
+                        <label htmlFor="translation-input" className="block text-xs font-semibold text-[#111827] uppercase tracking-wide mb-3">
                             Input Text
                         </label>
                         <textarea
-                            className="w-full h-48 p-4 border border-[#E5E7EB] rounded-xl resize-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent bg-white text-[#111827] placeholder-[#9CA3AF] transition-all disabled:bg-gray-50 disabled:text-gray-400"
+                            id="translation-input"
+                            name="text"
+                            className="w-full min-h-40 p-4 border border-[#E5E7EB] rounded-xl resize-y focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E] focus-visible:border-transparent bg-white text-[#111827] placeholder-[#9CA3AF] transition-all disabled:bg-gray-50 disabled:text-gray-400"
                             placeholder="Type anything here..."
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                             maxLength={500}
+                            required
+                            aria-describedby="translation-character-count translation-error"
                             disabled={loading}
                         />
                         <div className="flex justify-between items-center mt-4">
-                            <span className={`text-xs ${inputText.length >= 500 ? 'text-[#F59E0B] font-medium' : 'text-[#9CA3AF]'}`}>
+                            <span id="translation-character-count" className={`text-xs ${inputText.length >= 500 ? 'text-[#F59E0B] font-medium' : 'text-[#9CA3AF]'}`}>
                                 {inputText.length}/500 chars
                             </span>
                             <button
-                                onClick={handleTranslate}
-                                disabled={loading || !inputText.trim()}
+                                type="submit"
+                                disabled={loading}
                                 className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                             >
                                 {loading && (
@@ -157,11 +161,11 @@ const Translator: React.FC = () => {
                             </button>
                         </div>
                         {error && (
-                            <div className="mt-3 text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
+                            <div id="translation-error" role="alert" aria-live="assertive" className="mt-3 text-sm text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
                                 {error}
                             </div>
                         )}
-                    </div>
+                    </form>
 
                     {/* Output Card */}
                     <div className="card-gloss p-6">
@@ -171,21 +175,27 @@ const Translator: React.FC = () => {
                                     Translation
                                 </label>
                                 {/* Segmented Control Group */}
-                                <div className="flex bg-[#F3F4F6] p-1 rounded-lg">
+                                <div className="flex bg-[#F3F4F6] p-1 rounded-lg" aria-label="Translation display mode">
                                     <button
+                                        type="button"
                                         onClick={() => setMode('latin')}
+                                        aria-pressed={mode === 'latin'}
                                         className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all ${mode === 'latin' ? 'bg-white text-[#111827] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
                                     >
                                         Latin
                                     </button>
                                     <button
+                                        type="button"
                                         onClick={() => setMode('pona')}
+                                        aria-pressed={mode === 'pona'}
                                         className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all ${mode === 'pona' ? 'bg-white text-[#111827] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
                                     >
                                         sitelen pona
                                     </button>
                                     <button
+                                        type="button"
                                         onClick={() => setMode('emoji')}
+                                        aria-pressed={mode === 'emoji'}
                                         className={`px-4 py-1.5 text-sm font-medium rounded-md transition-all ${mode === 'emoji' ? 'bg-white text-[#111827] shadow-sm' : 'text-[#6B7280] hover:text-[#111827]'}`}
                                     >
                                         Emoji
@@ -194,6 +204,7 @@ const Translator: React.FC = () => {
                             </div>
 
                             <button
+                                type="button"
                                 onClick={handleCopy}
                                 disabled={!result}
                                 className="px-3 py-1.5 text-sm font-medium text-[#6B7280] bg-white border border-[#E5E7EB] rounded-lg hover:bg-gray-50 hover:text-[#111827] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
@@ -217,7 +228,7 @@ const Translator: React.FC = () => {
                             </button>
                         </div>
 
-                        <div className="h-48 flex items-center justify-center bg-[#F9FAFB] rounded-xl p-6 border border-[#E5E7EB]">
+                        <div className="min-h-40 flex items-center justify-center bg-[#F9FAFB] rounded-xl p-6 border border-[#E5E7EB]" aria-live="polite" aria-busy={loading}>
                             {result ? (
                                 renderOutput()
                             ) : (
