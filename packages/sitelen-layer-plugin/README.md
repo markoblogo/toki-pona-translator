@@ -252,7 +252,7 @@ If your site has unusual selectors, run with a dedicated CSS pass to avoid overr
 
 ## Release and artifacts
 
-`v0.3.9` is available on npm as `latest` and with GitHub release assets for adapters.
+`v0.3.10` is available on npm as `latest` and with GitHub release assets for adapters.
 
 - Docs: `docs/RELEASE_PIPELINE_SETUP.md` (workflow + secrets)
 - Release notes in `RELEASE_NOTES_v*` and `CHANGELOG.md`

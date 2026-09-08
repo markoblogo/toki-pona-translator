@@ -4,7 +4,7 @@ from importlib.resources import as_file, files
 from pathlib import Path
 import shutil
 
-UPSTREAM_VERSION = "0.3.9"
+UPSTREAM_VERSION = "0.3.10"
 
 _ASSET_ROOT = files("sitelen_layer_static") / "assets"
 

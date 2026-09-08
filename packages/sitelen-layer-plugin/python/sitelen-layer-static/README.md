@@ -6,7 +6,7 @@ This package is not a Python reimplementation of the plugin. It packages the bui
 
 Bundled upstream artifact:
 
-- `sitelen-layer-plugin` `0.3.9`
+- `sitelen-layer-plugin` `0.3.10`
 
 Included assets:
 
@@ -75,7 +75,7 @@ Example output:
 - This package does not install npm dependencies.
 - It does not expose the plugin API to Python code.
 - It is intended for Django, Flask, FastAPI, static site generators, or CI pipelines that want vendored assets.
-- Upstream frontend package version bundled here: `0.3.9`
+- Upstream frontend package version bundled here: `0.3.10`
 
 ## License
 
