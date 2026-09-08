@@ -2,10 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { getEmojiMapping } from './mappingSource';
 
 describe('emoji mapping source', () => {
-  it('uses the vendored sitelen-emoji-truth default-stable profile by default', () => {
+  it('uses the monorepo sitelen-emoji default-stable profile by default', () => {
     const mapping = getEmojiMapping();
 
-    expect(mapping.metadata.source).toContain('vendor/sitelen-emoji-truth/default-stable.v1.json');
+    expect(mapping.metadata.source).toBe('packages/sitelen-emoji/profiles/default-stable.v1.json');
     expect(mapping.metadata.source).not.toContain('local-overrides');
     expect(mapping.wordMap.toki).toBe('🗣️');
     expect(mapping.wordMap.pona).toBe('👍');

@@ -1,5 +1,5 @@
 import { a as m } from "./detector-C1i9sROL.js";
-import { a as T } from "./emojiMapping.generated-BeYnd4_4.js";
+import { a as T } from "./emojiMapping.generated-BltXpMOS.js";
 const c = {
   strategy: "weighted",
   lexiconProfile: "default",

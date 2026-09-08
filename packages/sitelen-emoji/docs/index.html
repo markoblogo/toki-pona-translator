@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>sitelen-emoji-truth</title>
+    <title>sitelen emoji mapping</title>
     <style>
       :root {
         color-scheme: light dark;
@@ -196,10 +196,11 @@
   <body>
     <main>
       <header>
-        <h1>sitelen-emoji-truth</h1>
+        <h1>sitelen emoji mapping</h1>
         <p>Browse pinned toki pona → sitelen emoji profiles. Search by word, alias, utility key, or emoji.</p>
         <div class="actions">
-          <a id="raw-link" class="button" href="https://raw.githubusercontent.com/markoblogo/sitelen-emoji-truth/main/profiles/default-stable.v1.json">Raw JSON</a>
+          <a class="button" href="/">Translator</a>
+          <a id="raw-link" class="button" href="./profiles/default-stable.v1.json">Raw JSON</a>
           <a class="button" href="mapping.md">Mapping reference</a>
           <a class="button" href="coverage.md">Coverage report</a>
           <a class="button" href="https://toki.abvx.xyz/kit">Reader's Kit</a>
@@ -222,7 +223,7 @@
     </main>
 
     <script>
-      const PROFILE_BASE = "https://raw.githubusercontent.com/markoblogo/sitelen-emoji-truth/main/profiles/";
+      const PROFILE_BASE = "./profiles/";
       const profileSelect = document.querySelector("#profile");
       const search = document.querySelector("#search");
       const stats = document.querySelector("#stats");

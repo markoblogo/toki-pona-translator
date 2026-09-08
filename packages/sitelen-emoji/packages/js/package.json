@@ -15,6 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markoblogo/sitelen-emoji-truth.git"
+    "url": "git+https://github.com/markoblogo/toki-pona-translator.git",
+    "directory": "packages/sitelen-emoji/packages/js"
   }
 }

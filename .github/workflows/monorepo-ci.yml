@@ -1,0 +1,78 @@
+name: Monorepo CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  translator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+      - run: npm ci --prefix backend
+      - run: npm test --prefix backend
+      - run: node --check backend/server.js && node --check backend/api/translate.js
+      - run: npm ci --prefix frontend
+      - run: npm run vendor:check --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: npm run lint --prefix frontend
+
+  sitelen-emoji:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: packages/sitelen-emoji/requirements-dev.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: packages/sitelen-emoji
+        run: python -m pip install -r requirements-dev.txt
+      - working-directory: packages/sitelen-emoji
+        run: python -m pytest -q
+      - run: npm install --prefix packages/sitelen-emoji/packages/js
+      - run: npm test --prefix packages/sitelen-emoji/packages/js
+
+  sitelen-layer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: packages/sitelen-layer-plugin/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: npm ci --prefix packages/sitelen-layer-plugin
+      - working-directory: packages/sitelen-layer-plugin
+        run: npm run emoji:update && git diff --exit-code -- src/generated/emojiMapping.generated.ts
+      - run: npm run ci:release --prefix packages/sitelen-layer-plugin
+      - run: git diff --exit-code -- packages/sitelen-layer-plugin/python/sitelen-layer-static/src/sitelen_layer_static/assets
+      - run: python -m pip install pytest
+      - run: python -m pip install -e packages/sitelen-layer-plugin/python/sitelen-layer-static
+      - run: python -m pytest -q packages/sitelen-layer-plugin/python/sitelen-layer-static/tests
+
+  skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s skills/toki-pona-formatting-pass/tests

@@ -15,7 +15,7 @@ It only changes how existing toki pona content is displayed.
 
 ## Related projects
 
-- `sitelen-emoji-truth` is the adjacent mapping/data layer: https://github.com/markoblogo/sitelen-emoji-truth
+- `sitelen-emoji` is the adjacent mapping/data layer in this monorepo: https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-emoji
 - `toki-pona-translator` is a related application-layer repo: https://github.com/markoblogo/toki-pona-translator
 - `lab.abvx` catalogs this package, but it is a separate cluster from the AI coding tools stack: https://github.com/markoblogo/lab.abvx
 

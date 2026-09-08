@@ -1,16 +1,16 @@
-# sitelen-emoji-truth
+# sitelen-emoji
 A pinned, versioned “source of truth” profile for toki pona → sitelen emoji, with reproducible book-ready visuals.
 
-[![build](https://github.com/markoblogo/sitelen-emoji-truth/actions/workflows/build.yml/badge.svg?branch=main&v=1)](https://github.com/markoblogo/sitelen-emoji-truth/actions/workflows/build.yml)
-[![tag](https://img.shields.io/github/v/tag/markoblogo/sitelen-emoji-truth?sort=semver)](https://github.com/markoblogo/sitelen-emoji-truth/tags)
-[![license](https://img.shields.io/github/license/markoblogo/sitelen-emoji-truth)](https://github.com/markoblogo/sitelen-emoji-truth/blob/main/LICENSE)
+[![build](https://github.com/markoblogo/toki-pona-translator/actions/workflows/monorepo-ci.yml/badge.svg?branch=main)](https://github.com/markoblogo/toki-pona-translator/actions/workflows/monorepo-ci.yml)
+[![tag](https://img.shields.io/github/v/tag/markoblogo/toki-pona-translator?filter=sitelen-emoji-*)](https://github.com/markoblogo/toki-pona-translator/tags)
+[![license](https://img.shields.io/github/license/markoblogo/toki-pona-translator)](https://github.com/markoblogo/toki-pona-translator/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/v/sitelen-emoji)](https://www.npmjs.com/package/sitelen-emoji)
 [![PyPI](https://img.shields.io/pypi/v/sitelen-emoji)](https://pypi.org/project/sitelen-emoji/)
 [![Reader's Kit](https://img.shields.io/badge/Reader's%20Kit-free%20PDF-0f766e)](https://toki.abvx.xyz/kit)
-[![Viewer](https://img.shields.io/badge/GitHub%20Pages-viewer-2563eb)](https://markoblogo.github.io/sitelen-emoji-truth/)
+[![Viewer](https://img.shields.io/badge/live-mapping%20viewer-2563eb)](https://toki.abvx.xyz/mapping/)
 
 <p align="center">
-  <img src="docs/cover.png" alt="sitelen-emoji-truth cover" width="980" />
+  <img src="docs/cover.png" alt="sitelen emoji mapping cover" width="980" />
 </p>
 
 Canonical **frozen** mapping for **toki pona → sitelen emoji**.
@@ -19,7 +19,7 @@ Canonical **frozen** mapping for **toki pona → sitelen emoji**.
 
 > Goal: one stable “source of truth” for production (translator, books), with reproducible visuals.
 
-**Browse the mapping:** https://markoblogo.github.io/sitelen-emoji-truth/
+**Browse the mapping:** https://toki.abvx.xyz/mapping/
 
 **Free toki pona Reader’s Kit:** https://toki.abvx.xyz/kit
 
@@ -27,7 +27,7 @@ Canonical **frozen** mapping for **toki pona → sitelen emoji**.
 
 ## Use the data
 
-- Browser: open the [GitHub Pages viewer](https://markoblogo.github.io/sitelen-emoji-truth/).
+- Browser: open the [live mapping viewer](https://toki.abvx.xyz/mapping/).
 - npm: `npm install sitelen-emoji`
 - PyPI: `python -m pip install sitelen-emoji`
 - JSON: pin a release tag and fetch `profiles/default-stable.v1.json`.
@@ -54,10 +54,10 @@ Pin to a **git tag** (recommended) and fetch the frozen profile via `raw.githubu
 Example:
 
 ```text
-https://raw.githubusercontent.com/markoblogo/sitelen-emoji-truth/sitelen-emoji-truth-v1.1.0/profiles/default-stable.v1.json
+https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.0/packages/sitelen-emoji/profiles/default-stable.v1.json
 ```
 
-Replace `sitelen-emoji-truth-v1.1.0` with the release tag you want to pin to.
+Replace `sitelen-emoji-v1.1.0` with the release tag you want to pin to.
 
 Why pin: your translator/book pipeline should not change output unless **you** intentionally update the pinned version.
 
@@ -227,7 +227,7 @@ Releases are managed by release-please from Conventional Commits.
 Consumers can pin to release tags:
 
 ```
-https://raw.githubusercontent.com/markoblogo/sitelen-emoji-truth/sitelen-emoji-truth-v1.1.0/profiles/default-stable.v1.json
+https://raw.githubusercontent.com/markoblogo/toki-pona-translator/sitelen-emoji-v1.1.0/packages/sitelen-emoji/profiles/default-stable.v1.json
 ```
 
 ---

@@ -17,8 +17,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/markoblogo/sitelen-emoji-truth"
-Repository = "https://github.com/markoblogo/sitelen-emoji-truth"
+Homepage = "https://toki.abvx.xyz/mapping/"
+Repository = "https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-emoji"
 
 [tool.setuptools]
 packages = ["sitelen_emoji", "sitelen_emoji.profiles"]

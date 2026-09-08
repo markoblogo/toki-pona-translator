@@ -1,5 +1,10 @@
 # node
 node_modules/
+.venv*/
+*.tgz
+__pycache__/
+*.py[cod]
+*.egg-info/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -12,6 +17,7 @@ frontend/.env
 # build
 dist/
 build/
+frontend/public/mapping/
 
 # misc
 .DS_Store

@@ -1,4 +1,4 @@
-import { G as a, a as e } from "./emojiMapping.generated-BeYnd4_4.js";
+import { G as a, a as e } from "./emojiMapping.generated-BltXpMOS.js";
 const t = {
   ...e,
   metadata: a

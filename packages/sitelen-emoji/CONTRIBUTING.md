@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to **sitelen-emoji-truth**.
+Thanks for contributing to **sitelen-emoji** in the Toki Pona Toolkit monorepo.
 
 ## What this project is
 This repo provides a **frozen, pinned** mapping for **toki pona → sitelen emoji** and tooling to:

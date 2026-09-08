@@ -34,9 +34,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/markoblogo/sitelen-layer-plugin"
-Repository = "https://github.com/markoblogo/sitelen-layer-plugin"
-Issues = "https://github.com/markoblogo/sitelen-layer-plugin/issues"
+Homepage = "https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-layer-plugin"
+Repository = "https://github.com/markoblogo/toki-pona-translator"
+Issues = "https://github.com/markoblogo/toki-pona-translator/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sitelen_layer_static"]

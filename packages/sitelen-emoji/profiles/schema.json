@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://markoblogo.github.io/sitelen-emoji-truth/profiles/schema.json",
+  "$id": "https://raw.githubusercontent.com/markoblogo/toki-pona-translator/main/packages/sitelen-emoji/profiles/schema.json",
   "title": "sitelen-emoji profile",
   "type": "object",
   "additionalProperties": false,

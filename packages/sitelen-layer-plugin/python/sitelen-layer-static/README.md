@@ -1,6 +1,6 @@
 # sitelen-layer-static
 
-Python static-asset integration package for [`sitelen-layer-plugin`](https://github.com/markoblogo/sitelen-layer-plugin).
+Python static-asset integration package for [`sitelen-layer-plugin`](https://github.com/markoblogo/toki-pona-translator/tree/main/packages/sitelen-layer-plugin).
 
 This package is not a Python reimplementation of the plugin. It packages the built frontend assets so Python web apps can ship them from local static files instead of relying on npm at deploy time.
 

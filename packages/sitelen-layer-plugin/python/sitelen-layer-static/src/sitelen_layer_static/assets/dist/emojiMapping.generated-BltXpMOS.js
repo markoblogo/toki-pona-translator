@@ -616,7 +616,7 @@ const t = {
     ":": "➗️"
   }
 }, o = {
-  source: "/Users/antonbiletskiy-volokh/Downloads/Projects/sitelen-layer-plugin/vendor/sitelen-emoji-truth/default-stable.v1.json",
+  source: "packages/sitelen-emoji/profiles/default-stable.v1.json",
   version: "0.1.0",
   generatedAt: "2026-01-22T19:12:59.742565+00:00"
 };

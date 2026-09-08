@@ -4,7 +4,8 @@
   "description": "Site-owner display-layer plugin for toki pona pages (latin / sitelen-pona / sitelen-emoji)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markoblogo/sitelen-layer-plugin.git"
+    "url": "git+https://github.com/markoblogo/toki-pona-translator.git",
+    "directory": "packages/sitelen-layer-plugin"
   },
   "type": "module",
   "main": "./dist/sitelen-layer-plugin.cjs",
@@ -102,8 +103,8 @@
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vue": "^3.5.12",
-    "svelte": "^4.2.19"
+    "svelte": "^4.2.19 || ^5.0.0",
+    "vue": "^3.5.12"
   },
   "sideEffects": [
     "**/*.css"
@@ -111,7 +112,6 @@
   "files": [
     "dist",
     "bin/sitelen-layer-cli.mjs",
-    "vendor/sitelen-emoji-truth/default-stable.v1.json",
     "sitelen-pona-font.css",
     "assets/fonts",
     "adapters",
@@ -127,9 +127,10 @@
     "pack:adapters": "node scripts/pack-adapters.mjs",
     "smoke:adapters": "node scripts/smoke-adapter-packages.mjs",
     "smoke:publication": "node scripts/smoke-publication.mjs",
-    "ci:release": "npm run build && npm run test:run && npm run pack:adapters && npm run smoke:adapters && npm run smoke:publication",
+    "ci:release": "npm run build && npm run sync:python-static && npm run test:run && npm run pack:adapters && npm run smoke:adapters && npm run smoke:publication",
     "typecheck": "tsc --noEmit",
     "emoji:update": "node scripts/update-emoji-mapping.mjs",
+    "sync:python-static": "node scripts/sync-python-static-assets.mjs",
     "test": "vitest",
     "test:run": "vitest run"
   },
@@ -141,15 +142,15 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "jsdom": "^26.1.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.10",
+    "jsdom": "^26.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "svelte": "^4.2.19",
-    "vue": "^3.5.12",
+    "svelte": "^5.57.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.3",
-    "vitest": "^3.2.4"
+    "vitest": "^5.0.0",
+    "vue": "^3.5.12"
   }
 }

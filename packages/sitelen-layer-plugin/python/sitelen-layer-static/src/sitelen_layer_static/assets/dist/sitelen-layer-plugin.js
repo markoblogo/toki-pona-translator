@@ -1,5 +1,5 @@
 import { t as j, i as $, a as K } from "./detector-C1i9sROL.js";
-import { G as J, a as X } from "./emojiMapping.generated-BeYnd4_4.js";
+import { G as J, a as X } from "./emojiMapping.generated-BltXpMOS.js";
 const Z = /* @__PURE__ */ new Set([
   "SCRIPT",
   "STYLE",
