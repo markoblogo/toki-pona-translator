@@ -1,6 +1,6 @@
 # Third-party notices
 
-These notices apply to the sources and rendered assets referenced by the Toki Pona x Pictiq pilot crosswalk.
+These notices apply to the sources and rendered assets referenced by the Toki Pona x Pictiq pilot and canonical 120-word research crosswalks.
 
 ## desktop-sitelen-emoji mapping
 

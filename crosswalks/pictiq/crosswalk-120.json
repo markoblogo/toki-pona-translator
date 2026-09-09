@@ -1,0 +1,2801 @@
+{
+  "schema_version": "1.1.0-research",
+  "title": "Toki Pona to Pictiq full semantic crosswalk",
+  "status": "research_non_canonical_pending_human_review",
+  "third_party_notices": "crosswalks/pictiq/THIRD_PARTY_NOTICES.md",
+  "created": "2026-09-09",
+  "semantic_rule": {
+    "toki_pona": "Toki Pona primarily compresses vocabulary by allowing broad lexical concepts.",
+    "pictiq": "Pictiq often compresses communication by relying on context and communicative intent.",
+    "equivalence_warning": "A mapping records useful overlap, not lexical equivalence. For example, telo is not equal to need_water even when need_water is the best available Pictiq tile."
+  },
+  "mapping_classes": {
+    "direct": "One existing Pictiq tile covers the central semantic field with only minor caveats.",
+    "partial": "The Pictiq tile overlaps meaningfully but is narrower, broader, or intent-specific.",
+    "composed": "More than one existing Pictiq tile is needed.",
+    "contextual": "Situation, neighboring tiles, or visual context supplies essential meaning.",
+    "none": "No defensible mapping exists in the current Pictiq lexicon."
+  },
+  "review_confidence_values": {
+    "high": "Clear under the accepted method and provisionally accepted only for PARTIAL or DIRECT.",
+    "medium": "Defensible, but semantic boundaries need review.",
+    "low": "Ambiguous, controversial, or highly contextual."
+  },
+  "review_rule": "Review all NONE, COMPOSED, CONTEXTUAL, LOW-confidence, and MEDIUM-confidence PARTIAL/DIRECT rows.",
+  "sources": {
+    "toki_pona_repository": {
+      "url": "https://github.com/markoblogo/toki-pona-translator",
+      "commit": "07dcf9545ee01ccb574eeb19186f50dddcd042f7",
+      "vocabulary_file": "packages/sitelen-emoji/words/nimi_pu.txt",
+      "vocabulary_sha256": "b326c507ab36bf0795294c2769c2aeeac69fb1f2b2edd8962450cd2396d5bd71",
+      "display_recognition_lexicon": "packages/sitelen-layer-plugin/src/tokiPonaLexicon.ts",
+      "display_recognition_lexicon_size": 139,
+      "display_recognition_lexicon_sha256": "12cebc6afbb57b560fbe15724fcfa0e2d0b9e374fed3458dc047cdea51d7a977",
+      "provenance_note": "This file is the repository's current 120-word membership list. It carries no item-level source metadata; English definitions and adapted display glosses are attributed separately to the pinned sona Linku source.",
+      "repository_license": "MIT"
+    },
+    "sitelen_pona": {
+      "mechanism": "Latin word input shaped as one OpenType ligature by sitelen seli kiwen asuki",
+      "default_render_strategy_source": "packages/sitelen-layer-plugin/src/presets.ts",
+      "font_file": "packages/sitelen-layer-plugin/assets/fonts/sitelen-seli-kiwen-asuki.ttf",
+      "font_sha256": "72b02ddb57c9421ec11e400706324a0f445add2b0ea6764bdd196a7fc6d4183a",
+      "font_name": "sitelen seli kiwen asuki",
+      "font_version": "2.2",
+      "author": "KreativeKorp / jan Lepeka",
+      "upstream": "https://github.com/kreativekorp/sitelen-seli-kiwen",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "packages/sitelen-layer-plugin/assets/fonts/OFL-sitelen-seli-kiwen.txt"
+    },
+    "sitelen_emoji": {
+      "canonical_profile": "packages/sitelen-emoji/profiles/default-stable.v1.json",
+      "profile_sha256": "c41b1390419ca60abcda2165dc33182f9886ebe6ff828417c4b5a191fbbe5d8d",
+      "profile_behavior": "Static frozen word-to-Unicode mapping; generated copies exist for consumers, but this profile is the source of truth.",
+      "upstream_mapping": "https://raw.githubusercontent.com/devbali/desktop-sitelen-emoji/master/sitelenemoji.json",
+      "upstream_repository": "https://github.com/devbali/desktop-sitelen-emoji",
+      "upstream_license": "BSD-3-Clause",
+      "profile_license": "MIT",
+      "rendering": "Unicode values are rendered in the grid with Twemoji 17.0.0 PNG assets.",
+      "rendering_source": "https://github.com/jdecked/twemoji/tree/v17.0.0/assets/72x72",
+      "rendering_license": "CC-BY-4.0"
+    },
+    "pictiq": {
+      "url": "https://github.com/markoblogo/pictiq",
+      "commit": "7e9663d5a1236a881faf6a030e3258cf99e74a73",
+      "lexicon_file": "lexicon/icon-index.json",
+      "lexicon_version": "0.2.0",
+      "lexicon_sha256": "319bccbec294d1a9ac24e4622f9b2c9e0fada2da73142f1d0b057d171db696b5",
+      "icon_path_pattern": "icons/svg/{id}.svg",
+      "protocol_release": "v1.0.0-core",
+      "license": "CC-BY-NC-4.0"
+    },
+    "english_glosses": {
+      "project": "sona Linku",
+      "repository": "https://github.com/lipu-linku/sona",
+      "commit": "c2c56d2769b369af89c6c239d45aa616ba6d7b77",
+      "file": "words/source/definition.toml",
+      "url": "https://github.com/lipu-linku/sona/blob/c2c56d2769b369af89c6c239d45aa616ba6d7b77/words/source/definition.toml",
+      "file_sha256": "c6d2cd1d342c301f8abdef4b0372ed2f2dd0874f9cc53892516ffdc8b103bec2",
+      "license": "CC-BY-SA-4.0",
+      "usage": "Each source_definition is copied from the pinned source. The shorter meaning field is an adapted display gloss and retains source attribution and share-alike status."
+    }
+  },
+  "pilot_consistency": {
+    "pilot_file": "crosswalks/pictiq/pilot-20.json",
+    "pilot_commit": "07dcf9545ee01ccb574eeb19186f50dddcd042f7",
+    "classification_changes": []
+  },
+  "mappings": [
+    {
+      "word": "a",
+      "meaning": "(interjection) ah, oh, ha, eh, um, oy; (particle) [placed after something for emphasis or emotion]",
+      "source_definition": "(interjection) ah, oh, ha, eh, um, oy; (particle) [placed after something for emphasis or emotion]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "a",
+        "glyph": "U+F1900"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "❗"
+      },
+      "pictiq": {
+        "ids": [
+          "punct_exclaim"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "low",
+      "notes": "The urgency tile can carry emphasis in an utterance, but not the interjection itself."
+    },
+    {
+      "word": "akesi",
+      "meaning": "reptile, amphibian, scaly creature, crawling creature",
+      "source_definition": "reptile, amphibian, scaly creature, crawling creature",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "akesi",
+        "glyph": "U+F1901"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🦎"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents reptiles, amphibians, or crawling creatures."
+    },
+    {
+      "word": "ala",
+      "meaning": "not, nothing, no; (particle) [negates a word or phrase]; (particle) [forms a yes-no question]; (number) zero",
+      "source_definition": "not, nothing, no; (particle) [negates a word or phrase]; (particle) [forms a yes-no question]; (number) zero",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ala",
+        "glyph": "U+F1902"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "❌"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_no"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "logic_no covers no/not, but ala also expresses nothing, zero, absence, and question formation."
+    },
+    {
+      "word": "alasa",
+      "meaning": "hunt, forage, search, attempt; (preverb) try to",
+      "source_definition": "hunt, forage, search, attempt; (preverb) try to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "alasa",
+        "glyph": "U+F1903"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🏹"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents hunting, foraging, searching, or attempting as a broad concept."
+    },
+    {
+      "word": "ale",
+      "meaning": "all, every, everything, entirety, universe; (number) one hundred",
+      "source_definition": "all, every, everything, entirety, universe; (number) one hundred",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ale",
+        "glyph": "U+F1904"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "♾️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile means all, everything, the universe, or one hundred."
+    },
+    {
+      "word": "anpa",
+      "meaning": "bottom, underside; below, beneath; defeated, humble, lowly",
+      "source_definition": "bottom, underside; below, beneath; defeated, humble, lowly",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "anpa",
+        "glyph": "U+F1905"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⬇️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents below, underside, defeat, or humility."
+    },
+    {
+      "word": "ante",
+      "meaning": "different, altered; modify, change; other; difference",
+      "source_definition": "different, altered; modify, change; other; difference",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ante",
+        "glyph": "U+F1906"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔀"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents difference or change as a general concept."
+    },
+    {
+      "word": "anu",
+      "meaning": "(particle) [separates multiple possibilities, replacing another particle], or",
+      "source_definition": "(particle) [separates multiple possibilities, replacing another particle], or",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "anu",
+        "glyph": "U+F1907"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "☯️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pictiq has no general alternative/or relation."
+    },
+    {
+      "word": "awen",
+      "meaning": "stay, remain, wait, pause; protect, keep safe; continue; (preverb) continue to",
+      "source_definition": "stay, remain, wait, pause; protect, keep safe; continue; (preverb) continue to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "awen",
+        "glyph": "U+F1908"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚓"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents remaining, waiting, protecting, or continuing broadly."
+    },
+    {
+      "word": "e",
+      "meaning": "(particle) [marks the start of a direct object]",
+      "source_definition": "(particle) [marks the start of a direct object]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "e",
+        "glyph": "U+F1909"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⏩"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "A direct-object marker is outside Pictiq's tile vocabulary."
+    },
+    {
+      "word": "en",
+      "meaning": "(particle) [separates multiple subjects]",
+      "source_definition": "(particle) [separates multiple subjects]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "en",
+        "glyph": "U+F190A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "➕"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "A multiple-subject separator is outside Pictiq's tile vocabulary."
+    },
+    {
+      "word": "esun",
+      "meaning": "trade, barter, exchange, swap, buy, sell; market, shop, fair, bazaar, place of business",
+      "source_definition": "trade, barter, exchange, swap, buy, sell; market, shop, fair, bazaar, place of business",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "esun",
+        "glyph": "U+F190B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🛒"
+      },
+      "pictiq": {
+        "ids": [
+          "place_shop",
+          "money_coins"
+        ],
+        "mapping": "composed",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "Shop plus cash can communicate practical commerce, but not every form of trade or exchange."
+    },
+    {
+      "word": "ijo",
+      "meaning": "thing, object, entity, being, matter, phenomenon",
+      "source_definition": "thing, object, entity, being, matter, phenomenon",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ijo",
+        "glyph": "U+F190C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐚"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents a generic thing or entity."
+    },
+    {
+      "word": "ike",
+      "meaning": "negative quality, e.g. bad, unpleasant, harmful, unneeded",
+      "source_definition": "negative quality, e.g. bad, unpleasant, harmful, unneeded",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ike",
+        "glyph": "U+F190D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👎"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_no"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "logic_no can reject something in context; it does not mean a bad, harmful, or unneeded quality."
+    },
+    {
+      "word": "ilo",
+      "meaning": "tool, implement, machine, device",
+      "source_definition": "tool, implement, machine, device",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ilo",
+        "glyph": "U+F190E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚙️"
+      },
+      "pictiq": {
+        "ids": [
+          "service_tools"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "service_tools covers tools and repair, not the wider class of devices and machines."
+    },
+    {
+      "word": "insa",
+      "meaning": "inside, center, between, middle, midpoint, internal",
+      "source_definition": "inside, center, between, middle, midpoint, internal",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "insa",
+        "glyph": "U+F190F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⏺️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents inside, center, or between."
+    },
+    {
+      "word": "jaki",
+      "meaning": "disgusting, unclean, unsanitary, toxic, repulsive, rotten",
+      "source_definition": "disgusting, unclean, unsanitary, toxic, repulsive, rotten",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "jaki",
+        "glyph": "U+F1910"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💩"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents dirtiness, toxicity, rot, or disgust broadly."
+    },
+    {
+      "word": "jan",
+      "meaning": "human being, person, somebody",
+      "source_definition": "human being, person, somebody",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "jan",
+        "glyph": "U+F1911"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👤"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic person tile."
+    },
+    {
+      "word": "jelo",
+      "meaning": "yellow, amber, golden, lime yellow, yellowish orange",
+      "source_definition": "yellow, amber, golden, lime yellow, yellowish orange",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "jelo",
+        "glyph": "U+F1912"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💛"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic yellow color tile."
+    },
+    {
+      "word": "jo",
+      "meaning": "hold, carry, possess, contain, own",
+      "source_definition": "hold, carry, possess, contain, own",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "jo",
+        "glyph": "U+F1913"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👜"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current protocol has no generic possession or containment relation."
+    },
+    {
+      "word": "kala",
+      "meaning": "fish, marine animal, sea creature, swimming creature",
+      "source_definition": "fish, marine animal, sea creature, swimming creature",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kala",
+        "glyph": "U+F1914"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐟"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents fish or marine animals generally."
+    },
+    {
+      "word": "kalama",
+      "meaning": "to produce sound; sound, e.g. sing, thunder, drum, clap, laugh, beep",
+      "source_definition": "to produce sound; sound, e.g. sing, thunder, drum, clap, laugh, beep",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kalama",
+        "glyph": "U+F1915"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔈"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents sound or sound production broadly."
+    },
+    {
+      "word": "kama",
+      "meaning": "arriving, coming, future, summoned; (preverb) to become, manage to, succeed in",
+      "source_definition": "arriving, coming, future, summoned; (preverb) to become, manage to, succeed in",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kama",
+        "glyph": "U+F1916"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🚶"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents arrival, becoming, or future broadly."
+    },
+    {
+      "word": "kasi",
+      "meaning": "plant, vegetation; herb, leaf",
+      "source_definition": "plant, vegetation; herb, leaf",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kasi",
+        "glyph": "U+F1917"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🌴"
+      },
+      "pictiq": {
+        "ids": [
+          "nature_flower"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "A flower is one plant form; kasi also covers vegetation, herbs, and leaves."
+    },
+    {
+      "word": "ken",
+      "meaning": "can, may, ability, permission; possibility, maybe; allow, enable; (preverb) to be able to",
+      "source_definition": "can, may, ability, permission; possibility, maybe; allow, enable; (preverb) to be able to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ken",
+        "glyph": "U+F1918"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💪"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_yes"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "logic_yes can answer a can-I question affirmatively; it does not encode ability or possibility."
+    },
+    {
+      "word": "kepeken",
+      "meaning": "(preposition) using, by means of",
+      "source_definition": "(preposition) using, by means of",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kepeken",
+        "glyph": "U+F1919"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔧"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The instrumental relation using/by means of is not a Pictiq tile concept."
+    },
+    {
+      "word": "kili",
+      "meaning": "fruit, vegetable, mushroom",
+      "source_definition": "fruit, vegetable, mushroom",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kili",
+        "glyph": "U+F191A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍎"
+      },
+      "pictiq": {
+        "ids": [
+          "need_food"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "need_food can indicate an edible item or hunger, while kili is specifically produce or mushrooms."
+    },
+    {
+      "word": "kiwen",
+      "meaning": "hard object e.g. metal, stone, wood",
+      "source_definition": "hard object e.g. metal, stone, wood",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kiwen",
+        "glyph": "U+F191B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💎"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents hard material or hard objects generally."
+    },
+    {
+      "word": "ko",
+      "meaning": "semi-solid, e.g. paste, powder, goo, sand, soil, clay; squishy, moldable; sticky",
+      "source_definition": "semi-solid, e.g. paste, powder, goo, sand, soil, clay; squishy, moldable; sticky",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ko",
+        "glyph": "U+F191C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍦"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents paste, powder, soil, or other semi-solids broadly."
+    },
+    {
+      "word": "kon",
+      "meaning": "air, breath, wind; essence, spirit, soul, ghost; unseen agent",
+      "source_definition": "air, breath, wind; essence, spirit, soul, ghost; unseen agent",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kon",
+        "glyph": "U+F191D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💨"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans air, breath, wind, spirit, and unseen agency."
+    },
+    {
+      "word": "kule",
+      "meaning": "color, pigment; category, genre, flavor; colorful, diverse",
+      "source_definition": "color, pigment; category, genre, flavor; colorful, diverse",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kule",
+        "glyph": "U+F191E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🌈"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents color, category, or diversity generally."
+    },
+    {
+      "word": "kulupu",
+      "meaning": "group, community, society, company, nation, collection, team, crowd",
+      "source_definition": "group, community, society, company, nation, collection, team, crowd",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kulupu",
+        "glyph": "U+F191F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👥"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic group, community, or collection."
+    },
+    {
+      "word": "kute",
+      "meaning": "ear, hearing organ; hear, listen, pay attention to, obey",
+      "source_definition": "ear, hearing organ; hear, listen, pay attention to, obey",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "kute",
+        "glyph": "U+F1920"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👂"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents hearing, listening, or an ear."
+    },
+    {
+      "word": "la",
+      "meaning": "(particle) [mark the previous statement as context to the following statement]",
+      "source_definition": "(particle) [mark the previous statement as context to the following statement]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "la",
+        "glyph": "U+F1921"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔼"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "A context-clause marker belongs to grammar, not Pictiq's current lexicon."
+    },
+    {
+      "word": "lape",
+      "meaning": "sleep, rest, break from an activity or work",
+      "source_definition": "sleep, rest, break from an activity or work",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lape",
+        "glyph": "U+F1922"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "😴"
+      },
+      "pictiq": {
+        "ids": [
+          "place_hotel"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "A hotel may communicate a place to sleep in travel context; it does not mean sleep or rest."
+    },
+    {
+      "word": "laso",
+      "meaning": "turquoise, blue, green, cyan, indigo, lime green",
+      "source_definition": "turquoise, blue, green, cyan, indigo, lime green",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "laso",
+        "glyph": "U+F1923"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔵"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic blue/green color tile."
+    },
+    {
+      "word": "lawa",
+      "meaning": "head, mind, brain; control, lead, guide; government, leader; rule, law",
+      "source_definition": "head, mind, brain; control, lead, guide; government, leader; rule, law",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lawa",
+        "glyph": "U+F1924"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "😶"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans head, mind, leadership, control, and law."
+    },
+    {
+      "word": "len",
+      "meaning": "cloth, clothing, fabric, textile; covered, hidden, secret, private",
+      "source_definition": "cloth, clothing, fabric, textile; covered, hidden, secret, private",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "len",
+        "glyph": "U+F1925"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👕"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents clothing, cloth, covering, or privacy broadly."
+    },
+    {
+      "word": "lete",
+      "meaning": "cold, cool, frozen; freeze, chill; raw, uncooked",
+      "source_definition": "cold, cool, frozen; freeze, chill; raw, uncooked",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lete",
+        "glyph": "U+F1926"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "❄️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents cold, cooling, frozen, or raw."
+    },
+    {
+      "word": "li",
+      "meaning": "(particle) [marks the start of an indicative verb (statement)]",
+      "source_definition": "(particle) [marks the start of an indicative verb (statement)]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "li",
+        "glyph": "U+F1927"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "▶️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "An indicative-predicate marker is outside Pictiq's tile vocabulary."
+    },
+    {
+      "word": "lili",
+      "meaning": "small, short, young; few; piece, part",
+      "source_definition": "small, short, young; few; piece, part",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lili",
+        "glyph": "U+F1928"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐭"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "qty_minus means less, not generic smallness, youth, or a small quantity."
+    },
+    {
+      "word": "linja",
+      "meaning": "long, flexible thing, e.g. rope, yarn, hair, fur, line, strand",
+      "source_definition": "long, flexible thing, e.g. rope, yarn, hair, fur, line, strand",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "linja",
+        "glyph": "U+F1929"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "〰️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic long flexible object or line."
+    },
+    {
+      "word": "lipu",
+      "meaning": "flat and bendable object, e.g. paper, card, leaf; written text or document, e.g. book, website, clay tablet",
+      "source_definition": "flat and bendable object, e.g. paper, card, leaf; written text or document, e.g. book, website, clay tablet",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lipu",
+        "glyph": "U+F192A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📄"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans paper, card, book, document, website, and other flat media."
+    },
+    {
+      "word": "loje",
+      "meaning": "red, magenta, scarlet, pink, rust-colored, reddish orange",
+      "source_definition": "red, magenta, scarlet, pink, rust-colored, reddish orange",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "loje",
+        "glyph": "U+F192B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔴"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic red color tile."
+    },
+    {
+      "word": "lon",
+      "meaning": "present, existing, real, true; (preposition) located at, in, during, in the context of",
+      "source_definition": "present, existing, real, true; (preposition) located at, in, during, in the context of",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lon",
+        "glyph": "U+F192C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📍"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "No tile combines existence, truth, presence, and location."
+    },
+    {
+      "word": "luka",
+      "meaning": "hand, arm, tactile limb, grasping limb; to grasp, interact with, feel using touch; (number) five",
+      "source_definition": "hand, arm, tactile limb, grasping limb; to grasp, interact with, feel using touch; (number) five",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "luka",
+        "glyph": "U+F192D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "✋"
+      },
+      "pictiq": {
+        "ids": [
+          "qty_5"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "qty_5 covers only the numerical use; it says nothing about hand or arm."
+    },
+    {
+      "word": "lukin",
+      "meaning": "see, look, view, examine, read, watch; visual; eye, seeing organ; (preverb) try to",
+      "source_definition": "see, look, view, examine, read, watch; visual; eye, seeing organ; (preverb) try to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lukin",
+        "glyph": "U+F192E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👀"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current Pictiq tile encodes looking, seeing, or an eye."
+    },
+    {
+      "word": "lupa",
+      "meaning": "hole, pit, cave, doorway, window, portal",
+      "source_definition": "hole, pit, cave, doorway, window, portal",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "lupa",
+        "glyph": "U+F192F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🕳️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents holes, openings, doorways, or portals generally."
+    },
+    {
+      "word": "ma",
+      "meaning": "earth, land, soil; country, territory, world; outdoors",
+      "source_definition": "earth, land, soil; country, territory, world; outdoors",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ma",
+        "glyph": "U+F1930"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🏝️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents land, country, territory, world, or outdoors broadly."
+    },
+    {
+      "word": "mama",
+      "meaning": "parent, ancestor; creator, originator; caretaker, sustainer, guardian",
+      "source_definition": "parent, ancestor; creator, originator; caretaker, sustainer, guardian",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mama",
+        "glyph": "U+F1931"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👪"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a parent, originator, caretaker, or guardian."
+    },
+    {
+      "word": "mani",
+      "meaning": "money, currency; thing of value e.g. gold, investment, livestock",
+      "source_definition": "money, currency; thing of value e.g. gold, investment, livestock",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mani",
+        "glyph": "U+F1932"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💰"
+      },
+      "pictiq": {
+        "ids": [
+          "money_coins"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "money_coins means cash/pay cash and is narrower than money, wealth, or property."
+    },
+    {
+      "word": "meli",
+      "meaning": "woman, female, feminine person, wife, girlfriend",
+      "source_definition": "woman, female, feminine person, wife, girlfriend",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "meli",
+        "glyph": "U+F1933"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👧"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents woman or female person."
+    },
+    {
+      "word": "mi",
+      "meaning": "(pronoun) I, me, we, us",
+      "source_definition": "(pronoun) I, me, we, us",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mi",
+        "glyph": "U+F1934"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👈"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pictiq currently relies on pointing/context rather than a first-person pronoun tile."
+    },
+    {
+      "word": "mije",
+      "meaning": "man, male, masculine person, husband, boyfriend",
+      "source_definition": "man, male, masculine person, husband, boyfriend",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mije",
+        "glyph": "U+F1935"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👨"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents man or male person."
+    },
+    {
+      "word": "moku",
+      "meaning": "eat, drink, consume, swallow, ingest; food, edible thing",
+      "source_definition": "eat, drink, consume, swallow, ingest; food, edible thing",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "moku",
+        "glyph": "U+F1936"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍽️"
+      },
+      "pictiq": {
+        "ids": [
+          "need_food"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "need_food expresses food or hunger; moku also acts as eat, drink, and consume."
+    },
+    {
+      "word": "moli",
+      "meaning": "death, dead, die, dying; kill, murder",
+      "source_definition": "death, dead, die, dying; kill, murder",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "moli",
+        "glyph": "U+F1937"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💀"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents death, dying, or killing."
+    },
+    {
+      "word": "monsi",
+      "meaning": "back, behind, rear",
+      "source_definition": "back, behind, rear",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "monsi",
+        "glyph": "U+F1938"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⬅️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents back, behind, or rear."
+    },
+    {
+      "word": "mu",
+      "meaning": "(animal noise or communication, onomatopoeia)",
+      "source_definition": "(animal noise or communication, onomatopoeia)",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mu",
+        "glyph": "U+F1939"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "😹"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents animal vocalization or onomatopoeia generally."
+    },
+    {
+      "word": "mun",
+      "meaning": "moon, night sky object, star, celestial body",
+      "source_definition": "moon, night sky object, star, celestial body",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mun",
+        "glyph": "U+F193A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🌙"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents the moon, stars, or celestial bodies generally."
+    },
+    {
+      "word": "musi",
+      "meaning": "fun, game, entertainment, art, play, amusing, interesting, comical, silly",
+      "source_definition": "fun, game, entertainment, art, play, amusing, interesting, comical, silly",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "musi",
+        "glyph": "U+F193B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "😃"
+      },
+      "pictiq": {
+        "ids": [
+          "place_disco"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "A disco covers one context for dance and entertainment, not fun, play, games, or art broadly."
+    },
+    {
+      "word": "mute",
+      "meaning": "many, several, very; quantity; (number) twenty",
+      "source_definition": "many, several, very; quantity; (number) twenty",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "mute",
+        "glyph": "U+F193C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👐"
+      },
+      "pictiq": {
+        "ids": [
+          "qty_5"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "qty_5 can pragmatically suggest many, but mute also means quantity, very, twenty, and several."
+    },
+    {
+      "word": "nanpa",
+      "meaning": "number; (particle) [ordinal number], -th",
+      "source_definition": "number; (particle) [ordinal number], -th",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "nanpa",
+        "glyph": "U+F193D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "#️⃣"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Specific quantity tiles exist, but no tile represents number or ordinal structure generally."
+    },
+    {
+      "word": "nasa",
+      "meaning": "strange, unusual, silly, abnormal, unexpected; drunk, intoxicated",
+      "source_definition": "strange, unusual, silly, abnormal, unexpected; drunk, intoxicated",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "nasa",
+        "glyph": "U+F193E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🌀"
+      },
+      "pictiq": {
+        "ids": [
+          "drink_beer"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "low",
+      "notes": "Beer may imply intoxication in a specific scene; it does not mean strange, silly, or drunk."
+    },
+    {
+      "word": "nasin",
+      "meaning": "method, doctrine, tradition; path, road, way",
+      "source_definition": "method, doctrine, tradition; path, road, way",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "nasin",
+        "glyph": "U+F193F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🛣️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans method, doctrine, tradition, path, road, and way."
+    },
+    {
+      "word": "nena",
+      "meaning": "protuberances e.g. bump, button, hill, nose",
+      "source_definition": "protuberances e.g. bump, button, hill, nose",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "nena",
+        "glyph": "U+F1940"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🗻"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents bumps, hills, noses, or protuberances broadly."
+    },
+    {
+      "word": "ni",
+      "meaning": "this, that, these, those",
+      "source_definition": "this, that, these, those",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ni",
+        "glyph": "U+F1941"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👇"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pointing supplies deixis in use; there is no lexical this/that tile."
+    },
+    {
+      "word": "nimi",
+      "meaning": "word, name",
+      "source_definition": "word, name",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "nimi",
+        "glyph": "U+F1942"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💬"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic word or name."
+    },
+    {
+      "word": "noka",
+      "meaning": "foot, leg, organ of locomotion, roots",
+      "source_definition": "foot, leg, organ of locomotion, roots",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "noka",
+        "glyph": "U+F1943"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🦵"
+      },
+      "pictiq": {
+        "ids": [
+          "move_feet"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "move_feet represents walking; noka also means foot, leg, and roots."
+    },
+    {
+      "word": "o",
+      "meaning": "(particle) [marks the end of a vocative (who is being spoken to)], [marks the start of an imperative (command, wish, instruction)], should",
+      "source_definition": "(particle) [marks the end of a vocative (who is being spoken to)], [marks the start of an imperative (command, wish, instruction)], should",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "o",
+        "glyph": "U+F1944"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👋"
+      },
+      "pictiq": {
+        "ids": [
+          "punct_exclaim"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "low",
+      "notes": "The urgency tile may reinforce a command, but it is not a general vocative or imperative marker."
+    },
+    {
+      "word": "olin",
+      "meaning": "to have a strong emotional bond with, e.g. affection, appreciation, compassion, respect; platonic, romantic, or familial relationships",
+      "source_definition": "to have a strong emotional bond with, e.g. affection, appreciation, compassion, respect; platonic, romantic, or familial relationships",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "olin",
+        "glyph": "U+F1945"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💕"
+      },
+      "pictiq": {
+        "ids": [
+          "love_heart"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "love_heart covers affection and romance but not every platonic, familial, or respectful bond."
+    },
+    {
+      "word": "ona",
+      "meaning": "(third-person pronoun) he, she, it, they",
+      "source_definition": "(third-person pronoun) he, she, it, they",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "ona",
+        "glyph": "U+F1946"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👆"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pictiq has no third-person pronoun tile."
+    },
+    {
+      "word": "open",
+      "meaning": "begin, start, open, turn on; beginning",
+      "source_definition": "begin, start, open, turn on; beginning",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "open",
+        "glyph": "U+F1947"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔓"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_yes"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "logic_yes may mean open or accepted, but not beginning, starting, or turning on generally."
+    },
+    {
+      "word": "pakala",
+      "meaning": "damaged, broken, botched, harmed, messed up; mistake",
+      "source_definition": "damaged, broken, botched, harmed, messed up; mistake",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pakala",
+        "glyph": "U+F1948"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💥"
+      },
+      "pictiq": {
+        "ids": [
+          "service_tools"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "A repair tile can signal that something is broken in context; it does not mean damage or mistake."
+    },
+    {
+      "word": "pali",
+      "meaning": "work, activity; create, build, design; put effort toward, take action on",
+      "source_definition": "work, activity; create, build, design; put effort toward, take action on",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pali",
+        "glyph": "U+F1949"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "✊"
+      },
+      "pictiq": {
+        "ids": [
+          "service_tools"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "service_tools overlaps with repair work but does not represent general doing or making."
+    },
+    {
+      "word": "palisa",
+      "meaning": "long and hard thing e.g. branch, pole, rod, stick, spine, mast",
+      "source_definition": "long and hard thing e.g. branch, pole, rod, stick, spine, mast",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "palisa",
+        "glyph": "U+F194A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📏"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic long rigid object."
+    },
+    {
+      "word": "pan",
+      "meaning": "grains, starchy foods, baked goods e.g. rice, sorghum, bread, noodles, masa, porridge, injera",
+      "source_definition": "grains, starchy foods, baked goods e.g. rice, sorghum, bread, noodles, masa, porridge, injera",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pan",
+        "glyph": "U+F194B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍞"
+      },
+      "pictiq": {
+        "ids": [
+          "need_food"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "need_food covers food/hunger broadly; pan is specifically grain and starchy food."
+    },
+    {
+      "word": "pana",
+      "meaning": "give, send, emit, provide, put, release",
+      "source_definition": "give, send, emit, provide, put, release",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pana",
+        "glyph": "U+F194C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📤"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents giving, sending, emitting, or providing broadly."
+    },
+    {
+      "word": "pi",
+      "meaning": "(particle) [group the following words into one modifier for the previous word]",
+      "source_definition": "(particle) [group the following words into one modifier for the previous word]",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pi",
+        "glyph": "U+F194D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⏹️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "A modifier-grouping particle belongs to grammar, not Pictiq's current lexicon."
+    },
+    {
+      "word": "pilin",
+      "meaning": "experience e.g. emotion, feeling, touch; heart (physical or emotional)",
+      "source_definition": "experience e.g. emotion, feeling, touch; heart (physical or emotional)",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pilin",
+        "glyph": "U+F194E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "❤️"
+      },
+      "pictiq": {
+        "ids": [
+          "love_heart"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "love_heart covers affection or romance, only a narrow subset of feeling and sensation."
+    },
+    {
+      "word": "pimeja",
+      "meaning": "dark, unlit; dark color, e.g. black, purple, brown",
+      "source_definition": "dark, unlit; dark color, e.g. black, purple, brown",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pimeja",
+        "glyph": "U+F194F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚫"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic dark/black color tile."
+    },
+    {
+      "word": "pini",
+      "meaning": "finish, stop, prevent; close, disable, turn off; ended, past; edge, end, conclusion",
+      "source_definition": "finish, stop, prevent; close, disable, turn off; ended, past; edge, end, conclusion",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pini",
+        "glyph": "U+F1950"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🏁"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_no"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "logic_no can mean closed or stopped in context; it does not lexicalize ending or completion."
+    },
+    {
+      "word": "pipi",
+      "meaning": "insect, bug, spider, tiny crawling creature",
+      "source_definition": "insect, bug, spider, tiny crawling creature",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pipi",
+        "glyph": "U+F1951"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐞"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents insects, spiders, or small crawling creatures."
+    },
+    {
+      "word": "poka",
+      "meaning": "hip, side; next to, nearby, vicinity",
+      "source_definition": "hip, side; next to, nearby, vicinity",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "poka",
+        "glyph": "U+F1952"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "↔️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents side, proximity, or next-to."
+    },
+    {
+      "word": "poki",
+      "meaning": "container e.g. bag, bowl, box, cup, cupboard, drawer, folder",
+      "source_definition": "container e.g. bag, bowl, box, cup, cupboard, drawer, folder",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "poki",
+        "glyph": "U+F1953"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📦"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic container."
+    },
+    {
+      "word": "pona",
+      "meaning": "positive quality, e.g. good, pleasant, helpful, friendly, useful, peaceful",
+      "source_definition": "positive quality, e.g. good, pleasant, helpful, friendly, useful, peaceful",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pona",
+        "glyph": "U+F1954"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👍"
+      },
+      "pictiq": {
+        "ids": [
+          "logic_yes"
+        ],
+        "mapping": "contextual",
+        "context_required": true
+      },
+      "review_confidence": "medium",
+      "notes": "logic_yes can signal approval or OK; it does not lexicalize positive quality or usefulness."
+    },
+    {
+      "word": "pu",
+      "meaning": "interacting with the book Toki Pona: The Language of Good by Sonja Lang",
+      "source_definition": "interacting with the book Toki Pona: The Language of Good by Sonja Lang",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "pu",
+        "glyph": "U+F1955"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "📖"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "A concept specific to interacting with the official Toki Pona book is not independently useful for Pictiq."
+    },
+    {
+      "word": "sama",
+      "meaning": "same, similar, alike; peer, fellow, each other; (preposition) similar to, same as",
+      "source_definition": "same, similar, alike; peer, fellow, each other; (preposition) similar to, same as",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sama",
+        "glyph": "U+F1956"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚖️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents sameness, similarity, peers, or comparison."
+    },
+    {
+      "word": "seli",
+      "meaning": "hot, warm; heat, fire, flame; burn",
+      "source_definition": "hot, warm; heat, fire, flame; burn",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "seli",
+        "glyph": "U+F1957"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔥"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents heat, fire, warmth, or burning generally."
+    },
+    {
+      "word": "selo",
+      "meaning": "outer layer, e.g. skin, peel, shell, bark; outer shape, outer form, boundary",
+      "source_definition": "outer layer, e.g. skin, peel, shell, bark; outer shape, outer form, boundary",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "selo",
+        "glyph": "U+F1958"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🔲"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents skin, shell, boundary, or outer form broadly."
+    },
+    {
+      "word": "seme",
+      "meaning": "(particle) [indicate a question by marking missing info in a sentence]; what, which, who",
+      "source_definition": "(particle) [indicate a question by marking missing info in a sentence]; what, which, who",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "seme",
+        "glyph": "U+F1959"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "❓"
+      },
+      "pictiq": {
+        "ids": [
+          "punct_question"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "punct_question marks a question but does not encode the unknown argument carried by seme."
+    },
+    {
+      "word": "sewi",
+      "meaning": "up, top, above, highest part; divine, sacred, supernatural; awesome, inspiring, excelling",
+      "source_definition": "up, top, above, highest part; divine, sacred, supernatural; awesome, inspiring, excelling",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sewi",
+        "glyph": "U+F195A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⬆️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans above/top and sacred/divine/excellent meanings."
+    },
+    {
+      "word": "sijelo",
+      "meaning": "body, shape, physical state, torso, substance, form",
+      "source_definition": "body, shape, physical state, torso, substance, form",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sijelo",
+        "glyph": "U+F195B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🏋️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic body, physical state, or form."
+    },
+    {
+      "word": "sike",
+      "meaning": "circle, sphere, spiral, round thing e.g. ball, wheel; repeating thing e.g. cycle, orbit, loop",
+      "source_definition": "circle, sphere, spiral, round thing e.g. ball, wheel; repeating thing e.g. cycle, orbit, loop",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sike",
+        "glyph": "U+F195C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⭕"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents circles, spheres, cycles, or loops generally."
+    },
+    {
+      "word": "sin",
+      "meaning": "new, fresh, update; repeat, do again",
+      "source_definition": "new, fresh, update; repeat, do again",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sin",
+        "glyph": "U+F195D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🎁"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents newness, freshness, updating, or repetition generally."
+    },
+    {
+      "word": "sina",
+      "meaning": "(pronoun) you, y'all",
+      "source_definition": "(pronoun) you, y'all",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sina",
+        "glyph": "U+F195E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👉"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pictiq has no second-person pronoun tile."
+    },
+    {
+      "word": "sinpin",
+      "meaning": "vertical surface e.g. wall, board; front of something e.g. face",
+      "source_definition": "vertical surface e.g. wall, board; front of something e.g. face",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sinpin",
+        "glyph": "U+F195F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "➡️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a front, face, wall, or vertical surface broadly."
+    },
+    {
+      "word": "sitelen",
+      "meaning": "image, picture, representation, symbol, mark, writing",
+      "source_definition": "image, picture, representation, symbol, mark, writing",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sitelen",
+        "glyph": "U+F1960"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🖼️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents images, symbols, marks, or writing generally."
+    },
+    {
+      "word": "sona",
+      "meaning": "knowledge, information, data; know, be skilled in, be wise about; (preverb) know how to",
+      "source_definition": "knowledge, information, data; know, be skilled in, be wise about; (preverb) know how to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "sona",
+        "glyph": "U+F1961"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🧠"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "tech_ai is a system type, not a generic representation of knowledge or information."
+    },
+    {
+      "word": "soweli",
+      "meaning": "fuzzy creature, land animal, beast",
+      "source_definition": "fuzzy creature, land animal, beast",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "soweli",
+        "glyph": "U+F1962"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐒"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents land animals generally."
+    },
+    {
+      "word": "suli",
+      "meaning": "big, heavy, large, long, tall, wide; important, relevant",
+      "source_definition": "big, heavy, large, long, tall, wide; important, relevant",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "suli",
+        "glyph": "U+F1963"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🐘"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "qty_plus means more, not generic physical size, length, or importance."
+    },
+    {
+      "word": "suno",
+      "meaning": "light, shine, glow, radiance; sun, light source; brightness",
+      "source_definition": "light, shine, glow, radiance; sun, light source; brightness",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "suno",
+        "glyph": "U+F1964"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "☀️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents the sun, light, radiance, or brightness generally."
+    },
+    {
+      "word": "supa",
+      "meaning": "flat horizontal surface, especially to put or rest things on e.g. bed, floor, desk, plate, table, platform, stage",
+      "source_definition": "flat horizontal surface, especially to put or rest things on e.g. bed, floor, desk, plate, table, platform, stage",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "supa",
+        "glyph": "U+F1965"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🛏️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents a generic horizontal surface such as a table, bed, floor, or platform."
+    },
+    {
+      "word": "suwi",
+      "meaning": "sweet, fragrant; cute, adorable",
+      "source_definition": "sweet, fragrant; cute, adorable",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "suwi",
+        "glyph": "U+F1966"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍭"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile spans sweetness, fragrance, and cuteness."
+    },
+    {
+      "word": "tan",
+      "meaning": "(preposition) from, because of; cause, origin",
+      "source_definition": "(preposition) from, because of; cause, origin",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "tan",
+        "glyph": "U+F1967"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "↩️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Cause, origin, from, and because-of relations belong to context/grammar in Pictiq."
+    },
+    {
+      "word": "taso",
+      "meaning": "only, exclusively; (particle) [marks a sentence as qualifying or contradictory], but, however",
+      "source_definition": "only, exclusively; (particle) [marks a sentence as qualifying or contradictory], but, however",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "taso",
+        "glyph": "U+F1968"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🤔"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents only, exclusivity, contrast, or but/however."
+    },
+    {
+      "word": "tawa",
+      "meaning": "motion, e.g. walking, shaking, flight, travel; (preposition) to, for, going to, from the perspective of",
+      "source_definition": "motion, e.g. walking, shaking, flight, travel; (preposition) to, for, going to, from the perspective of",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "tawa",
+        "glyph": "U+F1969"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "↪️"
+      },
+      "pictiq": {
+        "ids": [
+          "move_feet"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "move_feet covers walking or going on foot, not direction, benefit, or viewpoint."
+    },
+    {
+      "word": "telo",
+      "meaning": "liquids e.g. water, gasoline, soda, lava, soup, oil, ink",
+      "source_definition": "liquids e.g. water, gasoline, soda, lava, soup, oil, ink",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "telo",
+        "glyph": "U+F196A"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💧"
+      },
+      "pictiq": {
+        "ids": [
+          "need_water"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "need_water is water/drink with practical intent; telo also covers many other liquids."
+    },
+    {
+      "word": "tenpo",
+      "meaning": "time, event, situation, moment, period, duration",
+      "source_definition": "time, event, situation, moment, period, duration",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "tenpo",
+        "glyph": "U+F196B"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⏰"
+      },
+      "pictiq": {
+        "ids": [
+          "time"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "time covers time and when; tenpo also spans events, situations, periods, and duration."
+    },
+    {
+      "word": "toki",
+      "meaning": "communicate, say, think; conversation, story; language",
+      "source_definition": "communicate, say, think; conversation, story; language",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "toki",
+        "glyph": "U+F196C"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🗣️"
+      },
+      "pictiq": {
+        "ids": [
+          "comm_phone"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "A phone supports calling, but toki broadly covers communication, speech, thought, story, and language."
+    },
+    {
+      "word": "tomo",
+      "meaning": "indoor space or shelter e.g. room, building, home, tent, shack",
+      "source_definition": "indoor space or shelter e.g. room, building, home, tent, shack",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "tomo",
+        "glyph": "U+F196D"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🏠"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Pictiq has specific places such as hotel and shop, but no generic building or home."
+    },
+    {
+      "word": "tu",
+      "meaning": "(number) two; separate, divide, split",
+      "source_definition": "(number) two; separate, divide, split",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "tu",
+        "glyph": "U+F196E"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "✌️"
+      },
+      "pictiq": {
+        "ids": [
+          "qty_2"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "qty_2 covers the number two; tu also means separating, dividing, and splitting."
+    },
+    {
+      "word": "unpa",
+      "meaning": "sex, to have sex with",
+      "source_definition": "sex, to have sex with",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "unpa",
+        "glyph": "U+F196F"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🍆"
+      },
+      "pictiq": {
+        "ids": [
+          "item_condom"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "A condom is a protection object associated with sex, not the act or concept of sex itself."
+    },
+    {
+      "word": "uta",
+      "meaning": "mouth, lips, throat, consuming orifice",
+      "source_definition": "mouth, lips, throat, consuming orifice",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "uta",
+        "glyph": "U+F1970"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "👄"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents mouth, lips, throat, or consuming orifice."
+    },
+    {
+      "word": "utala",
+      "meaning": "fight, compete, battle; competition, challenge; struggle, strive",
+      "source_definition": "fight, compete, battle; competition, challenge; struggle, strive",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "utala",
+        "glyph": "U+F1971"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚔️"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "Police/medical tiles can respond to conflict but do not represent fighting or competition."
+    },
+    {
+      "word": "walo",
+      "meaning": "light-colored, white, pale, light gray, cream",
+      "source_definition": "light-colored, white, pale, light gray, cream",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "walo",
+        "glyph": "U+F1972"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚪"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "The current lexicon has no generic white/light color tile."
+    },
+    {
+      "word": "wan",
+      "meaning": "(number) one; singular; combine, join, mix, fuse",
+      "source_definition": "(number) one; singular; combine, join, mix, fuse",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "wan",
+        "glyph": "U+F1973"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🇬🇺"
+      },
+      "pictiq": {
+        "ids": [
+          "qty_1"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "qty_1 covers one and singular; wan also means combining, joining, or mixing."
+    },
+    {
+      "word": "waso",
+      "meaning": "bird, flying creature, winged animal",
+      "source_definition": "bird, flying creature, winged animal",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "waso",
+        "glyph": "U+F1974"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🦅"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No current tile represents birds or flying creatures generally."
+    },
+    {
+      "word": "wawa",
+      "meaning": "power, energy, strength; confident, intense, forceful; amazing, impressive",
+      "source_definition": "power, energy, strength; confident, intense, forceful; amazing, impressive",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "wawa",
+        "glyph": "U+F1975"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "⚡"
+      },
+      "pictiq": {
+        "ids": [
+          "power_plug"
+        ],
+        "mapping": "partial",
+        "context_required": false
+      },
+      "review_confidence": "medium",
+      "notes": "power_plug covers electrical power access, only one part of energy, strength, and intensity."
+    },
+    {
+      "word": "weka",
+      "meaning": "absent, away, distant; remove, get rid of",
+      "source_definition": "absent, away, distant; remove, get rid of",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "weka",
+        "glyph": "U+F1976"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "🛫"
+      },
+      "pictiq": {
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
+      },
+      "review_confidence": "high",
+      "notes": "No tile represents absence, distance, removal, or getting rid of something."
+    },
+    {
+      "word": "wile",
+      "meaning": "want, desire, wish, require; (preverb) want to",
+      "source_definition": "want, desire, wish, require; (preverb) want to",
+      "meaning_source": "sona_linku_pinned",
+      "sitelen_pona": {
+        "source": "font_ligature",
+        "representation": "wile",
+        "glyph": "U+F1977"
+      },
+      "sitelen_emoji": {
+        "source": "default-stable.v1.json",
+        "representation": "💭"
+      },
+      "pictiq": {
+        "ids": [
+          "need_water"
+        ],
+        "mapping": "contextual",
+        "context_required": true,
+        "display_label": "example: need_water"
+      },
+      "review_confidence": "medium",
+      "notes": "A concrete need tile is only an example of need-intent in context; it is not a lexical mapping for wile."
+    }
+  ]
+}

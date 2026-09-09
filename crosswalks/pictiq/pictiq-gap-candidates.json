@@ -1,0 +1,84 @@
+{
+  "pictiq_commit": "7e9663d5a1236a881faf6a030e3258cf99e74a73",
+  "rule": "A gap is a candidate only when independently useful for Pictiq.",
+  "candidates": [
+    {
+      "concept": "generic person",
+      "source_words": [
+        "jan",
+        "meli",
+        "mije",
+        "mi",
+        "ona",
+        "sina"
+      ],
+      "recommendation": "strong_candidate",
+      "reason": "A generic person is useful in travel, interpersonal and safety messages without encoding gender or pronoun grammar.",
+      "suggested_role": "canonical reusable concept"
+    },
+    {
+      "concept": "generic building or home",
+      "source_words": [
+        "tomo"
+      ],
+      "recommendation": "strong_candidate",
+      "reason": "Home/building is independently useful beyond the current specific hotel, shop and landmark tiles.",
+      "suggested_role": "canonical reusable concept"
+    },
+    {
+      "concept": "look, see or eye",
+      "source_words": [
+        "lukin"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "Visual attention is useful, but an eye may be read as surveillance or anatomy and needs testing.",
+      "suggested_role": "tested visual-attention concept"
+    },
+    {
+      "concept": "clothing",
+      "source_words": [
+        "len"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "Clothing can support travel and physical needs, but the existing fashion-shopping tile may already cover some contexts.",
+      "suggested_role": "context-tested object concept"
+    },
+    {
+      "concept": "body",
+      "source_words": [
+        "sijelo"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "A body concept could support medical communication, but its scope and silhouette need evidence.",
+      "suggested_role": "medical and interpersonal context candidate"
+    },
+    {
+      "concept": "hot or fire",
+      "source_words": [
+        "seli"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "Heat/fire warnings are independently useful, while warmth and burning should not be conflated without testing.",
+      "suggested_role": "safety or state candidate"
+    },
+    {
+      "concept": "cold",
+      "source_words": [
+        "lete"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "Cold is useful for comfort and safety, but frozen/raw senses should remain outside a first tile.",
+      "suggested_role": "state candidate"
+    },
+    {
+      "concept": "large and small modifiers",
+      "source_words": [
+        "suli",
+        "lili"
+      ],
+      "recommendation": "possible_candidate",
+      "reason": "Scale modifiers could help physical requests, but must not inherit age, importance or evaluation senses.",
+      "suggested_role": "future composition modifiers"
+    }
+  ]
+}
