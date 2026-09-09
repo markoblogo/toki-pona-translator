@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.0.0-pilot",
+  "title": "Toki Pona to Pictiq pilot crosswalk",
+  "status": "research_non_canonical",
+  "created": "2026-09-09",
+  "semantic_rule": {
+    "toki_pona": "Toki Pona primarily compresses vocabulary by allowing broad lexical concepts.",
+    "pictiq": "Pictiq often compresses communication by relying on context and communicative intent.",
+    "equivalence_warning": "A mapping records useful overlap, not lexical equivalence. For example, telo is not equal to need_water even when need_water is the best available Pictiq tile."
+  },
+  "mapping_classes": {
+    "direct": "One existing Pictiq tile covers the central semantic field with only minor caveats.",
+    "partial": "The Pictiq tile overlaps meaningfully but is narrower, broader, or intent-specific.",
+    "composed": "More than one existing Pictiq tile is needed.",
+    "contextual": "Situation, neighboring tiles, or visual context supplies essential meaning.",
+    "none": "No defensible mapping exists in the current Pictiq lexicon."
+  },
+  "sources": {
+    "toki_pona_repository": {
+      "url": "https://github.com/markoblogo/toki-pona-translator",
+      "commit": "50a7d82acf58c1f32bb66b0f6e1fb74a973f4adb",
+      "vocabulary_file": "packages/sitelen-emoji/words/nimi_pu.txt",
+      "vocabulary_sha256": "b326c507ab36bf0795294c2769c2aeeac69fb1f2b2edd8962450cd2396d5bd71",
+      "display_recognition_lexicon": "packages/sitelen-layer-plugin/src/tokiPonaLexicon.ts",
+      "display_recognition_lexicon_size": 139,
+      "display_recognition_lexicon_sha256": "12cebc6afbb57b560fbe15724fcfa0e2d0b9e374fed3458dc047cdea51d7a977",
+      "provenance_note": "This file is the repository's current 120-word membership list. It carries no item-level source metadata; the English meanings below are concise pilot research glosses, not copied dictionary definitions or claims of canonical equivalence.",
+      "repository_license": "MIT"
+    },
+    "sitelen_pona": {
+      "mechanism": "Latin word input shaped as one OpenType ligature by sitelen seli kiwen asuki",
+      "default_render_strategy_source": "packages/sitelen-layer-plugin/src/presets.ts",
+      "font_file": "packages/sitelen-layer-plugin/assets/fonts/sitelen-seli-kiwen-asuki.ttf",
+      "font_sha256": "72b02ddb57c9421ec11e400706324a0f445add2b0ea6764bdd196a7fc6d4183a",
+      "font_name": "sitelen seli kiwen asuki",
+      "font_version": "2.2",
+      "author": "KreativeKorp / jan Lepeka",
+      "upstream": "https://github.com/kreativekorp/sitelen-seli-kiwen",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "packages/sitelen-layer-plugin/assets/fonts/OFL-sitelen-seli-kiwen.txt"
+    },
+    "sitelen_emoji": {
+      "canonical_profile": "packages/sitelen-emoji/profiles/default-stable.v1.json",
+      "profile_sha256": "c41b1390419ca60abcda2165dc33182f9886ebe6ff828417c4b5a191fbbe5d8d",
+      "profile_behavior": "Static frozen word-to-Unicode mapping; generated copies exist for consumers, but this profile is the source of truth.",
+      "upstream_mapping": "https://raw.githubusercontent.com/devbali/desktop-sitelen-emoji/master/sitelenemoji.json",
+      "upstream_repository": "https://github.com/devbali/desktop-sitelen-emoji",
+      "upstream_license": "BSD-3-Clause",
+      "profile_license": "MIT",
+      "rendering": "Unicode values are rendered in the grid with Twemoji 17.0.0 PNG assets.",
+      "rendering_source": "https://github.com/jdecked/twemoji/tree/v17.0.0/assets/72x72",
+      "rendering_license": "CC-BY-4.0"
+    },
+    "pictiq": {
+      "url": "https://github.com/markoblogo/pictiq",
+      "commit": "7e9663d5a1236a881faf6a030e3258cf99e74a73",
+      "lexicon_file": "lexicon/icon-index.json",
+      "lexicon_version": "0.2.0",
+      "lexicon_sha256": "319bccbec294d1a9ac24e4622f9b2c9e0fada2da73142f1d0b057d171db696b5",
+      "icon_path_pattern": "icons/svg/{id}.svg",
+      "protocol_release": "v1.0.0-core",
+      "license": "CC-BY-NC-4.0"
+    }
+  },
+  "mappings": [
+    {
+      "word": "telo",
+      "meaning": "water; liquid; fluid; wet; wash",
+      "sitelen_pona": {"source": "font_ligature", "representation": "telo", "glyph": "U+F196A"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "💧"},
+      "pictiq": {"ids": ["need_water"], "mapping": "partial", "context_required": false},
+      "notes": "need_water is water/drink with practical intent; telo also covers liquids and related actions."
+    },
+    {
+      "word": "moku",
+      "meaning": "food; eat; drink; consume",
+      "sitelen_pona": {"source": "font_ligature", "representation": "moku", "glyph": "U+F1936"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "🍽️"},
+      "pictiq": {"ids": ["need_food"], "mapping": "partial", "context_required": false},
+      "notes": "need_food expresses food or hunger; moku also acts as eat, drink, and consume."
+    },
+    {
+      "word": "mani",
+      "meaning": "money; currency; wealth; valuable property",
+      "sitelen_pona": {"source": "font_ligature", "representation": "mani", "glyph": "U+F1932"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "💰"},
+      "pictiq": {"ids": ["money_coins"], "mapping": "partial", "context_required": false},
+      "notes": "money_coins means cash/pay cash and is narrower than money, wealth, or property."
+    },
+    {
+      "word": "tomo",
+      "meaning": "indoor constructed space; building; home; room",
+      "sitelen_pona": {"source": "font_ligature", "representation": "tomo", "glyph": "U+F196D"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "🏠"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "Pictiq has specific places such as hotel and shop, but no generic building or home."
+    },
+    {
+      "word": "ilo",
+      "meaning": "tool; implement; machine; device",
+      "sitelen_pona": {"source": "font_ligature", "representation": "ilo", "glyph": "U+F190E"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "⚙️"},
+      "pictiq": {"ids": ["service_tools"], "mapping": "partial", "context_required": false},
+      "notes": "service_tools covers tools and repair, not the wider class of devices and machines."
+    },
+    {
+      "word": "jan",
+      "meaning": "person; human; somebody",
+      "sitelen_pona": {"source": "font_ligature", "representation": "jan", "glyph": "U+F1911"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "👤"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "The current lexicon has no generic person tile."
+    },
+    {
+      "word": "luka",
+      "meaning": "hand; arm; tactile organ; five",
+      "sitelen_pona": {"source": "font_ligature", "representation": "luka", "glyph": "U+F192D"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "✋"},
+      "pictiq": {"ids": ["qty_5"], "mapping": "partial", "context_required": false},
+      "notes": "qty_5 covers only the numerical use; it says nothing about hand or arm."
+    },
+    {
+      "word": "lukin",
+      "meaning": "look; see; examine; eye",
+      "sitelen_pona": {"source": "font_ligature", "representation": "lukin", "glyph": "U+F192E"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "👀"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "No current Pictiq tile encodes looking, seeing, or an eye."
+    },
+    {
+      "word": "tawa",
+      "meaning": "move; go; toward; for; from the perspective of",
+      "sitelen_pona": {"source": "font_ligature", "representation": "tawa", "glyph": "U+F1969"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "↪️"},
+      "pictiq": {"ids": ["move_feet"], "mapping": "partial", "context_required": false},
+      "notes": "move_feet covers walking or going on foot, not direction, benefit, or viewpoint."
+    },
+    {
+      "word": "pali",
+      "meaning": "do; work; make; build",
+      "sitelen_pona": {"source": "font_ligature", "representation": "pali", "glyph": "U+F1949"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "✊"},
+      "pictiq": {"ids": ["service_tools"], "mapping": "partial", "context_required": false},
+      "notes": "service_tools overlaps with repair work but does not represent general doing or making."
+    },
+    {
+      "word": "jo",
+      "meaning": "have; carry; contain; hold",
+      "sitelen_pona": {"source": "font_ligature", "representation": "jo", "glyph": "U+F1913"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "👜"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "The current protocol has no generic possession or containment relation."
+    },
+    {
+      "word": "wile",
+      "meaning": "want; need; must; should",
+      "sitelen_pona": {"source": "font_ligature", "representation": "wile", "glyph": "U+F1977"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "💭"},
+      "pictiq": {"ids": ["need_water"], "mapping": "contextual", "context_required": true},
+      "notes": "need_water can realize wile e telo in context; it cannot represent wile by itself."
+    },
+    {
+      "word": "pona",
+      "meaning": "good; positive; useful; simple; friendly",
+      "sitelen_pona": {"source": "font_ligature", "representation": "pona", "glyph": "U+F1954"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "👍"},
+      "pictiq": {"ids": ["logic_yes"], "mapping": "contextual", "context_required": true},
+      "notes": "logic_yes can signal approval or OK; it does not lexicalize goodness or simplicity."
+    },
+    {
+      "word": "ike",
+      "meaning": "bad; negative; harmful; complex",
+      "sitelen_pona": {"source": "font_ligature", "representation": "ike", "glyph": "U+F190D"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "👎"},
+      "pictiq": {"ids": ["logic_no"], "mapping": "contextual", "context_required": true},
+      "notes": "logic_no can reject something in context; it does not mean bad, harmful, or complex."
+    },
+    {
+      "word": "suli",
+      "meaning": "big; important; long; adult",
+      "sitelen_pona": {"source": "font_ligature", "representation": "suli", "glyph": "U+F1963"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "🐘"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "qty_plus means more, not generic size, importance, length, or adulthood."
+    },
+    {
+      "word": "lili",
+      "meaning": "small; little; few; young",
+      "sitelen_pona": {"source": "font_ligature", "representation": "lili", "glyph": "U+F1928"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "🐭"},
+      "pictiq": {"ids": [], "mapping": "none", "context_required": false},
+      "notes": "qty_minus means less, not generic smallness, youth, or a small quantity."
+    },
+    {
+      "word": "seme",
+      "meaning": "what; which; who; unknown interrogative",
+      "sitelen_pona": {"source": "font_ligature", "representation": "seme", "glyph": "U+F1959"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "❓"},
+      "pictiq": {"ids": ["punct_question"], "mapping": "partial", "context_required": false},
+      "notes": "punct_question marks a question but does not encode the unknown argument carried by seme."
+    },
+    {
+      "word": "ala",
+      "meaning": "no; not; nothing; zero",
+      "sitelen_pona": {"source": "font_ligature", "representation": "ala", "glyph": "U+F1902"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "❌"},
+      "pictiq": {"ids": ["logic_no"], "mapping": "direct", "context_required": false},
+      "notes": "logic_no directly covers no/not; Toki Pona also permits nothing and zero readings."
+    },
+    {
+      "word": "ken",
+      "meaning": "can; possible; ability; permission",
+      "sitelen_pona": {"source": "font_ligature", "representation": "ken", "glyph": "U+F1918"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "💪"},
+      "pictiq": {"ids": ["logic_yes"], "mapping": "contextual", "context_required": true},
+      "notes": "logic_yes can answer a can-I question affirmatively; it does not encode ability or possibility."
+    },
+    {
+      "word": "pilin",
+      "meaning": "feel; emotion; sensation; heart",
+      "sitelen_pona": {"source": "font_ligature", "representation": "pilin", "glyph": "U+F194E"},
+      "sitelen_emoji": {"source": "default-stable.v1.json", "representation": "❤️"},
+      "pictiq": {"ids": ["love_heart"], "mapping": "partial", "context_required": false},
+      "notes": "love_heart covers affection or romance, only a narrow subset of feeling and sensation."
+    }
+  ],
+  "gap_assessment": [
+    {"word": "jan", "candidate": "generic person", "recommendation": "strong_candidate", "reason": "People are independently frequent participants in short messages and pointing interactions."},
+    {"word": "tomo", "candidate": "generic building or home", "recommendation": "strong_candidate", "reason": "A generic destination or shelter is useful beyond the crosswalk and is not replaced by hotel or shop."},
+    {"word": "lukin", "candidate": "look, see, or eye", "recommendation": "possible_candidate", "reason": "Useful for attention and observation, but the intended communicative act needs user testing."},
+    {"word": "jo", "candidate": "have or contain", "recommendation": "not_justified", "reason": "It is an abstract relation whose visual reading would depend heavily on operands and grammar."},
+    {"word": "suli", "candidate": "large or important modifier", "recommendation": "possible_candidate", "reason": "Physical size can be useful, but importance and adulthood should not be folded into the same tile."},
+    {"word": "lili", "candidate": "small or little modifier", "recommendation": "possible_candidate", "reason": "Physical smallness may be useful, but youth and few require different context and qty_minus already covers less."}
+  ],
+  "linking_plan": {
+    "status": "draft_not_applied",
+    "pictiq_readme": "### Related projects\n\nToki Pona Translator explores a deliberately minimal constructed language and its visual writing systems.\n\nPictiq approaches a related problem from a different direction: a constrained visual protocol for short messages.\n\nhttps://github.com/markoblogo/toki-pona-translator",
+    "toki_pona_readme": "### Related experiments\n\nPictiq is a minimal visual protocol for short messages across language barriers.\n\nThe Pictiq ↔ Toki Pona crosswalk explores how Toki Pona concepts correspond to a constrained intent-oriented visual system.\n\nhttps://github.com/markoblogo/pictiq"
+  }
+}
