@@ -62,10 +62,18 @@ def validate(review: dict, crosswalk: dict, pictiq_root: Path) -> dict:
     require(dataset_path == HERE / "crosswalk-120.json", "unexpected source dataset")
     require(sha256(dataset_path) == review["source_dataset_sha256"], "source dataset changed")
     require(review["source_commit"] == "50a58e7bfdd6004f7b52e6e3368149a8ac2f4fd1", "source commit changed")
+    require(review["status"] == "resolved" and review["resolution"]["unresolved_rows"] == 0, "human review is unresolved")
     require(set(review["communication_mode_method"]["states"]) == GAP_STATES, "gap-state definitions changed")
 
     full_by_word = {item["word"]: item for item in crosswalk["mappings"]}
     require(len(full_by_word) == 120, "full crosswalk is not 120 unique words")
+    mapping_counts = Counter(item["pictiq"]["mapping"].upper() for item in crosswalk["mappings"])
+    confidence_counts = Counter(item["review_confidence"] for item in crosswalk["mappings"])
+    require({key: mapping_counts[key] for key in review["resolution"]["mapping_counts"]} == review["resolution"]["mapping_counts"], "resolved mapping counts are stale")
+    require(dict(confidence_counts) == review["resolution"]["confidence_counts"], "resolved confidence counts are stale")
+    require(sum(len(item["pictiq"]["ids"]) == 1 for item in crosswalk["mappings"]) == review["resolution"]["one_tile"], "resolved one-tile count is stale")
+    require(sum(len(item["pictiq"]["ids"]) > 1 for item in crosswalk["mappings"]) == review["resolution"]["multiple_tiles"], "resolved multi-tile count is stale")
+    require(sum(not item["pictiq"]["ids"] for item in crosswalk["mappings"]) == review["resolution"]["no_representation"], "resolved NONE count is stale")
     expected_a = section_a_source_rows(crosswalk)
     review_a = review["semantic_review"]
     require({item["word"] for item in review_a} == {item["word"] for item in expected_a}, "Section A selection mismatch")
@@ -75,7 +83,7 @@ def validate(review: dict, crosswalk: dict, pictiq_root: Path) -> dict:
     none_words = {item["word"] for item in crosswalk["mappings"] if item["pictiq"]["mapping"] == "none"}
     cluster_words = [word for cluster in review["candidate_clusters"] for word in cluster["words"]]
     require(len(cluster_words) == len(set(cluster_words)), "NONE cluster words overlap")
-    require(set(cluster_words) == none_words and len(none_words) == 85, "NONE clusters must account for exactly all 85 NONE rows")
+    require(set(cluster_words) == none_words and len(none_words) == 88, "NONE clusters must account for exactly all 88 NONE rows")
     require(all(cluster["recommendation"] in CLUSTER_RECOMMENDATIONS for cluster in review["candidate_clusters"]), "invalid cluster recommendation")
     require(all(cluster["independent_utility"] in UTILITY for cluster in review["candidate_clusters"]), "invalid cluster utility")
 
@@ -116,6 +124,9 @@ def validate(review: dict, crosswalk: dict, pictiq_root: Path) -> dict:
     require(recommendations == Counter({"POSSIBLE": 9, "STRONG": 2, "DEFER": 2, "REJECT": 2}), "candidate recommendation counts changed")
     require(all("STANDALONE-GAP" in item["gap_states"] for item in review["candidate_concepts"] if item["recommendation"] in {"STRONG", "POSSIBLE"}), "advanced candidate lacks standalone need")
     require(all("OUT-OF-SCOPE" in item["gap_states"] for item in review["candidate_concepts"] if item["recommendation"] == "REJECT"), "rejected candidate lacks out-of-scope classification")
+    require(review["accepted_architecture"]["pictiq_commit"] == actual_commit, "accepted architecture pin differs from Pictiq checkout")
+    architecture = review["accepted_architecture"]
+    require([len(architecture[key]) for key in ("strong_development_candidates", "standalone_implementation_candidates", "protocol_mechanisms", "deferred", "rejected")] == [2, 12, 4, 3, 7], "accepted architecture backlog changed")
     return {
         "candidate_concepts": len(review["candidate_concepts"]),
         "candidate_embodied_omittable": candidate_states["EMBODIED-OMITTABLE"],
@@ -146,124 +157,137 @@ def states_text(states) -> str:
     return "<br>".join(f"`{state}`" for state in states)
 
 
+def architecture_item(item: dict) -> str:
+    words = ", ".join(f"`{word}`" for word in item["source_words"])
+    source = f" — source: {words}" if words else ""
+    return f"- **{item['concept']}** (`{item['class']}`){source}"
+
+
 def human_markdown(review: dict, crosswalk: dict, stats: dict) -> str:
     source_by_word = {item["word"]: item for item in crosswalk["mappings"]}
+    resolution = review["resolution"]
     lines = [
         "# Human Review - Full 120-word Crosswalk", "",
-        "> **Decision proposal only.** This document does not change a mapping, approve a candidate, or request a new Pictiq icon.", "",
+        "> **Status: RESOLVED — 2026-09-09.** The decisions below are applied to the canonical research dataset.", "",
+        resolution["context"], "",
+        f"Final mapping counts: **0 DIRECT / 19 PARTIAL / 2 COMPOSED / 11 CONTEXTUAL / 88 NONE**. Confidence remains **98 high / 19 medium / 3 low**. One tile: **30**; multiple tiles: **2**; no representation: **88**; unresolved review rows: **0**.", "",
         review["independent_utility_rule"], "",
-        f"The decision workload is reduced from 106 queued rows to **{stats['section_a']} semantic mapping decisions**, **{stats['none_clusters']} NONE clusters**, and **{stats['candidate_concepts']} concept-level candidates**.", "",
         "## Communication-mode interpretation", "",
         review["communication_mode_method"]["rule"], "",
         f"> **Research finding:** {review['communication_mode_method']['finding']}", "",
-        "The semantic mapping class and the communication-mode interpretation are separate dimensions. A word can remain `NONE` while its absence is acceptable in live use and still exposes a standalone need. State counts overlap by design.", "",
-        f"Across the 85 `NONE` rows: **{stats['none_embodied_omittable']} EMBODIED-OMITTABLE**, **{stats['none_standalone_gap']} STANDALONE-GAP**, and **{stats['none_out_of_scope']} OUT-OF-SCOPE** word classifications.", "",
+        "Semantic mapping class and communication-mode interpretation remain separate dimensions. A word can remain `NONE` while embodiment covers live use and standalone use exposes a future development need.", "",
+        f"Across the 88 `NONE` rows: **{stats['none_embodied_omittable']} EMBODIED-OMITTABLE**, **{stats['none_standalone_gap']} STANDALONE-GAP**, and **{stats['none_out_of_scope']} OUT-OF-SCOPE** word classifications. State counts overlap by design.", "",
         "- `EMBODIED-OMITTABLE`: " + review["communication_mode_method"]["states"]["EMBODIED-OMITTABLE"],
         "- `STANDALONE-GAP`: " + review["communication_mode_method"]["states"]["STANDALONE-GAP"],
         "- `OUT-OF-SCOPE`: " + review["communication_mode_method"]["states"]["OUT-OF-SCOPE"], "",
-        "## A. Semantic mappings requiring judgment", "",
-        "The sole COMPOSED row is **`esun` -> `place_shop + money_coins`**. The sequence communicates practical cash shopping/commerce, but not the full barter/exchange field. Recommendation: **ACCEPT** as a composed approximation; CONTEXTUAL remains the strongest alternative.", "",
-        "| Word | Meaning | Current Pictiq | Class | Confidence | Why review? | Alternative | Recommendation |",
+        "## A. Resolved semantic decisions", "",
+        "The table preserves the review reasoning and historical proposal while recording the applied final decision.", "",
+        "| Word | Meaning | Final Pictiq | Final class | Confidence | Why reviewed? | Historical proposal | Final decision |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for decision in review["semantic_review"]:
         source = source_by_word[decision["word"]]
+        historical = f"{decision['recommendation']}: {decision['alternative']}"
         lines.append(
             f"| `{decision['word']}` | {decision['meaning']} | {pictiq_text(source)} | {source['pictiq']['mapping'].upper()} | "
-            f"{source['review_confidence']} | {decision['why_review']} | {decision['alternative']} | **{decision['recommendation']}** |"
+            f"{source['review_confidence']} | {decision['why_review']} | {historical} | **{decision['final_decision']}** |"
         )
-    lines += ["", "## B. Candidate concept clusters", "",
-              "All 85 source `NONE` rows appear exactly once below. Gap-state word lists are analytical and may overlap; every source mapping remains `NONE`.", "",
-              "| Cluster | Toki Pona words | Semantic concepts | Mode classification | Current workaround | Independent utility | Recommendation |",
+    lines += ["", "## B. NONE concept clusters", "",
+              "All 88 final `NONE` rows appear exactly once below. Gap-state word lists may overlap; future Pictiq candidates do not change the semantic mapping.", "",
+              "| Cluster | Toki Pona words | Semantic concepts | Mode classification | Current workaround | Independent utility | Research disposition |",
               "|---|---|---|---|---|---|---|"]
     for cluster in review["candidate_clusters"]:
         words = ", ".join(f"`{word}`" for word in cluster["words"])
         mode = "<br>".join(f"`{state}`: " + ", ".join(f"`{word}`" for word in state_words) for state, state_words in cluster["gap_states"].items())
         lines.append(f"| {cluster['name']} | {words} | {cluster['concepts']} | {mode} | {cluster['workaround']} | {cluster['independent_utility']} | **{cluster['recommendation']}** - {cluster['note']} |")
-    lines += ["", "## C. Proposed reusable Pictiq concepts", "",
-              f"The re-evaluated shortlist contains **{stats['strong_candidates']} STRONG**, **{stats['possible_candidates']} POSSIBLE**, **{stats['defer_candidates']} DEFER**, and **{stats['reject_candidates']} REJECT** recommendations. Candidate mode tags overlap: **{stats['candidate_embodied_omittable']} EMBODIED-OMITTABLE**, **{stats['candidate_standalone_gap']} STANDALONE-GAP**, and **{stats['candidate_out_of_scope']} OUT-OF-SCOPE**.", "",
-              "These remain concept-level questions, not approved additions or final canonical IDs. The color proposal is a parametric modifier direction, not a set of color icons.", "",
-              "| Candidate concept | Source words | Mode classification | Proposed role | Existing workaround | Utility | Recommendation | Reason |",
+    lines += ["", "## C. Historical concept shortlist", "",
+              f"The pre-acceptance shortlist contained **{stats['strong_candidates']} STRONG**, **{stats['possible_candidates']} POSSIBLE**, **{stats['defer_candidates']} DEFER**, and **{stats['reject_candidates']} REJECT** recommendations. It is retained as research history; the accepted architectural backlog below supersedes it for development planning.", "",
+              "| Candidate concept | Source words | Mode classification | Proposed role | Existing workaround | Utility | Historical recommendation | Reason |",
               "|---|---|---|---|---|---|---|---|"]
     for candidate in review["candidate_concepts"]:
         words = ", ".join(f"`{word}`" for word in candidate["source_words"])
         lines.append(f"| {candidate['concept']} | {words} | {states_text(candidate['gap_states'])} | {candidate['role']} | {candidate['workaround']} | {candidate['independent_utility']} | **{candidate['recommendation']}** | {candidate['mode_reason']} |")
-    lines += ["", "## D. Safe to remain NONE", "",
-              "All 85 rows can remain `NONE` while communication-mode questions are evaluated separately. Individual lexical review is unnecessary in these grouped areas:", ""]
-    for group in review["safe_none_groups"]:
-        clusters = "; ".join(group["clusters"])
-        lines.append(f"- **{group['name']}** ({clusters}): {group['reason']}")
-    lines += ["", "## E. Key methodological observations", "",
-              "- No strict DIRECT lexical equivalents were found in the 120-word dataset.",
-              "- Toki Pona minimizes vocabulary through broad lexical concepts; Pictiq can omit information carried by a present body or situation.",
-              "- Standalone signs, cards, stickers, screens, and remote instructions must be re-tested after the communicator and transient context are removed.",
-              "- NONE remains the correct mapping class unless semantic equivalence changes; a STANDALONE-GAP is a separate research result.",
-              "- Coverage percentages describe this crosswalk and must not be optimized as a score.",
-              "- The most controversial current examples remain `a`, `nasa`, and `o`; each is recommended to change to NONE at the later decision stage.", "",
-              "## Recommended review order", "",
-              "1. Decide the single `esun` COMPOSED row.",
-              "2. Decide the 10 CONTEXTUAL rows, starting with `a`, `nasa`, and `o`.",
-              "3. Decide the 10 medium-confidence PARTIAL rows, focusing on `musi`, `toki`, `unpa`, and `wawa`.",
-              "4. Review the two STRONG candidates, then the nine POSSIBLE standalone questions.",
-              "5. Keep every source `NONE` unchanged unless a separate semantic decision changes it.", ""]
+    architecture = review["accepted_architecture"]
+    lines += ["", "## D. Accepted Pictiq architecture backlog", "",
+              "These are accepted development directions, not implemented icons, IDs, modifiers, parameters, entity registries, or canonical lexicon entries.", "",
+              "### Strong development candidates", ""]
+    lines += [architecture_item(item) for item in architecture["strong_development_candidates"]]
+    lines += ["", "### Standalone implementation candidates", ""]
+    lines += [architecture_item(item) for item in architecture["standalone_implementation_candidates"]]
+    lines += ["", "### Protocol mechanisms", ""]
+    lines += [architecture_item(item) for item in architecture["protocol_mechanisms"]]
+    lines += ["", "### Deferred", ""]
+    lines += [architecture_item(item) for item in architecture["deferred"]]
+    lines += ["", "### Rejected directions", ""]
+    lines += [f"- {item}" for item in architecture["rejected"]]
+    lines += ["", "## E. Final methodological findings", "",
+              "- `NONE` is not a single failure state and does not imply an icon gap.",
+              "- `jan`, `lukin`, and color words remain `NONE` even though they expose standalone development mechanisms.",
+              "- GOOD/BAD and LARGE/SMALL belong in modifier research rather than noun-like lexical expansion.",
+              "- Proper names expose scoped entity symbols rather than lexical or alphabetic completeness.",
+              "- Color exposes a proposed parametric mechanism rather than a finite color vocabulary.",
+              "- Toki Pona grammar remains outside Pictiq scope.",
+              "- Coverage percentages describe interoperability and were not optimization targets.", ""]
     return "\n".join(lines)
 
 
 def gap_markdown(review: dict, stats: dict) -> str:
-    groups = [("STRONG", "Strong reusable candidates"), ("POSSIBLE", "Possible reusable candidates"), ("DEFER", "Deferred questions"), ("REJECT", "Out-of-scope proposals")]
+    architecture = review["accepted_architecture"]
     lines = [
         "# Pictiq semantic gap report", "",
-        "This report adds communication mode as a second analytical dimension to the complete 120-word crosswalk. It does not change `crosswalk-120.json` or approve any Pictiq addition.", "",
+        "> **Status: ACCEPTED RESEARCH DIRECTION — IMPLEMENTATION NOT STARTED.**", "",
+        "This report interprets the final 120-word crosswalk through Pictiq's Embodied/Standalone architecture. It does not create canonical icons, IDs, modifiers, parameters, entity symbols, packs, or registries.", "",
         "> " + review["communication_mode_method"]["rule"], "",
         f"> **Research finding:** {review['communication_mode_method']['finding']}", "",
-        f"All 85 `NONE` rows remain accounted for. Word-level tags overlap: **{stats['none_embodied_omittable']} EMBODIED-OMITTABLE**, **{stats['none_standalone_gap']} STANDALONE-GAP**, and **{stats['none_out_of_scope']} OUT-OF-SCOPE**.", "",
-        f"At concept level the shortlist is **{stats['strong_candidates']} STRONG / {stats['possible_candidates']} POSSIBLE / {stats['defer_candidates']} DEFER / {stats['reject_candidates']} REJECT**. It contains **{stats['candidate_standalone_gap']} standalone-gap concepts** and **{stats['candidate_out_of_scope']} out-of-scope concepts**; overlap with the **{stats['candidate_embodied_omittable']} embodied-omittable concepts** is intentional.", "",
-        "## How to read the states", "",
-        "- **EMBODIED-OMITTABLE** means a live person or visible situation can supply the meaning; it is not evidence that every standalone use is covered.",
-        "- **STANDALONE-GAP** means the meaning must remain after the communicator is gone and no current representation preserves it honestly.",
-        "- **OUT-OF-SCOPE** means the proposed encoding would copy grammar, create excessive lexical breadth, or lack independent Pictiq utility.", "",
-        "A concept can be both EMBODIED-OMITTABLE and STANDALONE-GAP. `lukin`, for example, can be communicated by gaze or pointing live but may need an explicit visual-attention cue in an unattended artifact.", "",
+        f"All 88 final `NONE` rows are accounted for. Word-level tags overlap: **{stats['none_embodied_omittable']} EMBODIED-OMITTABLE**, **{stats['none_standalone_gap']} STANDALONE-GAP**, and **{stats['none_out_of_scope']} OUT-OF-SCOPE**.", "",
+        "## Strong development candidates", "",
     ]
-    for recommendation, title in groups:
-        lines += [f"## {title}", ""]
-        for candidate in review["candidate_concepts"]:
-            if candidate["recommendation"] != recommendation:
-                continue
-            states = " + ".join(candidate["gap_states"])
-            lines.append(f"- **{candidate['concept']}** (`{states}`): {candidate['mode_reason']}")
-        lines.append("")
-    lines += [
-        "## Parametric color direction", "",
-        "Color is a strong example of the mode distinction: pointing to a visible color is often sufficient live, while a remote instruction must preserve which color identifies the object. The analytical proposal is one stable parametric visual-modifier family, not separate noun-like icons copied from Toki Pona color words. No form, geometry, palette, ID, syntax, or acceptance decision is proposed here.", "",
-        "## Mapping impact", "",
-        "- No DIRECT, PARTIAL, COMPOSED, CONTEXTUAL, or NONE classification changed.",
-        "- The source dataset, pilot, visual dictionary, and headline statistics remain unchanged.",
-        "- Candidate priority still requires independent Pictiq use cases and the normal specification, perceptual, and acceptance workflow.", "",
-    ]
+    lines += [architecture_item(item) for item in architecture["strong_development_candidates"]]
+    lines += ["", "## Standalone implementation candidates", ""]
+    lines += [architecture_item(item) for item in architecture["standalone_implementation_candidates"]]
+    lines += ["", "GOOD/BAD remain separate from YES/NO. Energy/electricity does not include physical strength. Light and sun/day remain separate until tested.", "",
+              "## Protocol mechanisms", ""]
+    lines += [architecture_item(item) for item in architecture["protocol_mechanisms"]]
+    lines += ["", "LARGE/SMALL are scale modifiers, not aliases for quantity. Emission marks are a visual convention, not a standalone semantic tile.", "",
+              "## Entity-symbol finding", "", architecture["entity_symbol_finding"], "",
+              "No entity symbols or namespaces are implemented by this research cycle.", "",
+              "## Parametric color finding", "", architecture["parametric_color_finding"], "",
+              "No red, yellow, blue, green, or other canonical lexical color icons are proposed.", "",
+              "## Deferred", ""]
+    lines += [architecture_item(item) for item in architecture["deferred"]]
+    lines += ["", "## Rejected directions", ""]
+    lines += [f"- {item}" for item in architecture["rejected"]]
+    lines += ["", "## Final semantic impact", "",
+              "- `esun` remains COMPOSED as `place_shop + money_coins`.",
+              "- `mute` is COMPOSED as `qty_5 + qty_plus`.",
+              "- `a`, `nasa`, and `o` are NONE.",
+              "- `musi`, `toki`, `unpa`, and `wawa` are CONTEXTUAL examples.",
+              "- Existing future candidates do not convert any other NONE mapping.",
+              "- Final counts are 0 DIRECT / 19 PARTIAL / 2 COMPOSED / 11 CONTEXTUAL / 88 NONE.", ""]
     return "\n".join(lines)
 
 
 def candidate_json(review: dict, crosswalk: dict, stats: dict) -> str:
-    recommendation_names = {"STRONG": "strong_candidate", "POSSIBLE": "possible_candidate", "DEFER": "defer", "REJECT": "reject"}
+    architecture = review["accepted_architecture"]
     payload = {
+        "status": architecture["status"],
         "pictiq_source_commit": crosswalk["sources"]["pictiq"]["commit"],
         "pictiq_methodology_commit": review["methodology_pictiq_commit"],
-        "rule": review["communication_mode_method"]["rule"],
-        "counts": {
-            "strong": stats["strong_candidates"], "possible": stats["possible_candidates"],
-            "defer": stats["defer_candidates"], "reject": stats["reject_candidates"],
-            "embodied_omittable_concepts": stats["candidate_embodied_omittable"],
-            "standalone_gap_concepts": stats["candidate_standalone_gap"],
-            "out_of_scope_concepts": stats["candidate_out_of_scope"],
+        "semantic_mapping_counts": review["resolution"]["mapping_counts"],
+        "communication_mode_counts": {
+            "none_words": stats["none_accounted"],
+            "embodied_omittable_words": stats["none_embodied_omittable"],
+            "standalone_gap_words": stats["none_standalone_gap"],
+            "out_of_scope_words": stats["none_out_of_scope"],
+            "counts_overlap": True,
         },
-        "candidates": [
-            {
-                "concept": item["concept"], "source_words": item["source_words"],
-                "gap_states": item["gap_states"], "recommendation": recommendation_names[item["recommendation"]],
-                "reason": item["mode_reason"], "suggested_role": item["role"],
-            }
-            for item in review["candidate_concepts"]
-        ],
+        "strong_development_candidates": architecture["strong_development_candidates"],
+        "standalone_implementation_candidates": architecture["standalone_implementation_candidates"],
+        "protocol_mechanisms": architecture["protocol_mechanisms"],
+        "deferred": architecture["deferred"],
+        "rejected": architecture["rejected"],
+        "entity_symbol_finding": architecture["entity_symbol_finding"],
+        "parametric_color_finding": architecture["parametric_color_finding"],
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 

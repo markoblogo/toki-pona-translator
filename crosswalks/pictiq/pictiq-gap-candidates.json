@@ -1,235 +1,199 @@
 {
-  "pictiq_source_commit": "7e9663d5a1236a881faf6a030e3258cf99e74a73",
-  "pictiq_methodology_commit": "f31c51ce1873c1db2208b5aca056884093c0572a",
-  "rule": "Use the body for what the body can express. Use the icon for what must remain after the body is gone.",
-  "counts": {
-    "strong": 2,
-    "possible": 9,
-    "defer": 2,
-    "reject": 2,
-    "embodied_omittable_concepts": 12,
-    "standalone_gap_concepts": 11,
-    "out_of_scope_concepts": 2
+  "status": "accepted_direction_unimplemented",
+  "pictiq_source_commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca",
+  "pictiq_methodology_commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca",
+  "semantic_mapping_counts": {
+    "DIRECT": 0,
+    "PARTIAL": 19,
+    "COMPOSED": 2,
+    "CONTEXTUAL": 11,
+    "NONE": 88
   },
-  "candidates": [
+  "communication_mode_counts": {
+    "none_words": 88,
+    "embodied_omittable_words": 60,
+    "standalone_gap_words": 21,
+    "out_of_scope_words": 59,
+    "counts_overlap": true
+  },
+  "strong_development_candidates": [
     {
-      "concept": "generic person",
+      "concept": "neutral person",
+      "class": "lexical_tile",
       "source_words": [
-        "jan",
-        "meli",
-        "mije"
+        "jan"
       ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "strong_candidate",
-      "reason": "Pointing can identify a participant live; a durable safety or travel artifact may still require a neutral person.",
-      "suggested_role": "neutral participant for travel, safety and interpersonal composition"
+      "status": "STRONG"
     },
     {
-      "concept": "generic building or home",
+      "concept": "generic building/home design research",
+      "class": "lexical_tile",
       "source_words": [
         "tomo"
       ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "strong_candidate",
-      "reason": "A visible building can be indicated live; an unattended destination or shelter message needs the generic concept to remain.",
-      "suggested_role": "generic shelter/destination distinct from named venue types"
-    },
+      "status": "STRONG_DESIGN_RESEARCH"
+    }
+  ],
+  "standalone_implementation_candidates": [
     {
-      "concept": "visual attention or eye",
+      "concept": "GOOD",
+      "class": "modifier",
       "source_words": [
-        "lukin"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Gaze and pointing work live; an accessibility or attention cue must encode the concept when unattended.",
-      "suggested_role": "look/see cue for accessibility and signage"
+        "pona"
+      ]
     },
     {
-      "concept": "basic clothing",
+      "concept": "BAD",
+      "class": "modifier",
       "source_words": [
-        "len"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Visible clothing can be pointed to; remote packing or identification instructions may need an explicit object concept.",
-      "suggested_role": "physical clothing need or identification"
+        "ike"
+      ]
     },
     {
-      "concept": "body or body location",
-      "source_words": [
-        "sijelo",
-        "uta",
-        "nena"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "A person can indicate a body location live; a stored medical message must preserve where the issue is.",
-      "suggested_role": "medical/accessibility composition"
-    },
-    {
-      "concept": "hot or fire",
+      "concept": "hot/fire",
+      "class": "lexical_tile",
       "source_words": [
         "seli"
-      ],
-      "gap_states": [
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Heat is not reliably visible or gestureable, and warnings must remain understandable without a communicator.",
-      "suggested_role": "safety warning or physical-state modifier"
+      ]
     },
     {
       "concept": "cold",
+      "class": "lexical_tile",
       "source_words": [
         "lete"
-      ],
-      "gap_states": [
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Cold is not reliably visible or gestureable, and comfort or safety instructions can outlast the exchange.",
-      "suggested_role": "comfort, weather or safety state"
+      ]
     },
     {
-      "concept": "large and small modifiers",
+      "concept": "energy/electricity",
+      "class": "lexical_tile",
+      "source_words": [
+        "wawa"
+      ]
+    },
+    {
+      "concept": "produce",
+      "class": "lexical_tile",
+      "source_words": [
+        "kili"
+      ]
+    },
+    {
+      "concept": "bakery/bread",
+      "class": "lexical_tile",
+      "source_words": [
+        "pan"
+      ]
+    },
+    {
+      "concept": "eye/visual attention",
+      "class": "lexical_tile",
+      "source_words": [
+        "lukin"
+      ]
+    },
+    {
+      "concept": "clothing",
+      "class": "lexical_tile",
+      "source_words": [
+        "len"
+      ]
+    },
+    {
+      "concept": "communication/speaking",
+      "class": "lexical_tile",
+      "source_words": [
+        "toki"
+      ]
+    },
+    {
+      "concept": "light",
+      "class": "lexical_tile",
+      "source_words": [
+        "suno"
+      ]
+    },
+    {
+      "concept": "sun/day",
+      "class": "lexical_tile",
+      "source_words": [
+        "suno"
+      ]
+    }
+  ],
+  "protocol_mechanisms": [
+    {
+      "concept": "LARGE/SMALL",
+      "class": "modifier",
       "source_words": [
         "suli",
         "lili"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Relative scale can be demonstrated live; remote selection instructions may need size encoded.",
-      "suggested_role": "relative physical scale in composition"
+      ]
     },
     {
-      "concept": "compact color modifier system",
+      "concept": "parametric COLOR",
+      "class": "parametric_tile",
       "source_words": [
-        "jelo",
         "kule",
+        "jelo",
         "laso",
         "loje",
         "pimeja",
         "walo"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "A visible color can be pointed to live; remote object identification needs the color to survive in the artifact.",
-      "suggested_role": "identify objects by visible color"
+      ]
     },
     {
-      "concept": "generic communication or message",
+      "concept": "entity symbols / scoped identity",
+      "class": "entity_symbol",
+      "source_words": []
+    },
+    {
+      "concept": "emission-mark visual convention",
+      "class": "visual_convention",
       "source_words": [
         "kalama",
-        "nimi",
-        "sitelen",
-        "sona"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Voice, phone, or a note can supply the channel live; a channel-neutral interface cue may need an explicit message concept.",
-      "suggested_role": "channel-neutral communication cue"
-    },
-    {
-      "concept": "light or visibility",
-      "source_words": [
+        "toki",
         "suno"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "STANDALONE-GAP"
-      ],
-      "recommendation": "possible_candidate",
-      "reason": "Ambient light can be indicated live; an unattended visibility, lighting, or access instruction may need it encoded.",
-      "suggested_role": "lighting, visibility, or access cue distinct from a celestial-body reading"
-    },
+      ]
+    }
+  ],
+  "deferred": [
     {
       "concept": "generic container",
+      "class": "lexical_tile",
       "source_words": [
         "poki"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE"
-      ],
-      "recommendation": "defer",
-      "reason": "The physical container is usually pointable; standalone demand remains unproven, so keep the proposal deferred.",
-      "suggested_role": "portable-object and physical request composition"
+      ]
     },
     {
-      "concept": "generic animal or wildlife",
+      "concept": "broad animal categories",
+      "class": "context_pack",
       "source_words": [
         "akesi",
         "kala",
         "pipi",
         "soweli",
         "waso"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE"
-      ],
-      "recommendation": "defer",
-      "reason": "A visible animal can be indicated directly; standalone warning demand remains too broad and unproven.",
-      "suggested_role": "signage or accessibility warning"
+      ]
     },
     {
-      "concept": "pronoun and gender system",
+      "concept": "specialized body-location vocabulary",
+      "class": "specialized_pack",
       "source_words": [
-        "meli",
-        "mije",
-        "mi",
-        "ona",
-        "sina"
-      ],
-      "gap_states": [
-        "EMBODIED-OMITTABLE",
-        "OUT-OF-SCOPE"
-      ],
-      "recommendation": "reject",
-      "reason": "Speaker roles, pointing, and a neutral person can supply participants; grammatical person and gender are outside current scope.",
-      "suggested_role": "encode grammatical person and gender"
-    },
-    {
-      "concept": "grammar and relation operators",
-      "source_words": [
-        "anu",
-        "e",
-        "en",
-        "kepeken",
-        "la",
-        "li",
-        "pi",
-        "tan",
-        "taso"
-      ],
-      "gap_states": [
-        "OUT-OF-SCOPE"
-      ],
-      "recommendation": "reject",
-      "reason": "These operators would copy language-specific syntax rather than solve an independently demonstrated Pictiq task.",
-      "suggested_role": "copy Toki Pona syntax into tiles"
+        "nena",
+        "sijelo",
+        "uta"
+      ]
     }
-  ]
+  ],
+  "rejected": [
+    "pronoun system",
+    "grammatical gender",
+    "Toki Pona grammatical particles",
+    "broad possession for lexical completeness",
+    "alphabetic spelling of names",
+    "finite lexical color inventory",
+    "broad Toki-Pona-shaped abstract vocabulary"
+  ],
+  "entity_symbol_finding": "Proper names expose a scoped entity-symbol mechanism: a narrative pack may assign local visual identifiers to entities such as Odysseus, Penelope, and Telemachus without adding lexical Core tiles.",
+  "parametric_color_finding": "Embodied use can point to an actual color; standalone use may carry an arbitrary color value in a proposed parametric tile. Individual lexical color icons are rejected."
 }

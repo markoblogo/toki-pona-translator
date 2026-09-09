@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.1.0-research",
+  "schema_version": "1.2.0-accepted-research",
   "title": "Toki Pona to Pictiq full semantic crosswalk",
-  "status": "research_non_canonical_pending_human_review",
+  "status": "research_non_canonical_accepted",
   "third_party_notices": "crosswalks/pictiq/THIRD_PARTY_NOTICES.md",
   "created": "2026-09-09",
   "semantic_rule": {
     "toki_pona": "Toki Pona primarily compresses vocabulary by allowing broad lexical concepts.",
-    "pictiq": "Pictiq often compresses communication by relying on context and communicative intent.",
+    "pictiq": "Pictiq compresses short communication through intent, context, embodiment, composition, and explicit standalone representation when needed.",
     "equivalence_warning": "A mapping records useful overlap, not lexical equivalence. For example, telo is not equal to need_water even when need_water is the best available Pictiq tile."
   },
   "mapping_classes": {
@@ -17,11 +17,11 @@
     "none": "No defensible mapping exists in the current Pictiq lexicon."
   },
   "review_confidence_values": {
-    "high": "Clear under the accepted method and provisionally accepted only for PARTIAL or DIRECT.",
-    "medium": "Defensible, but semantic boundaries need review.",
-    "low": "Ambiguous, controversial, or highly contextual."
+    "high": "Clear under the accepted method.",
+    "medium": "Accepted with a documented semantic boundary or contextual limitation.",
+    "low": "Historically controversial; the final human decision is recorded separately."
   },
-  "review_rule": "Review all NONE, COMPOSED, CONTEXTUAL, LOW-confidence, and MEDIUM-confidence PARTIAL/DIRECT rows.",
+  "review_rule": "The final human review resolved all NONE, COMPOSED, CONTEXTUAL, LOW-confidence, and MEDIUM-confidence PARTIAL/DIRECT rows.",
   "sources": {
     "toki_pona_repository": {
       "url": "https://github.com/markoblogo/toki-pona-translator",
@@ -60,7 +60,7 @@
     },
     "pictiq": {
       "url": "https://github.com/markoblogo/pictiq",
-      "commit": "7e9663d5a1236a881faf6a030e3258cf99e74a73",
+      "commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca",
       "lexicon_file": "lexicon/icon-index.json",
       "lexicon_version": "0.2.0",
       "lexicon_sha256": "319bccbec294d1a9ac24e4622f9b2c9e0fada2da73142f1d0b057d171db696b5",
@@ -100,14 +100,12 @@
         "representation": "❗"
       },
       "pictiq": {
-        "ids": [
-          "punct_exclaim"
-        ],
-        "mapping": "contextual",
-        "context_required": true
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
       },
       "review_confidence": "low",
-      "notes": "The urgency tile can carry emphasis in an utterance, but not the interjection itself."
+      "notes": "Face, voice, and gesture carry emotion in embodied communication; punct_exclaim is too narrow as a lexical mapping."
     },
     {
       "word": "akesi",
@@ -1426,11 +1424,11 @@
         "ids": [
           "place_disco"
         ],
-        "mapping": "partial",
-        "context_required": false
+        "mapping": "contextual",
+        "context_required": true
       },
       "review_confidence": "medium",
-      "notes": "A disco covers one context for dance and entertainment, not fun, play, games, or art broadly."
+      "notes": "A disco is one context for entertainment, not a semantic equivalent for fun, play, games, or art."
     },
     {
       "word": "mute",
@@ -1448,13 +1446,14 @@
       },
       "pictiq": {
         "ids": [
-          "qty_5"
+          "qty_5",
+          "qty_plus"
         ],
-        "mapping": "partial",
+        "mapping": "composed",
         "context_required": false
       },
       "review_confidence": "medium",
-      "notes": "qty_5 can pragmatically suggest many, but mute also means quantity, very, twenty, and several."
+      "notes": "qty_5 plus qty_plus communicates 5+ / many / more than several more honestly than a concrete five alone."
     },
     {
       "word": "nanpa",
@@ -1493,14 +1492,12 @@
         "representation": "🌀"
       },
       "pictiq": {
-        "ids": [
-          "drink_beer"
-        ],
-        "mapping": "contextual",
-        "context_required": true
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
       },
       "review_confidence": "low",
-      "notes": "Beer may imply intoxication in a specific scene; it does not mean strange, silly, or drunk."
+      "notes": "drink_beer is not a defensible representation of strange, unusual, silly, abnormal, or intoxicated."
     },
     {
       "word": "nasin",
@@ -1629,14 +1626,12 @@
         "representation": "👋"
       },
       "pictiq": {
-        "ids": [
-          "punct_exclaim"
-        ],
-        "mapping": "contextual",
-        "context_required": true
+        "ids": [],
+        "mapping": "none",
+        "context_required": false
       },
       "review_confidence": "low",
-      "notes": "The urgency tile may reinforce a command, but it is not a general vocative or imperative marker."
+      "notes": "Pictiq does not need a lexical vocative or imperative particle; standalone commands may use an action with punct_exclaim where appropriate."
     },
     {
       "word": "olin",
@@ -2538,11 +2533,11 @@
         "ids": [
           "comm_phone"
         ],
-        "mapping": "partial",
-        "context_required": false
+        "mapping": "contextual",
+        "context_required": true
       },
       "review_confidence": "medium",
-      "notes": "A phone supports calling, but toki broadly covers communication, speech, thought, story, and language."
+      "notes": "A phone is one communication channel, not communication, speech, thought, story, or language itself."
     },
     {
       "word": "tomo",
@@ -2608,11 +2603,11 @@
         "ids": [
           "item_condom"
         ],
-        "mapping": "partial",
-        "context_required": false
+        "mapping": "contextual",
+        "context_required": true
       },
       "review_confidence": "medium",
-      "notes": "A condom is a protection object associated with sex, not the act or concept of sex itself."
+      "notes": "A condom is associated with safer sex in context but is not sex or sexual activity itself."
     },
     {
       "word": "uta",
@@ -2744,11 +2739,11 @@
         "ids": [
           "power_plug"
         ],
-        "mapping": "partial",
-        "context_required": false
+        "mapping": "contextual",
+        "context_required": true
       },
       "review_confidence": "medium",
-      "notes": "power_plug covers electrical power access, only one part of energy, strength, and intensity."
+      "notes": "A power outlet is an electrical-power context, not a general representation of energy, strength, or intensity."
     },
     {
       "word": "weka",
@@ -2797,5 +2792,35 @@
       "review_confidence": "medium",
       "notes": "A concrete need tile is only an example of need-intent in context; it is not a lexical mapping for wile."
     }
-  ]
+  ],
+  "human_review": {
+    "status": "resolved",
+    "resolved_on": "2026-09-09",
+    "context": "Final acceptance of the 120-word Toki Pona to Pictiq interoperability research.",
+    "accepted_changes": {
+      "mute": "PARTIAL qty_5 -> COMPOSED qty_5 + qty_plus",
+      "a": "CONTEXTUAL punct_exclaim -> NONE",
+      "nasa": "CONTEXTUAL drink_beer -> NONE",
+      "o": "CONTEXTUAL punct_exclaim -> NONE",
+      "musi": "PARTIAL place_disco -> CONTEXTUAL example place_disco",
+      "toki": "PARTIAL comm_phone -> CONTEXTUAL example comm_phone",
+      "unpa": "PARTIAL item_condom -> CONTEXTUAL example item_condom",
+      "wawa": "PARTIAL power_plug -> CONTEXTUAL example power_plug"
+    },
+    "accepted_unchanged": [
+      "esun",
+      "ike",
+      "ken",
+      "lape",
+      "pakala",
+      "pini",
+      "pona",
+      "wile",
+      "kasi",
+      "kili",
+      "open",
+      "pan",
+      "pilin"
+    ]
+  }
 }

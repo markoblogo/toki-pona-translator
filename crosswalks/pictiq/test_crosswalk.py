@@ -6,7 +6,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from generate_crosswalk import CLASSES, CONFIDENCES, PILOT_WORDS, review_items
+from generate_crosswalk import CLASSES, CONFIDENCES, FINAL_DECISIONS, PILOT_WORDS, review_items
 
 
 class CrosswalkDataTests(unittest.TestCase):
@@ -30,7 +30,7 @@ class CrosswalkDataTests(unittest.TestCase):
             self.assertEqual(mapping == "none", not ids, row["word"])
             if mapping == "composed":
                 self.assertGreater(len(ids), 1, row["word"])
-        self.assertEqual({"none": 85, "partial": 24, "contextual": 10, "composed": 1},
+        self.assertEqual({"none": 88, "partial": 19, "contextual": 11, "composed": 2},
                          dict(Counter(row["pictiq"]["mapping"] for row in self.rows)))
         self.assertEqual({"high": 98, "medium": 19, "low": 3},
                          dict(Counter(row["review_confidence"] for row in self.rows)))
@@ -39,6 +39,13 @@ class CrosswalkDataTests(unittest.TestCase):
         queue = review_items(self.data)
         self.assertEqual(106, len(queue))
         self.assertEqual(len(queue), len({row["word"] for row in queue}))
+        self.assertEqual("resolved", self.data["human_review"]["status"])
+
+    def test_final_human_decisions_are_exact(self):
+        by_word = {row["word"]: row for row in self.rows}
+        for word, (mapping, ids) in FINAL_DECISIONS.items():
+            self.assertEqual(mapping, by_word[word]["pictiq"]["mapping"], word)
+            self.assertEqual(ids, tuple(by_word[word]["pictiq"]["ids"]), word)
 
     def test_pilot_classifications_are_declared_unchanged(self):
         pilot = json.loads((HERE / "pilot-20.json").read_text(encoding="utf-8"))

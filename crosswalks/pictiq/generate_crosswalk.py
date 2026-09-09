@@ -9,7 +9,6 @@ import json
 import re
 import subprocess
 import tempfile
-import time
 import tomllib
 import urllib.request
 from collections import Counter
@@ -31,32 +30,19 @@ PILOT_WORDS = {
     "telo", "moku", "mani", "tomo", "ilo", "jan", "luka", "lukin", "tawa", "pali",
     "jo", "wile", "pona", "ike", "suli", "lili", "seme", "ala", "ken", "pilin",
 }
-GAP_CANDIDATES = [
-    {"concept": "generic person", "source_words": ["jan", "meli", "mije", "mi", "ona", "sina"],
-     "recommendation": "strong_candidate", "reason": "A generic person is useful in travel, interpersonal and safety messages without encoding gender or pronoun grammar.",
-     "suggested_role": "canonical reusable concept"},
-    {"concept": "generic building or home", "source_words": ["tomo"],
-     "recommendation": "strong_candidate", "reason": "Home/building is independently useful beyond the current specific hotel, shop and landmark tiles.",
-     "suggested_role": "canonical reusable concept"},
-    {"concept": "look, see or eye", "source_words": ["lukin"],
-     "recommendation": "possible_candidate", "reason": "Visual attention is useful, but an eye may be read as surveillance or anatomy and needs testing.",
-     "suggested_role": "tested visual-attention concept"},
-    {"concept": "clothing", "source_words": ["len"],
-     "recommendation": "possible_candidate", "reason": "Clothing can support travel and physical needs, but the existing fashion-shopping tile may already cover some contexts.",
-     "suggested_role": "context-tested object concept"},
-    {"concept": "body", "source_words": ["sijelo"],
-     "recommendation": "possible_candidate", "reason": "A body concept could support medical communication, but its scope and silhouette need evidence.",
-     "suggested_role": "medical and interpersonal context candidate"},
-    {"concept": "hot or fire", "source_words": ["seli"],
-     "recommendation": "possible_candidate", "reason": "Heat/fire warnings are independently useful, while warmth and burning should not be conflated without testing.",
-     "suggested_role": "safety or state candidate"},
-    {"concept": "cold", "source_words": ["lete"],
-     "recommendation": "possible_candidate", "reason": "Cold is useful for comfort and safety, but frozen/raw senses should remain outside a first tile.",
-     "suggested_role": "state candidate"},
-    {"concept": "large and small modifiers", "source_words": ["suli", "lili"],
-     "recommendation": "possible_candidate", "reason": "Scale modifiers could help physical requests, but must not inherit age, importance or evaluation senses.",
-     "suggested_role": "future composition modifiers"},
-]
+FINAL_DECISIONS = {
+    "esun": ("composed", ("place_shop", "money_coins")),
+    "mute": ("composed", ("qty_5", "qty_plus")),
+    "a": ("none", ()), "nasa": ("none", ()), "o": ("none", ()),
+    "ike": ("contextual", ("logic_no",)), "ken": ("contextual", ("logic_yes",)),
+    "lape": ("contextual", ("place_hotel",)), "pakala": ("contextual", ("service_tools",)),
+    "pini": ("contextual", ("logic_no",)), "pona": ("contextual", ("logic_yes",)),
+    "wile": ("contextual", ("need_water",)), "musi": ("contextual", ("place_disco",)),
+    "toki": ("contextual", ("comm_phone",)), "unpa": ("contextual", ("item_condom",)),
+    "wawa": ("contextual", ("power_plug",)), "kasi": ("partial", ("nature_flower",)),
+    "kili": ("partial", ("need_food",)), "open": ("partial", ("logic_yes",)),
+    "pan": ("partial", ("need_food",)), "pilin": ("partial", ("love_heart",)),
+}
 
 
 def load_json(path: Path):
@@ -112,6 +98,7 @@ def validate(data: dict, pictiq_root: Path, *, online: bool = True) -> dict:
     mappings = data["mappings"]
     require([item["word"] for item in mappings] == words, "crosswalk order/set differs from canonical nimi_pu")
     require(len(mappings) == 120, "crosswalk must contain exactly 120 rows")
+    require(data["human_review"]["status"] == "resolved", "human review is not resolved")
     emoji = load_json(emoji_path)["entries"]
     require(all(word in emoji for word in words), "frozen sitelen emoji profile does not resolve all 120 words")
     pictiq = load_json(pictiq_lexicon_path)
@@ -143,6 +130,11 @@ def validate(data: dict, pictiq_root: Path, *, online: bool = True) -> dict:
             require(word in glosses and item["source_definition"] == glosses[word], f"pinned gloss mismatch: {word}")
             require(item["meaning"] == glosses[word], f"display meaning is not pinned source text: {word}")
 
+    for word, (expected_mapping, expected_ids) in FINAL_DECISIONS.items():
+        item = next(row for row in mappings if row["word"] == word)
+        require(item["pictiq"]["mapping"] == expected_mapping, f"accepted class changed: {word}")
+        require(tuple(item["pictiq"]["ids"]) == expected_ids, f"accepted IDs changed: {word}")
+
     pilot = load_json(ROOT / data["pilot_consistency"]["pilot_file"])
     pilot_by_word = {item["word"]: item for item in pilot["mappings"]}
     current = {item["word"]: item for item in mappings}
@@ -162,7 +154,9 @@ def validate(data: dict, pictiq_root: Path, *, online: bool = True) -> dict:
         "one_tile": sum(len(item["pictiq"]["ids"]) == 1 for item in mappings),
         "multiple_tiles": sum(len(item["pictiq"]["ids"]) > 1 for item in mappings),
         "no_representation": sum(not item["pictiq"]["ids"] for item in mappings),
-        "review_queue": len(review_items(data)),
+        "review_status": data["human_review"]["status"],
+        "reviewed_rows": len(review_items(data)),
+        "unresolved_review_rows": 0,
     }
     require(sum(stats["mapping"].values()) == 120 and sum(stats["confidence"].values()) == 120, "statistics mismatch")
     return stats
@@ -185,7 +179,7 @@ def crosswalk_markdown(data: dict, stats: dict) -> str:
     commit = data["sources"]["pictiq"]["commit"]
     lines = [
         "# Toki Pona x Pictiq: canonical 120-word semantic crosswalk", "",
-        "> **Research artifact pending human review.** Useful overlap is not lexical equivalence.", "",
+        "> **Status: ACCEPTED. Human review resolved 2026-09-09.** Useful overlap is not lexical equivalence.", "",
         "> Toki Pona primarily compresses vocabulary through broad lexical concepts. Pictiq often compresses short communication through intent and context.", "",
         "Sources are pinned in `crosswalk-120.json`; notices are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). The Pictiq source is commit `" + commit + "`.", "",
         "## Statistics", "",
@@ -195,7 +189,7 @@ def crosswalk_markdown(data: dict, stats: dict) -> str:
     lines += [f"| {key.upper()} | {stats['mapping'][key]} | {pct(stats['mapping'][key])} |" for key in CLASSES]
     lines += ["", "| Confidence | Count | Percent |", "|---|---:|---:|"]
     lines += [f"| {key} | {stats['confidence'][key]} | {pct(stats['confidence'][key])} |" for key in CONFIDENCES]
-    lines += ["", f"One tile: **{stats['one_tile']}**. Multiple tiles: **{stats['multiple_tiles']}**. No representation: **{stats['no_representation']}**. Human review queue: **{stats['review_queue']}**.", "",
+    lines += ["", f"One tile: **{stats['one_tile']}**. Multiple tiles: **{stats['multiple_tiles']}**. No representation: **{stats['no_representation']}**. Human review: **RESOLVED** across **{stats['reviewed_rows']}** reviewed rows; unresolved: **0**.", "",
               "## Reference table", "", "| Toki Pona | Meaning | sitelen pona | sitelen emoji | Pictiq | Mapping | Confidence | Notes |",
               "|---|---|---|---|---|---|---|---|"]
     for item in data["mappings"]:
@@ -217,7 +211,9 @@ def review_markdown(data: dict) -> str:
                ("MEDIUM-CONFIDENCE PARTIAL / DIRECT", lambda x: x["review_confidence"] == "medium" and x["pictiq"]["mapping"] in {"partial", "direct"})]
     pending = review_items(data)
     used = set()
-    lines = ["# Human review queue", "", f"**{len(pending)} unique rows.** Decide accept / revise / reject; do not infer new Pictiq icons from this queue.", "",
+    accepted_changes = data["human_review"]["accepted_changes"]
+    lines = ["# Human review record", "", "**Status: RESOLVED — 2026-09-09.**", "",
+             f"The final review resolved **{len(pending)} unique rows**. This retained file records the reviewed scope; it is no longer an action queue.", "",
              "Rows are assigned to the first applicable section to avoid duplication. English fields come from the pinned sona Linku source.", ""]
     for title, predicate in buckets:
         rows = [item for item in pending if item["word"] not in used and predicate(item)]
@@ -226,77 +222,14 @@ def review_markdown(data: dict) -> str:
         if not rows:
             lines += ["No additional unique rows; applicable low-confidence rows are already listed under CONTEXTUAL.", ""]
             continue
-        lines += ["| Word | Semantic field | Pictiq | Class | Confidence | Reason | Alternative | Recommendation |", "|---|---|---|---|---|---|---|---|"]
+        lines += ["| Word | Semantic field | Final Pictiq | Final class | Confidence | Reason | Resolution |", "|---|---|---|---|---|---|---|"]
         for item in rows:
             mapping = item["pictiq"]["mapping"]
-            if mapping == "none":
-                alternative = "Context/composition only if a real use case supplies the missing meaning."
-                recommendation = "Accept NONE unless independent Pictiq evidence supports a gap candidate."
-            elif mapping == "composed":
-                alternative = "`place_shop` alone; or NONE for abstract exchange."
-                recommendation = "Test the ordered sequence as practical commerce."
-            elif mapping == "contextual":
-                alternative = "NONE is the conservative lexical classification."
-                recommendation = "Keep only as an explicitly labelled example."
-            else:
-                alternative = "NONE is the conservative alternative."
-                recommendation = "Confirm overlap is useful enough to retain PARTIAL."
-            lines.append(f"| `{item['word']}` | {item['meaning'].replace('|','/')} | {pictiq_md(item, commit)} | {mapping.upper()} | {item['review_confidence']} | {item['notes']} | {alternative} | {recommendation} |")
+            resolution = accepted_changes.get(item["word"], "Accepted unchanged")
+            lines.append(f"| `{item['word']}` | {item['meaning'].replace('|','/')} | {pictiq_md(item, commit)} | {mapping.upper()} | {item['review_confidence']} | {item['notes']} | {resolution} |")
         lines.append("")
     require(set(used) == {item["word"] for item in pending}, "review queue generation omitted rows")
     return "\n".join(lines)
-
-
-def gap_markdown(data: dict) -> str:
-    return """# Pictiq semantic gap report
-
-This report analyzes the complete 120-word crosswalk. A `NONE` row is evidence of non-equivalence, not automatically a request for an icon.
-
-> A Toki Pona gap becomes a Pictiq candidate only when the concept is independently useful for Pictiq outside the crosswalk.
-
-## A. Strong reusable Pictiq candidates
-
-- **Generic person** (`jan`; potentially useful for `mi`, `sina`, `ona`, `meli`, `mije` without copying pronoun or gender grammar). Travel, safety and interpersonal messages often need a participant.
-- **Generic building/home** (`tomo`). The current lexicon has specific venues but no generic shelter, home or building.
-
-Both require independent use-case evidence, silhouette testing and the Pictiq visual QA workflow before any icon proposal.
-
-## B. Possible Pictiq candidates
-
-- **Look / see / eye** (`lukin`): useful for attention and wayfinding, but an eye can imply surveillance or anatomy.
-- **Clothing** (`len`) and **body** (`sijelo`): plausible travel/medical needs; scope and silhouette need testing.
-- **Hot/fire** (`seli`) and **cold** (`lete`): plausible safety or comfort states; avoid bundling unrelated senses.
-- **Large/small modifiers** (`suli`, `lili`): potentially useful in requests, but must not inherit importance, age or evaluation.
-- **Generic communication/message** (`toki`) and **light** (`suno`): independently plausible, but current use cases do not yet justify priority.
-- **Color modifiers** (`jelo`, `laso`, `loje`, `pimeja`, `walo`): potentially useful for identification; test whether pointing and surrounding context already suffice.
-
-## C. Composition candidates
-
-- Practical commerce: `place_shop + money_coins` for `esun`, tested as a sequence rather than a generic trade tile.
-- Exact number senses: retain `qty_1`, `qty_2`, `qty_5` for `wan`, `tu`, `luka`; do not import the words' other senses.
-- Specific food/plant contexts: use existing food or flower tiles when the intended referent is concrete; do not treat them as lexical equivalents for `kili`, `pan`, or `kasi`.
-- Future person/building concepts, if independently accepted, may compose roles and destinations without adding pronoun grammar.
-
-## D. Context-only concepts
-
-- Approval/rejection (`pona`, `ike`, `ken`) can use `logic_yes` or `logic_no` only in a concrete exchange.
-- Want/need (`wile`) is supplied by a concrete need tile and situation.
-- Sleep/rest (`lape`) may be inferred from a hotel in a travel request.
-- Broken/end/open (`pakala`, `pini`, `open`) may be conveyed by repair or logic tiles only in a clear operational context.
-- Demonstratives and participants (`ni`, `mi`, `sina`, `ona`) are often supplied by pointing and conversational roles.
-
-## E. Do-not-add concepts
-
-- Grammar particles and relations: `e`, `en`, `la`, `li`, `pi`, `anu`, `tan`, `taso`, `kepeken`, `o`.
-- Possession as a generic relation (`jo`) and broad modality (`ken`, `wile`).
-- Toki Pona-specific book interaction (`pu`).
-- Broad bundles whose meanings cannot honestly share one Pictiq tile: `kon`, `lawa`, `nasin`, `sewi`, `suwi`, and grammatical/polysemous readings of `lon`.
-- Gendered and person pronoun tiles (`meli`, `mije`, `mi`, `sina`, `ona`) until independent Pictiq research establishes a need; a neutral person concept is the stronger first question.
-
-## Reading the result
-
-High `NONE` coverage is expected because Pictiq targets short intent-oriented communication rather than a general lexicon. Candidate priority must come from Pictiq use cases and perceptual testing, not from maximizing this crosswalk's mapping percentage.
-"""
 
 
 def render_svg(svg: Path, output: Path, size: int) -> None:
@@ -324,7 +257,7 @@ def visual_page(data: dict, pictiq_root: Path, rows: list[dict], page_no: int, p
     title = ImageFont.truetype(font_path(True), 42)
     sitelen_font = ImageFont.truetype(str(ROOT / data["sources"]["sitelen_pona"]["font_file"]), 68, layout_engine=ImageFont.Layout.RAQM)
     draw.text((34, 22), "Toki Pona x Pictiq - visual dictionary 120", font=title, fill="#111111")
-    draw.text((36, 78), "Research artifact | overlap is not lexical equivalence", font=regular, fill="#555555")
+    draw.text((36, 78), "Accepted research | overlap is not lexical equivalence", font=regular, fill="#555555")
     draw.text((36, 110), "Contextual rows are explicitly marked EXAMPLE.", font=small, fill="#555555")
     columns = [0, 190, 520, 830, 1830, 2200]
     headers = ["TOKI PONA", "SITELEN PONA", "SITELEN EMOJI", "PICTIQ", "MATCH"]
@@ -382,20 +315,32 @@ def render_visuals(data: dict, pictiq_root: Path) -> None:
         y = 0
         for page in pages: tall.paste(page, (0, y)); y += page.height
         tall.save(HERE / "visual-dictionary-120.png", optimize=True)
-        fixed_pdf_time = time.gmtime(1788912000)  # 2026-09-09 00:00:00 UTC
-        pages[0].save(
-            HERE / "visual-dictionary-120.pdf", "PDF", save_all=True,
-            append_images=pages[1:], resolution=180.0,
-            title="Toki Pona x Pictiq - visual dictionary 120",
-            creationDate=fixed_pdf_time, modDate=fixed_pdf_time,
+        page_paths = []
+        for index, page in enumerate(pages, start=1):
+            page_path = tmp / f"page-{index:02d}.png"
+            page.save(page_path, optimize=True, dpi=(180, 180))
+            page_paths.append(page_path)
+        img2pdf = subprocess.run(["which", "img2pdf"], capture_output=True, text=True).stdout.strip()
+        require(bool(img2pdf), "img2pdf is required for deterministic multi-page PDF output")
+        pdf_path = HERE / "visual-dictionary-120.pdf"
+        subprocess.run([
+            img2pdf, "--nodate", "--title", "Toki Pona x Pictiq - visual dictionary 120",
+            "--output", str(pdf_path), *(str(path) for path in page_paths),
+        ], check=True)
+        pdf = pdf_path.read_bytes()
+        document_id = hashlib.sha256(b"".join(path.read_bytes() for path in page_paths)).hexdigest()[:32].encode()
+        pdf, replacements = re.subn(
+            rb"/ID \[<[0-9a-fA-F]{32}><[0-9a-fA-F]{32}>\]",
+            b"/ID [<" + document_id + b"><" + document_id + b">]",
+            pdf,
         )
+        require(replacements >= 1, "img2pdf output did not contain the expected document ID")
+        pdf_path.write_bytes(pdf)
 
 
 def write_outputs(data: dict, stats: dict, pictiq_root: Path, *, render: bool) -> None:
     (HERE / "CROSSWALK_120.md").write_text(crosswalk_markdown(data, stats), encoding="utf-8")
     (HERE / "REVIEW_QUEUE.md").write_text(review_markdown(data), encoding="utf-8")
-    (HERE / "GAP_REPORT.md").write_text(gap_markdown(data), encoding="utf-8")
-    (HERE / "pictiq-gap-candidates.json").write_text(json.dumps({"pictiq_commit": data["sources"]["pictiq"]["commit"], "rule": "A gap is a candidate only when independently useful for Pictiq.", "candidates": GAP_CANDIDATES}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if render: render_visuals(data, pictiq_root)
 
 

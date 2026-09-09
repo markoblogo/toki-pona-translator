@@ -20,6 +20,10 @@ Translate into **Toki Pona**, render the result as **sitelen pona** or **sitelen
 
 The packages keep their public names and APIs. Their former Git histories are preserved in this repository under `packages/`.
 
+### Pictiq interoperability research
+
+[Pictiq](https://github.com/markoblogo/pictiq) is a minimal visual protocol for short messages. The [120-word crosswalk](crosswalks/pictiq/CROSSWALK_120.md) studies how Toki Pona's broad lexical concepts correspond—or do not correspond—to an embodied, intent-oriented visual protocol. It is a semantic and interoperability stress test, not a claim of historical influence or lexical equivalence.
+
 ## Run the translator locally
 
 Requirements: Node.js 22 (see `.nvmrc`) and an OpenAI API key.

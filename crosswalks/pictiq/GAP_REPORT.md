@@ -1,56 +1,79 @@
 # Pictiq semantic gap report
 
-This report adds communication mode as a second analytical dimension to the complete 120-word crosswalk. It does not change `crosswalk-120.json` or approve any Pictiq addition.
+> **Status: ACCEPTED RESEARCH DIRECTION — IMPLEMENTATION NOT STARTED.**
+
+This report interprets the final 120-word crosswalk through Pictiq's Embodied/Standalone architecture. It does not create canonical icons, IDs, modifiers, parameters, entity symbols, packs, or registries.
 
 > Use the body for what the body can express. Use the icon for what must remain after the body is gone.
 
 > **Research finding:** NONE is not a single failure state: embodiment may supply a concept, standalone use may expose a need, or the concept may be outside Pictiq scope.
 
-All 85 `NONE` rows remain accounted for. Word-level tags overlap: **59 EMBODIED-OMITTABLE**, **21 STANDALONE-GAP**, and **56 OUT-OF-SCOPE**.
+All 88 final `NONE` rows are accounted for. Word-level tags overlap: **60 EMBODIED-OMITTABLE**, **21 STANDALONE-GAP**, and **59 OUT-OF-SCOPE**.
 
-At concept level the shortlist is **2 STRONG / 9 POSSIBLE / 2 DEFER / 2 REJECT**. It contains **11 standalone-gap concepts** and **2 out-of-scope concepts**; overlap with the **12 embodied-omittable concepts** is intentional.
+## Strong development candidates
 
-## How to read the states
+- **neutral person** (`lexical_tile`) — source: `jan`
+- **generic building/home design research** (`lexical_tile`) — source: `tomo`
 
-- **EMBODIED-OMITTABLE** means a live person or visible situation can supply the meaning; it is not evidence that every standalone use is covered.
-- **STANDALONE-GAP** means the meaning must remain after the communicator is gone and no current representation preserves it honestly.
-- **OUT-OF-SCOPE** means the proposed encoding would copy grammar, create excessive lexical breadth, or lack independent Pictiq utility.
+## Standalone implementation candidates
 
-A concept can be both EMBODIED-OMITTABLE and STANDALONE-GAP. `lukin`, for example, can be communicated by gaze or pointing live but may need an explicit visual-attention cue in an unattended artifact.
+- **GOOD** (`modifier`) — source: `pona`
+- **BAD** (`modifier`) — source: `ike`
+- **hot/fire** (`lexical_tile`) — source: `seli`
+- **cold** (`lexical_tile`) — source: `lete`
+- **energy/electricity** (`lexical_tile`) — source: `wawa`
+- **produce** (`lexical_tile`) — source: `kili`
+- **bakery/bread** (`lexical_tile`) — source: `pan`
+- **eye/visual attention** (`lexical_tile`) — source: `lukin`
+- **clothing** (`lexical_tile`) — source: `len`
+- **communication/speaking** (`lexical_tile`) — source: `toki`
+- **light** (`lexical_tile`) — source: `suno`
+- **sun/day** (`lexical_tile`) — source: `suno`
 
-## Strong reusable candidates
+GOOD/BAD remain separate from YES/NO. Energy/electricity does not include physical strength. Light and sun/day remain separate until tested.
 
-- **generic person** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Pointing can identify a participant live; a durable safety or travel artifact may still require a neutral person.
-- **generic building or home** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A visible building can be indicated live; an unattended destination or shelter message needs the generic concept to remain.
+## Protocol mechanisms
 
-## Possible reusable candidates
+- **LARGE/SMALL** (`modifier`) — source: `suli`, `lili`
+- **parametric COLOR** (`parametric_tile`) — source: `kule`, `jelo`, `laso`, `loje`, `pimeja`, `walo`
+- **entity symbols / scoped identity** (`entity_symbol`)
+- **emission-mark visual convention** (`visual_convention`) — source: `kalama`, `toki`, `suno`
 
-- **visual attention or eye** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Gaze and pointing work live; an accessibility or attention cue must encode the concept when unattended.
-- **basic clothing** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Visible clothing can be pointed to; remote packing or identification instructions may need an explicit object concept.
-- **body or body location** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A person can indicate a body location live; a stored medical message must preserve where the issue is.
-- **hot or fire** (`STANDALONE-GAP`): Heat is not reliably visible or gestureable, and warnings must remain understandable without a communicator.
-- **cold** (`STANDALONE-GAP`): Cold is not reliably visible or gestureable, and comfort or safety instructions can outlast the exchange.
-- **large and small modifiers** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Relative scale can be demonstrated live; remote selection instructions may need size encoded.
-- **compact color modifier system** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A visible color can be pointed to live; remote object identification needs the color to survive in the artifact.
-- **generic communication or message** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Voice, phone, or a note can supply the channel live; a channel-neutral interface cue may need an explicit message concept.
-- **light or visibility** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Ambient light can be indicated live; an unattended visibility, lighting, or access instruction may need it encoded.
+LARGE/SMALL are scale modifiers, not aliases for quantity. Emission marks are a visual convention, not a standalone semantic tile.
 
-## Deferred questions
+## Entity-symbol finding
 
-- **generic container** (`EMBODIED-OMITTABLE`): The physical container is usually pointable; standalone demand remains unproven, so keep the proposal deferred.
-- **generic animal or wildlife** (`EMBODIED-OMITTABLE`): A visible animal can be indicated directly; standalone warning demand remains too broad and unproven.
+Proper names expose a scoped entity-symbol mechanism: a narrative pack may assign local visual identifiers to entities such as Odysseus, Penelope, and Telemachus without adding lexical Core tiles.
 
-## Out-of-scope proposals
+No entity symbols or namespaces are implemented by this research cycle.
 
-- **pronoun and gender system** (`EMBODIED-OMITTABLE + OUT-OF-SCOPE`): Speaker roles, pointing, and a neutral person can supply participants; grammatical person and gender are outside current scope.
-- **grammar and relation operators** (`OUT-OF-SCOPE`): These operators would copy language-specific syntax rather than solve an independently demonstrated Pictiq task.
+## Parametric color finding
 
-## Parametric color direction
+Embodied use can point to an actual color; standalone use may carry an arbitrary color value in a proposed parametric tile. Individual lexical color icons are rejected.
 
-Color is a strong example of the mode distinction: pointing to a visible color is often sufficient live, while a remote instruction must preserve which color identifies the object. The analytical proposal is one stable parametric visual-modifier family, not separate noun-like icons copied from Toki Pona color words. No form, geometry, palette, ID, syntax, or acceptance decision is proposed here.
+No red, yellow, blue, green, or other canonical lexical color icons are proposed.
 
-## Mapping impact
+## Deferred
 
-- No DIRECT, PARTIAL, COMPOSED, CONTEXTUAL, or NONE classification changed.
-- The source dataset, pilot, visual dictionary, and headline statistics remain unchanged.
-- Candidate priority still requires independent Pictiq use cases and the normal specification, perceptual, and acceptance workflow.
+- **generic container** (`lexical_tile`) — source: `poki`
+- **broad animal categories** (`context_pack`) — source: `akesi`, `kala`, `pipi`, `soweli`, `waso`
+- **specialized body-location vocabulary** (`specialized_pack`) — source: `nena`, `sijelo`, `uta`
+
+## Rejected directions
+
+- pronoun system
+- grammatical gender
+- Toki Pona grammatical particles
+- broad possession for lexical completeness
+- alphabetic spelling of names
+- finite lexical color inventory
+- broad Toki-Pona-shaped abstract vocabulary
+
+## Final semantic impact
+
+- `esun` remains COMPOSED as `place_shop + money_coins`.
+- `mute` is COMPOSED as `qty_5 + qty_plus`.
+- `a`, `nasa`, and `o` are NONE.
+- `musi`, `toki`, `unpa`, and `wawa` are CONTEXTUAL examples.
+- Existing future candidates do not convert any other NONE mapping.
+- Final counts are 0 DIRECT / 19 PARTIAL / 2 COMPOSED / 11 CONTEXTUAL / 88 NONE.

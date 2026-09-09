@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.1.0-communication-mode",
-  "status": "decision_proposal_pending_human_review",
+  "schema_version": "1.2.0-resolved-architecture",
+  "status": "resolved",
   "source_commit": "50a58e7bfdd6004f7b52e6e3368149a8ac2f4fd1",
   "source_dataset": "crosswalks/pictiq/crosswalk-120.json",
-  "source_dataset_sha256": "58bd35b3dd13490476b625d1a867460ba74dd3f225e510adf9df7669cf38633d",
-  "methodology_pictiq_commit": "f31c51ce1873c1db2208b5aca056884093c0572a",
+  "source_dataset_sha256": "6627fd2c50a6cb66479a029359ea3226c40c217dc364af5de2c2c363a4b2b399",
+  "methodology_pictiq_commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca",
   "independent_utility_rule": "A Toki Pona gap becomes a Pictiq candidate only if the concept would materially improve Pictiq even if the Toki Pona crosswalk did not exist.",
   "communication_mode_method": {
     "rule": "Use the body for what the body can express. Use the icon for what must remain after the body is gone.",
@@ -22,147 +22,168 @@
       "meaning": "trade, exchange, market or shop",
       "why_review": "The only COMPOSED row; shop plus cash clearly signals practical commerce but narrows barter and exchange.",
       "alternative": "CONTEXTUAL for a shopping scene; PARTIAL with place_shop; NONE for abstract exchange.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED COMPOSED: place_shop + money_coins"
     },
     {
       "word": "a",
       "meaning": "interjection or emotional emphasis",
       "why_review": "Urgency is only one possible emotional force and can overstate neutral emphasis.",
       "alternative": "NONE.",
-      "recommendation": "CHANGE TO NONE"
+      "recommendation": "CHANGE TO NONE",
+      "final_decision": "CHANGED TO NONE"
     },
     {
       "word": "ike",
       "meaning": "bad, harmful, unpleasant or unneeded",
       "why_review": "logic_no expresses rejection only when the situation supplies the evaluated quality.",
       "alternative": "NONE as a lexical result.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "ken",
       "meaning": "ability, permission or possibility",
       "why_review": "logic_yes answers a permission question but does not represent ability or possibility.",
       "alternative": "NONE as a lexical result.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "lape",
       "meaning": "sleep or rest",
       "why_review": "A hotel suggests sleep only in a travel or lodging context.",
       "alternative": "NONE outside a known lodging use case.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "nasa",
       "meaning": "strange, unusual, silly or intoxicated",
       "why_review": "Beer suggests only one possible cause of intoxication and risks a misleading stereotype.",
       "alternative": "NONE.",
-      "recommendation": "CHANGE TO NONE"
+      "recommendation": "CHANGE TO NONE",
+      "final_decision": "CHANGED TO NONE"
     },
     {
       "word": "o",
       "meaning": "vocative or imperative particle",
       "why_review": "Urgency may reinforce a command but is not a general imperative or vocative marker.",
       "alternative": "NONE; rely on pointing and interaction.",
-      "recommendation": "CHANGE TO NONE"
+      "recommendation": "CHANGE TO NONE",
+      "final_decision": "CHANGED TO NONE"
     },
     {
       "word": "pakala",
       "meaning": "broken, damaged, harmed or mistaken",
       "why_review": "A repair tile can imply a broken object, but only within an operational scene.",
       "alternative": "NONE for harm or mistake senses.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "pini",
       "meaning": "finish, stop, close or end",
       "why_review": "logic_no can mean closed or stopped, while completion and past remain absent.",
       "alternative": "PARTIAL if the closed/stopped protocol sense is treated as stable.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "pona",
       "meaning": "good, helpful, pleasant or useful",
       "why_review": "logic_yes communicates approval or OK only within an exchange.",
       "alternative": "NONE as a general quality.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "wile",
       "meaning": "want, need, desire or require",
       "why_review": "need_water is an explicit example of need-intent, not a representation of broad desire.",
       "alternative": "NONE as a lexical result.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "kasi",
       "meaning": "plant, vegetation, herb or leaf",
       "why_review": "A flower is a recognizable plant subtype but covers only a narrow part of the field.",
       "alternative": "NONE if subtype overlap is judged too narrow.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "kili",
       "meaning": "fruit, vegetable or mushroom",
       "why_review": "need_food is broader and intent-bearing, but the edible-object overlap is useful.",
       "alternative": "CONTEXTUAL in a food request.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "musi",
       "meaning": "fun, play, game, art or entertainment",
       "why_review": "A disco is one venue and activity; it does not represent general fun, play or art.",
       "alternative": "CONTEXTUAL for nightlife; NONE generally.",
-      "recommendation": "CHANGE TO CONTEXTUAL"
+      "recommendation": "CHANGE TO CONTEXTUAL",
+      "final_decision": "CHANGED TO CONTEXTUAL: example place_disco"
     },
     {
       "word": "mute",
       "meaning": "many, several, quantity, very or twenty",
       "why_review": "qty_5 can pragmatically signal many but still depicts a specific number.",
       "alternative": "COMPOSED qty_5 + qty_plus for an explicit many expression.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "CHANGED TO COMPOSED: qty_5 + qty_plus"
     },
     {
       "word": "open",
       "meaning": "begin, start, open or turn on",
       "why_review": "logic_yes has a stable open reading but misses beginning and activation broadly.",
       "alternative": "CONTEXTUAL where open/closed is established.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "pan",
       "meaning": "grain, bread or starchy food",
       "why_review": "need_food is much broader and carries need intent, but includes the central edible field.",
       "alternative": "CONTEXTUAL in a food request.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "pilin",
       "meaning": "emotion, feeling, touch or heart",
       "why_review": "love_heart covers affection only, leaving physical sensation and most emotions outside.",
       "alternative": "NONE if affection is too narrow to count as useful overlap.",
-      "recommendation": "ACCEPT"
+      "recommendation": "ACCEPT",
+      "final_decision": "ACCEPTED UNCHANGED"
     },
     {
       "word": "toki",
       "meaning": "communication, speech, thought, story or language",
       "why_review": "A phone is a channel/device for one communication mode, not communication itself.",
       "alternative": "CONTEXTUAL for calling; NONE generally.",
-      "recommendation": "CHANGE TO CONTEXTUAL"
+      "recommendation": "CHANGE TO CONTEXTUAL",
+      "final_decision": "CHANGED TO CONTEXTUAL: example comm_phone"
     },
     {
       "word": "unpa",
       "meaning": "sex or sexual activity",
       "why_review": "A condom is a related protection object, creating contextual association rather than semantic overlap.",
       "alternative": "NONE outside a safer-sex context.",
-      "recommendation": "CHANGE TO CONTEXTUAL"
+      "recommendation": "CHANGE TO CONTEXTUAL",
+      "final_decision": "CHANGED TO CONTEXTUAL: example item_condom"
     },
     {
       "word": "wawa",
       "meaning": "power, energy, strength or intensity",
       "why_review": "A power outlet represents access to electricity, not power or strength generally.",
       "alternative": "CONTEXTUAL for electrical-power requests; NONE generally.",
-      "recommendation": "CHANGE TO CONTEXTUAL"
+      "recommendation": "CHANGE TO CONTEXTUAL",
+      "final_decision": "CHANGED TO CONTEXTUAL: example power_plug"
     }
   ],
   "candidate_clusters": [
@@ -494,19 +515,21 @@
     {
       "name": "communication and cognition",
       "words": [
+        "a",
         "kalama",
         "mu",
         "nimi",
         "sitelen",
         "sona"
       ],
-      "concepts": "sound, vocalization, name/word, image/writing and knowledge",
+      "concepts": "interjection/emphasis, sound, vocalization, name/word, image/writing and knowledge",
       "workaround": "comm_phone and comm_wifi cover specific channels, not these concepts.",
       "independent_utility": "MEDIUM",
       "recommendation": "POSSIBLE CANDIDATE",
       "note": "A message/communication concept may be useful; abstract cognition remains low priority.",
       "gap_states": {
         "EMBODIED-OMITTABLE": [
+          "a",
           "kalama",
           "mu",
           "nimi",
@@ -517,6 +540,7 @@
           "sitelen"
         ],
         "OUT-OF-SCOPE": [
+          "a",
           "mu",
           "nimi",
           "sona"
@@ -573,9 +597,10 @@
         "pi",
         "sama",
         "tan",
-        "taso"
+        "taso",
+        "o"
       ],
-      "concepts": "coordination, argument marking, instrument, context, location, comparison and cause",
+      "concepts": "coordination, argument marking, instrument, context, location, comparison, cause, vocative and imperative grammar",
       "workaround": "Tile order, layout, pointing and natural-language context.",
       "independent_utility": "LOW",
       "recommendation": "DO NOT ADD",
@@ -592,7 +617,8 @@
           "pi",
           "sama",
           "tan",
-          "taso"
+          "taso",
+          "o"
         ]
       }
     },
@@ -647,9 +673,10 @@
       "name": "polysemous abstract qualities",
       "words": [
         "lawa",
-        "suwi"
+        "suwi",
+        "nasa"
       ],
-      "concepts": "head/control/law and sweet/fragrant/cute",
+      "concepts": "head/control/law, strange/unusual/intoxicated, and sweet/fragrant/cute",
       "workaround": "Use concrete people, institutions, foods or situations when available.",
       "independent_utility": "LOW",
       "recommendation": "DO NOT ADD",
@@ -657,7 +684,8 @@
       "gap_states": {
         "OUT-OF-SCOPE": [
           "lawa",
-          "suwi"
+          "suwi",
+          "nasa"
         ]
       }
     },
@@ -978,5 +1006,210 @@
       ],
       "reason": "Concept-level proposals are review prompts, not reasons to change any current NONE row."
     }
-  ]
+  ],
+  "resolution": {
+    "resolved_on": "2026-09-09",
+    "context": "Final acceptance of the complete 120-word Toki Pona to Pictiq interoperability crosswalk.",
+    "mapping_counts": {
+      "DIRECT": 0,
+      "PARTIAL": 19,
+      "COMPOSED": 2,
+      "CONTEXTUAL": 11,
+      "NONE": 88
+    },
+    "confidence_counts": {
+      "high": 98,
+      "medium": 19,
+      "low": 3
+    },
+    "one_tile": 30,
+    "multiple_tiles": 2,
+    "no_representation": 88,
+    "reviewed_rows": 106,
+    "unresolved_rows": 0
+  },
+  "accepted_architecture": {
+    "status": "accepted_direction_unimplemented",
+    "pictiq_commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca",
+    "strong_development_candidates": [
+      {
+        "concept": "neutral person",
+        "class": "lexical_tile",
+        "source_words": [
+          "jan"
+        ],
+        "status": "STRONG"
+      },
+      {
+        "concept": "generic building/home design research",
+        "class": "lexical_tile",
+        "source_words": [
+          "tomo"
+        ],
+        "status": "STRONG_DESIGN_RESEARCH"
+      }
+    ],
+    "standalone_implementation_candidates": [
+      {
+        "concept": "GOOD",
+        "class": "modifier",
+        "source_words": [
+          "pona"
+        ]
+      },
+      {
+        "concept": "BAD",
+        "class": "modifier",
+        "source_words": [
+          "ike"
+        ]
+      },
+      {
+        "concept": "hot/fire",
+        "class": "lexical_tile",
+        "source_words": [
+          "seli"
+        ]
+      },
+      {
+        "concept": "cold",
+        "class": "lexical_tile",
+        "source_words": [
+          "lete"
+        ]
+      },
+      {
+        "concept": "energy/electricity",
+        "class": "lexical_tile",
+        "source_words": [
+          "wawa"
+        ]
+      },
+      {
+        "concept": "produce",
+        "class": "lexical_tile",
+        "source_words": [
+          "kili"
+        ]
+      },
+      {
+        "concept": "bakery/bread",
+        "class": "lexical_tile",
+        "source_words": [
+          "pan"
+        ]
+      },
+      {
+        "concept": "eye/visual attention",
+        "class": "lexical_tile",
+        "source_words": [
+          "lukin"
+        ]
+      },
+      {
+        "concept": "clothing",
+        "class": "lexical_tile",
+        "source_words": [
+          "len"
+        ]
+      },
+      {
+        "concept": "communication/speaking",
+        "class": "lexical_tile",
+        "source_words": [
+          "toki"
+        ]
+      },
+      {
+        "concept": "light",
+        "class": "lexical_tile",
+        "source_words": [
+          "suno"
+        ]
+      },
+      {
+        "concept": "sun/day",
+        "class": "lexical_tile",
+        "source_words": [
+          "suno"
+        ]
+      }
+    ],
+    "protocol_mechanisms": [
+      {
+        "concept": "LARGE/SMALL",
+        "class": "modifier",
+        "source_words": [
+          "suli",
+          "lili"
+        ]
+      },
+      {
+        "concept": "parametric COLOR",
+        "class": "parametric_tile",
+        "source_words": [
+          "kule",
+          "jelo",
+          "laso",
+          "loje",
+          "pimeja",
+          "walo"
+        ]
+      },
+      {
+        "concept": "entity symbols / scoped identity",
+        "class": "entity_symbol",
+        "source_words": []
+      },
+      {
+        "concept": "emission-mark visual convention",
+        "class": "visual_convention",
+        "source_words": [
+          "kalama",
+          "toki",
+          "suno"
+        ]
+      }
+    ],
+    "deferred": [
+      {
+        "concept": "generic container",
+        "class": "lexical_tile",
+        "source_words": [
+          "poki"
+        ]
+      },
+      {
+        "concept": "broad animal categories",
+        "class": "context_pack",
+        "source_words": [
+          "akesi",
+          "kala",
+          "pipi",
+          "soweli",
+          "waso"
+        ]
+      },
+      {
+        "concept": "specialized body-location vocabulary",
+        "class": "specialized_pack",
+        "source_words": [
+          "nena",
+          "sijelo",
+          "uta"
+        ]
+      }
+    ],
+    "rejected": [
+      "pronoun system",
+      "grammatical gender",
+      "Toki Pona grammatical particles",
+      "broad possession for lexical completeness",
+      "alphabetic spelling of names",
+      "finite lexical color inventory",
+      "broad Toki-Pona-shaped abstract vocabulary"
+    ],
+    "entity_symbol_finding": "Proper names expose a scoped entity-symbol mechanism: a narrative pack may assign local visual identifiers to entities such as Odysseus, Penelope, and Telemachus without adding lexical Core tiles.",
+    "parametric_color_finding": "Embodied use can point to an actual color; standalone use may carry an arbitrary color value in a proposed parametric tile. Individual lexical color icons are rejected."
+  }
 }
