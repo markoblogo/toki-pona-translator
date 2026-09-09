@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import tempfile
 import textwrap
+import time
 import urllib.request
 from collections import Counter
 from pathlib import Path
@@ -52,6 +53,7 @@ def require(condition: bool, message: str) -> None:
 
 def validate(data: dict, pictiq_root: Path) -> Counter:
     sources = data["sources"]
+    notices_path = REPO_ROOT / data["third_party_notices"]
     vocab_path = REPO_ROOT / sources["toki_pona_repository"]["vocabulary_file"]
     recognition_lexicon_path = REPO_ROOT / sources["toki_pona_repository"]["display_recognition_lexicon"]
     emoji_path = REPO_ROOT / sources["sitelen_emoji"]["canonical_profile"]
@@ -70,16 +72,22 @@ def validate(data: dict, pictiq_root: Path) -> Counter:
         require(path.is_file(), f"missing source: {path}")
         require(sha256(path) == expected, f"source hash changed: {path}")
     require(license_path.is_file(), f"missing font license: {license_path}")
+    require(notices_path.is_file(), f"missing third-party notices: {notices_path}")
+    require(sources["english_glosses"]["license"] == "CC-BY-SA-4.0", "English gloss license changed")
+    require(sources["sitelen_emoji"]["upstream_license"] == "BSD-3-Clause", "emoji upstream license changed")
 
     vocab = set(vocab_path.read_text(encoding="utf-8").splitlines())
     emoji_profile = load_json(emoji_path)
     pictiq_lexicon = load_json(pictiq_lexicon_path)
     pictiq_by_id = {item["id"]: item for item in pictiq_lexicon["icons"]}
     mappings = data["mappings"]
+    mappings_by_word = {item["word"]: item for item in mappings}
 
     require([item["word"] for item in mappings] == EXPECTED_WORDS, "pilot word order/set changed")
     require(len(set(EXPECTED_WORDS)) == 20, "pilot words must be unique")
     require(pictiq_lexicon["version"] == sources["pictiq"]["lexicon_version"], "Pictiq lexicon version changed")
+    require(mappings_by_word["ala"]["pictiq"]["mapping"] == "partial", "ala must remain PARTIAL")
+    require(mappings_by_word["wile"]["pictiq"].get("display_label") == "example: need_water", "wile example label changed")
 
     hb_shape = shutil.which("hb-shape")
     for item in mappings:
@@ -88,6 +96,8 @@ def validate(data: dict, pictiq_root: Path) -> Counter:
         ids = item["pictiq"]["ids"]
         require(word in vocab, f"word absent from current vocabulary: {word}")
         require(mapping in MAPPING_CLASSES, f"invalid mapping class for {word}: {mapping}")
+        require(item.get("meaning_source") == "sona_linku_pinned", f"unattributed English gloss: {word}")
+        require(bool(item.get("source_definition")), f"missing pinned source definition: {word}")
         require(item["sitelen_emoji"]["representation"] == emoji_profile["entries"].get(word), f"emoji mismatch: {word}")
         require(item["sitelen_pona"]["representation"] == word, f"ligature input mismatch: {word}")
         require((mapping == "none") == (not ids), f"NONE/id mismatch: {word}")
@@ -280,7 +290,7 @@ def render_grid(data: dict, pictiq_root: Path) -> None:
                     cursor_x += tile_size + 12
                 label_x = cursor_x + 8
                 label_width = columns[5] - label_x - 18
-                label = " + ".join(icon_ids)
+                label = item["pictiq"].get("display_label", " + ".join(icon_ids))
                 label_lines = fit_lines(draw, label, small, label_width, 2)
                 label_y = top + (row_h - len(label_lines) * 27) / 2
                 for line in label_lines:
@@ -293,14 +303,22 @@ def render_grid(data: dict, pictiq_root: Path) -> None:
             centered_text(draw, badge, mapping.upper(), bold)
 
     footer_top = height - footer_h
-    draw.text((38, footer_top + 18), "Sources: frozen sitelen-emoji profile; sitelen seli kiwen asuki 2.2; Pictiq lexicon 0.2.0 and canonical SVG tiles.", font=tiny, fill="#555555")
+    draw.text((38, footer_top + 18), "Sources: sona Linku glosses; frozen sitelen-emoji profile; sitelen seli kiwen asuki 2.2; Pictiq lexicon 0.2.0.", font=tiny, fill="#555555")
     draw.text((38, footer_top + 48), "Pictiq (c) Anton Biletskyi-Volokh - github.com/markoblogo/pictiq - CC BY-NC 4.0. Twemoji graphics - CC BY 4.0.", font=tiny, fill="#555555")
     draw.text((38, footer_top + 78), "sitelen seli kiwen by KreativeKorp / jan Lepeka - OFL-1.1. Generated from pilot-20.json; NONE requests no new icon.", font=tiny, fill="#555555")
 
     png_path = HERE / "pilot-20-grid.png"
     pdf_path = HERE / "pilot-20-grid.pdf"
     image.save(png_path, optimize=True)
-    image.save(pdf_path, "PDF", resolution=180.0)
+    fixed_pdf_time = time.gmtime(1788912000)  # 2026-09-09 00:00:00 UTC
+    image.save(
+        pdf_path,
+        "PDF",
+        resolution=180.0,
+        title="Toki Pona x Pictiq - 20-word pilot",
+        creationDate=fixed_pdf_time,
+        modDate=fixed_pdf_time,
+    )
 
 
 def markdown(data: dict, counts: Counter) -> str:
@@ -314,6 +332,9 @@ def markdown(data: dict, counts: Counter) -> str:
                 for icon_id in ids
             ]
             pictiq = " + ".join(parts)
+            display_label = item["pictiq"].get("display_label")
+            if display_label:
+                pictiq = f"{display_label.replace(ids[0], parts[0])}"
         else:
             pictiq = "**NONE**"
         sp = item["sitelen_pona"]
@@ -338,7 +359,7 @@ def markdown(data: dict, counts: Counter) -> str:
         "> Toki Pona primarily compresses vocabulary by allowing broad lexical concepts.",
         "> Pictiq often compresses communication by relying on context and communicative intent.",
         "",
-        "For example, `telo` can cover water, liquid, beverage, and wash-related meanings. Pictiq `need_water` is narrower and already carries practical intent. Therefore `telo != need_water`, even when it is the best current mapping.",
+        "For example, `telo` covers water and many other liquids. Pictiq `need_water` is narrower and already carries practical intent. Therefore `telo != need_water`, even when it is the best current mapping.",
         "",
         "![Pilot visual grid](pilot-20-grid.png)",
         "",
@@ -350,6 +371,7 @@ def markdown(data: dict, counts: Counter) -> str:
         "- Display-layer recognition lexicon: `packages/sitelen-layer-plugin/src/tokiPonaLexicon.ts` (139 words, including community additions); the pilot uses the 120-word list above.",
         "- sitelen pona mechanism: `packages/sitelen-layer-plugin/sitelen-pona-font.css` and `assets/fonts/sitelen-seli-kiwen-asuki.ttf`; Latin words shape into ligatures.",
         "- sitelen emoji source of truth: `packages/sitelen-emoji/profiles/default-stable.v1.json`; consumer copies are generated from this frozen profile.",
+        "- English glosses: `lipu-linku/sona` `words/source/definition.toml` pinned to commit `c2c56d2769b369af89c6c239d45aa616ba6d7b77`.",
         "- Pictiq registry and assets: `lexicon/icon-index.json` and `icons/svg/{id}.svg` at commit `7e9663d5a1236a881faf6a030e3258cf99e74a73`.",
         "- Pictiq packs: `packs/universal-core.json`, `packs/universal-v1.json`, and contextual packs. No pack or core file was changed.",
         "",
@@ -381,20 +403,20 @@ def markdown(data: dict, counts: Counter) -> str:
         "",
         "## Licensing and provenance",
         "",
-        "- **Toki Pona vocabulary:** the repository's 120-word `nimi_pu.txt` validates membership. It has no item-level source metadata. The English meanings here are short analyst-written research glosses, not imported dictionary definitions.",
+        "- **Toki Pona vocabulary:** the repository's 120-word `nimi_pu.txt` validates membership. English source definitions come from the pinned `sona Linku` dataset; the shorter display glosses are adaptations under CC BY-SA 4.0.",
         "- **sitelen pona:** `sitelen seli kiwen asuki` v2.2 by KreativeKorp / jan Lepeka, bundled under SIL OFL 1.1. The grid renders the actual OpenType ligatures; it does not copy the font into Pictiq.",
-        "- **sitelen emoji:** the canonical frozen profile is distributed by this repository under MIT and identifies Dev Bali's `desktop-sitelen-emoji` mapping as its upstream source. That upstream repository is BSD-3-Clause. The package currently has no separate upstream NOTICE beside the profile; this is a packaging provenance follow-up, not a semantic blocker for the pilot.",
+        "- **sitelen emoji:** the canonical frozen profile identifies Dev Bali's BSD-3-Clause `desktop-sitelen-emoji` mapping as its upstream source. [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) now preserves its copyright, license conditions, disclaimer, source URL, and reuse description.",
         "- **Emoji artwork:** the grid uses Twemoji 17.0.0 artwork under CC BY 4.0 to render the profile's exact Unicode sequences consistently.",
         "- **Pictiq:** canonical SVG icons are CC BY-NC 4.0. The generated grid embeds those tiles, so its Pictiq-derived visual content remains non-commercial unless separately licensed.",
         "",
         "## Suitability for scaling",
         "",
-        "The schema is suitable for the full vocabulary because it keeps representation sources, ordered Pictiq IDs, mapping class, context dependence, and semantic caveats separate. Scaling should wait for review of the class boundaries and the six NONE decisions. A full pass also needs a declared source for lexical glosses and should test at least a few genuine COMPOSED cases.",
+        "The schema is suitable for the full vocabulary because it keeps representation sources, ordered Pictiq IDs, mapping class, context dependence, semantic caveats, and pinned English definitions separate. Scaling should wait for review of the class boundaries and the six NONE decisions, and should test at least a few genuine COMPOSED cases.",
         "",
         "Unresolved semantic issues:",
         "",
-        "- `ala` is DIRECT for its central no/not use, while nothing/zero remain uncovered.",
-        "- `wile` uses `need_water` only as a contextual example of `wile e telo`; it is not a lexical mapping for `wile` alone.",
+        "- `ala` is PARTIAL: `logic_no` covers no/not, while nothing, zero, absence, and question formation remain uncovered.",
+        "- `wile` displays `example: need_water` as one concrete need-intent tile plus context; it is not a lexical mapping for `wile` alone.",
         "- `pona`, `ike`, and `ken` map to response/logic tiles only in situations that supply the missing predicate.",
         "- `suli` and `lili` bundle size, degree, age, and evaluation in ways a Pictiq modifier should not inherit.",
         "",
