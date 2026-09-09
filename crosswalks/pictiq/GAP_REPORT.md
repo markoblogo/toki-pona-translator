@@ -1,48 +1,56 @@
 # Pictiq semantic gap report
 
-This report analyzes the complete 120-word crosswalk. A `NONE` row is evidence of non-equivalence, not automatically a request for an icon.
+This report adds communication mode as a second analytical dimension to the complete 120-word crosswalk. It does not change `crosswalk-120.json` or approve any Pictiq addition.
 
-> A Toki Pona gap becomes a Pictiq candidate only when the concept is independently useful for Pictiq outside the crosswalk.
+> Use the body for what the body can express. Use the icon for what must remain after the body is gone.
 
-## A. Strong reusable Pictiq candidates
+> **Research finding:** NONE is not a single failure state: embodiment may supply a concept, standalone use may expose a need, or the concept may be outside Pictiq scope.
 
-- **Generic person** (`jan`; potentially useful for `mi`, `sina`, `ona`, `meli`, `mije` without copying pronoun or gender grammar). Travel, safety and interpersonal messages often need a participant.
-- **Generic building/home** (`tomo`). The current lexicon has specific venues but no generic shelter, home or building.
+All 85 `NONE` rows remain accounted for. Word-level tags overlap: **59 EMBODIED-OMITTABLE**, **21 STANDALONE-GAP**, and **56 OUT-OF-SCOPE**.
 
-Both require independent use-case evidence, silhouette testing and the Pictiq visual QA workflow before any icon proposal.
+At concept level the shortlist is **2 STRONG / 9 POSSIBLE / 2 DEFER / 2 REJECT**. It contains **11 standalone-gap concepts** and **2 out-of-scope concepts**; overlap with the **12 embodied-omittable concepts** is intentional.
 
-## B. Possible Pictiq candidates
+## How to read the states
 
-- **Look / see / eye** (`lukin`): useful for attention and wayfinding, but an eye can imply surveillance or anatomy.
-- **Clothing** (`len`) and **body** (`sijelo`): plausible travel/medical needs; scope and silhouette need testing.
-- **Hot/fire** (`seli`) and **cold** (`lete`): plausible safety or comfort states; avoid bundling unrelated senses.
-- **Large/small modifiers** (`suli`, `lili`): potentially useful in requests, but must not inherit importance, age or evaluation.
-- **Generic communication/message** (`toki`) and **light** (`suno`): independently plausible, but current use cases do not yet justify priority.
-- **Color modifiers** (`jelo`, `laso`, `loje`, `pimeja`, `walo`): potentially useful for identification; test whether pointing and surrounding context already suffice.
+- **EMBODIED-OMITTABLE** means a live person or visible situation can supply the meaning; it is not evidence that every standalone use is covered.
+- **STANDALONE-GAP** means the meaning must remain after the communicator is gone and no current representation preserves it honestly.
+- **OUT-OF-SCOPE** means the proposed encoding would copy grammar, create excessive lexical breadth, or lack independent Pictiq utility.
 
-## C. Composition candidates
+A concept can be both EMBODIED-OMITTABLE and STANDALONE-GAP. `lukin`, for example, can be communicated by gaze or pointing live but may need an explicit visual-attention cue in an unattended artifact.
 
-- Practical commerce: `place_shop + money_coins` for `esun`, tested as a sequence rather than a generic trade tile.
-- Exact number senses: retain `qty_1`, `qty_2`, `qty_5` for `wan`, `tu`, `luka`; do not import the words' other senses.
-- Specific food/plant contexts: use existing food or flower tiles when the intended referent is concrete; do not treat them as lexical equivalents for `kili`, `pan`, or `kasi`.
-- Future person/building concepts, if independently accepted, may compose roles and destinations without adding pronoun grammar.
+## Strong reusable candidates
 
-## D. Context-only concepts
+- **generic person** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Pointing can identify a participant live; a durable safety or travel artifact may still require a neutral person.
+- **generic building or home** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A visible building can be indicated live; an unattended destination or shelter message needs the generic concept to remain.
 
-- Approval/rejection (`pona`, `ike`, `ken`) can use `logic_yes` or `logic_no` only in a concrete exchange.
-- Want/need (`wile`) is supplied by a concrete need tile and situation.
-- Sleep/rest (`lape`) may be inferred from a hotel in a travel request.
-- Broken/end/open (`pakala`, `pini`, `open`) may be conveyed by repair or logic tiles only in a clear operational context.
-- Demonstratives and participants (`ni`, `mi`, `sina`, `ona`) are often supplied by pointing and conversational roles.
+## Possible reusable candidates
 
-## E. Do-not-add concepts
+- **visual attention or eye** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Gaze and pointing work live; an accessibility or attention cue must encode the concept when unattended.
+- **basic clothing** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Visible clothing can be pointed to; remote packing or identification instructions may need an explicit object concept.
+- **body or body location** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A person can indicate a body location live; a stored medical message must preserve where the issue is.
+- **hot or fire** (`STANDALONE-GAP`): Heat is not reliably visible or gestureable, and warnings must remain understandable without a communicator.
+- **cold** (`STANDALONE-GAP`): Cold is not reliably visible or gestureable, and comfort or safety instructions can outlast the exchange.
+- **large and small modifiers** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Relative scale can be demonstrated live; remote selection instructions may need size encoded.
+- **compact color modifier system** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): A visible color can be pointed to live; remote object identification needs the color to survive in the artifact.
+- **generic communication or message** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Voice, phone, or a note can supply the channel live; a channel-neutral interface cue may need an explicit message concept.
+- **light or visibility** (`EMBODIED-OMITTABLE + STANDALONE-GAP`): Ambient light can be indicated live; an unattended visibility, lighting, or access instruction may need it encoded.
 
-- Grammar particles and relations: `e`, `en`, `la`, `li`, `pi`, `anu`, `tan`, `taso`, `kepeken`, `o`.
-- Possession as a generic relation (`jo`) and broad modality (`ken`, `wile`).
-- Toki Pona-specific book interaction (`pu`).
-- Broad bundles whose meanings cannot honestly share one Pictiq tile: `kon`, `lawa`, `nasin`, `sewi`, `suwi`, and grammatical/polysemous readings of `lon`.
-- Gendered and person pronoun tiles (`meli`, `mije`, `mi`, `sina`, `ona`) until independent Pictiq research establishes a need; a neutral person concept is the stronger first question.
+## Deferred questions
 
-## Reading the result
+- **generic container** (`EMBODIED-OMITTABLE`): The physical container is usually pointable; standalone demand remains unproven, so keep the proposal deferred.
+- **generic animal or wildlife** (`EMBODIED-OMITTABLE`): A visible animal can be indicated directly; standalone warning demand remains too broad and unproven.
 
-High `NONE` coverage is expected because Pictiq targets short intent-oriented communication rather than a general lexicon. Candidate priority must come from Pictiq use cases and perceptual testing, not from maximizing this crosswalk's mapping percentage.
+## Out-of-scope proposals
+
+- **pronoun and gender system** (`EMBODIED-OMITTABLE + OUT-OF-SCOPE`): Speaker roles, pointing, and a neutral person can supply participants; grammatical person and gender are outside current scope.
+- **grammar and relation operators** (`OUT-OF-SCOPE`): These operators would copy language-specific syntax rather than solve an independently demonstrated Pictiq task.
+
+## Parametric color direction
+
+Color is a strong example of the mode distinction: pointing to a visible color is often sufficient live, while a remote instruction must preserve which color identifies the object. The analytical proposal is one stable parametric visual-modifier family, not separate noun-like icons copied from Toki Pona color words. No form, geometry, palette, ID, syntax, or acceptance decision is proposed here.
+
+## Mapping impact
+
+- No DIRECT, PARTIAL, COMPOSED, CONTEXTUAL, or NONE classification changed.
+- The source dataset, pilot, visual dictionary, and headline statistics remain unchanged.
+- Candidate priority still requires independent Pictiq use cases and the normal specification, perceptual, and acceptance workflow.
