@@ -89,3 +89,14 @@ See [`AGENTS.md`](AGENTS.md) for repository boundaries and [`docs/REPOSITORY-CON
 ## License
 
 MIT. The bundled sitelen pona font keeps its own SIL Open Font License notice.
+
+<!-- ABVX:ECOSYSTEM:BEGIN -->
+## ABVX ecosystem
+
+- [pictiq](https://markoblogo.github.io/pictiq/) — Maintains the versioned, non-normative Toki Pona to Pictiq crosswalk. Current release: `v1.2.0`.
+- [AGENTS.md_generator](https://agentsmd.abvx.xyz/) — Keeps repository guidance and machine-readable context current. Current release: `v0.5.1`.
+- [abvx-shortener](https://go.abvx.xyz/) — Uses stable short links for public campaigns and QR destinations. Current release: `v0.3.1`.
+- [abvx-agent-skills](https://abvx.xyz/work/abvx-agent-skills) — Uses shared, reviewable agent capabilities during maintenance. Current release: `v0.15.0`.
+
+_This block is generated from the reviewed ABVX ecosystem registry._
+<!-- ABVX:ECOSYSTEM:END -->
