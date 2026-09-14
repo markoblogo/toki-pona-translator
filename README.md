@@ -24,6 +24,8 @@ The packages keep their public names and APIs. Their former Git histories are pr
 
 [Pictiq](https://github.com/markoblogo/pictiq) is a minimal visual protocol for short messages. The [120-word crosswalk](crosswalks/pictiq/CROSSWALK_120.md) studies how Toki Pona's broad lexical concepts correspond—or do not correspond—to an embodied, intent-oriented visual protocol. It is a semantic and interoperability stress test, not a claim of historical influence or lexical equivalence.
 
+The machine-readable [compatibility adapter](crosswalks/pictiq/adapter-v1.json) resolves identifiers from the accepted research snapshot against the current Pictiq lexicon. CI checks it against Pictiq on every change, so a lexicon migration cannot silently break consumers.
+
 ## Run the translator locally
 
 Requirements: Node.js 22 (see `.nvmrc`) and an OpenAI API key.
