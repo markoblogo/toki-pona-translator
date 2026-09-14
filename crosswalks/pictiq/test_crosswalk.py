@@ -56,6 +56,15 @@ class CrosswalkDataTests(unittest.TestCase):
             self.assertEqual(old["pictiq"]["mapping"], full_by_word[word]["pictiq"]["mapping"])
             self.assertEqual(old["pictiq"]["ids"], full_by_word[word]["pictiq"]["ids"])
 
+    def test_current_adapter_covers_every_historical_identifier(self):
+        adapter = json.loads((HERE / "adapter-v1.json").read_text(encoding="utf-8"))
+        used = {icon_id for row in self.rows for icon_id in row["pictiq"]["ids"]}
+        self.assertEqual(used, set(adapter["resolutions"]))
+        self.assertTrue(all(item["current_ids"] for item in adapter["resolutions"].values()))
+        self.assertEqual(
+            ["place_home"], adapter["resolutions"]["place_hotel"]["current_ids"]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

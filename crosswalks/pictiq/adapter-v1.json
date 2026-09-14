@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0.0",
+  "status": "NON_NORMATIVE_COMPATIBILITY_ADAPTER",
+  "source_crosswalk": {
+    "file": "crosswalks/pictiq/crosswalk-120.json",
+    "schema_version": "1.2.0-accepted-research",
+    "accepted_pictiq_commit": "5dff34c28231d1261d1aa72022756c4c7a1b8fca"
+  },
+  "target_pictiq": {
+    "repository": "https://github.com/markoblogo/pictiq",
+    "commit": "f4c96572e52355b76624ad925a63c6f848cdecd4",
+    "lexicon_file": "lexicon/icon-index.json",
+    "lexicon_version": "0.8.1",
+    "lexicon_sha256": "4254fb9a328b32914f6f890734fa35f6a3786cb7a61d6ac99e86f7744590fe7b",
+    "compatibility_file": "lexicon/compatibility.json",
+    "compatibility_sha256": "a7323a578551c89f8cb185fe9215819989ae4b0c1b595a0ea98d2511fe51871b"
+  },
+  "policy": "Research classifications remain frozen. Consumers may resolve historical Pictiq IDs through this adapter; the adapter does not change the Pictiq protocol or crosswalk semantics.",
+  "resolutions": {
+    "comm_phone": {
+      "status": "active",
+      "current_ids": [
+        "comm_phone"
+      ]
+    },
+    "item_condom": {
+      "status": "active",
+      "current_ids": [
+        "item_condom"
+      ]
+    },
+    "logic_no": {
+      "status": "active",
+      "current_ids": [
+        "logic_no"
+      ]
+    },
+    "logic_yes": {
+      "status": "active",
+      "current_ids": [
+        "logic_yes"
+      ]
+    },
+    "love_heart": {
+      "status": "active",
+      "current_ids": [
+        "love_heart"
+      ]
+    },
+    "money_coins": {
+      "status": "active",
+      "current_ids": [
+        "money_coins"
+      ]
+    },
+    "move_feet": {
+      "status": "active",
+      "current_ids": [
+        "move_feet"
+      ]
+    },
+    "nature_flower": {
+      "status": "active",
+      "current_ids": [
+        "nature_flower"
+      ]
+    },
+    "need_food": {
+      "status": "active",
+      "current_ids": [
+        "need_food"
+      ]
+    },
+    "need_water": {
+      "status": "active",
+      "current_ids": [
+        "need_water"
+      ]
+    },
+    "place_disco": {
+      "status": "active",
+      "current_ids": [
+        "place_disco"
+      ]
+    },
+    "place_hotel": {
+      "status": "migrated",
+      "current_ids": [
+        "place_home"
+      ],
+      "kind": "SEMANTIC_MIGRATION"
+    },
+    "place_shop": {
+      "status": "active",
+      "current_ids": [
+        "place_shop"
+      ]
+    },
+    "power_plug": {
+      "status": "active",
+      "current_ids": [
+        "power_plug"
+      ]
+    },
+    "punct_question": {
+      "status": "active",
+      "current_ids": [
+        "punct_question"
+      ]
+    },
+    "qty_1": {
+      "status": "active",
+      "current_ids": [
+        "qty_1"
+      ]
+    },
+    "qty_2": {
+      "status": "active",
+      "current_ids": [
+        "qty_2"
+      ]
+    },
+    "qty_5": {
+      "status": "active",
+      "current_ids": [
+        "qty_5"
+      ]
+    },
+    "qty_plus": {
+      "status": "active",
+      "current_ids": [
+        "qty_plus"
+      ]
+    },
+    "service_tools": {
+      "status": "active",
+      "current_ids": [
+        "service_tools"
+      ]
+    },
+    "time": {
+      "status": "active",
+      "current_ids": [
+        "time"
+      ]
+    }
+  }
+}
