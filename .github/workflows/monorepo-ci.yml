@@ -84,6 +84,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           repository: markoblogo/pictiq
+          ref: 31f9887dd7c924495e09cd17edcec0eadd23dae6
           path: .compat/pictiq
       - run: python -m unittest discover -s crosswalks/pictiq -p 'test_*.py'
       - run: python crosswalks/pictiq/build_adapter.py --pictiq-root .compat/pictiq --check

@@ -66,5 +66,12 @@ class CrosswalkDataTests(unittest.TestCase):
         )
 
 
+    def test_ci_pictiq_reference_matches_recorded_adapter(self):
+        adapter = json.loads((HERE / "adapter-v1.json").read_text(encoding="utf-8"))
+        workflow = (HERE.parents[1] / ".github/workflows/monorepo-ci.yml").read_text()
+        job = workflow.split("  pictiq-compatibility:", 1)[1]
+        expected = "          repository: markoblogo/pictiq\n          ref: " + adapter["target_pictiq"]["commit"] + "\n"
+        self.assertIn(expected, job)
+
 if __name__ == "__main__":
     unittest.main()
