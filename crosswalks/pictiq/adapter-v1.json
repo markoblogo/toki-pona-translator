@@ -8,10 +8,10 @@
   },
   "target_pictiq": {
     "repository": "https://github.com/markoblogo/pictiq",
-    "commit": "f4c96572e52355b76624ad925a63c6f848cdecd4",
+    "commit": "31f9887dd7c924495e09cd17edcec0eadd23dae6",
     "lexicon_file": "lexicon/icon-index.json",
     "lexicon_version": "0.8.1",
-    "lexicon_sha256": "4254fb9a328b32914f6f890734fa35f6a3786cb7a61d6ac99e86f7744590fe7b",
+    "lexicon_sha256": "d3cf9678639d3f7af4fa41196664361231114b3aa12ba7e99b6b803034e4cb24",
     "compatibility_file": "lexicon/compatibility.json",
     "compatibility_sha256": "a7323a578551c89f8cb185fe9215819989ae4b0c1b595a0ea98d2511fe51871b"
   },
